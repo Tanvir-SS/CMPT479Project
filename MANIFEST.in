@@ -1,0 +1,7 @@
+include AGENTS.md .python-version requirements.lock requirements-constraints.txt
+recursive-include scripts *.py *.sh
+recursive-include docs *.md *.json
+recursive-include data *.md
+recursive-include data/fixtures *.edges *.json
+recursive-include experiments *.md
+recursive-include plots *.md

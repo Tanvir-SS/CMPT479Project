@@ -1,0 +1,34 @@
+# Local environment, packaging, and tool caches
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.agents/
+.codex/
+.aws/
+.idea/
+.vscode/
+.DS_Store
+
+# Keep documentation and intentional fixtures; exclude generated research output.
+data/raw/*
+!data/raw/README.md
+data/processed/*
+!data/processed/README.md
+experiments/results/*
+!experiments/results/README.md
+plots/*
+!plots/README.md
+out.txt

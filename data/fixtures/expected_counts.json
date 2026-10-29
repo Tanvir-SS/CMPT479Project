@@ -1,0 +1,13 @@
+{
+  "order": ["3-star", "3-path", "tailed triangle", "4-cycle", "diamond", "4-clique"],
+  "cases": {
+    "star": [1, 0, 0, 0, 0, 0],
+    "path": [0, 1, 0, 0, 0, 0],
+    "tailed_triangle": [1, 2, 1, 0, 0, 0],
+    "cycle": [0, 4, 0, 1, 0, 0],
+    "diamond": [2, 6, 4, 1, 1, 0],
+    "clique": [4, 12, 12, 3, 6, 1],
+    "clique_with_isolates": [4, 12, 12, 3, 6, 1],
+    "edgeless": [0, 0, 0, 0, 0, 0]
+  }
+}

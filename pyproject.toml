@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "private-graphlets"
+version = "0.1.0"
+description = "CMPT 479/982: reproducible research on private size-4 graph pattern counting"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "numpy==2.2.6",
+    "networkx==3.4.2",
+    "pandas==2.2.3",
+    "matplotlib==3.10.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.5",
+    "build==1.2.2.post1",
+    "pip==25.1.1",
+    "pip-tools==7.5.0",
+    "setuptools==80.9.0",
+    "wheel==0.45.1",
+]
+
+[project.scripts]
+private-graphlets = "private_graphlets.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-config --strict-markers"
+filterwarnings = ["error"]

@@ -8,7 +8,8 @@ Laplace estimator, and an independent ESCAPE reference adapter.** All 24 phase-0
 validation graphs agree across formula, brute force and ESCAPE. Phase 04 adds
 reproducible experiments: **15 graphs, five budgets, 500 trials per cell**,
 saved CSVs and plots. The estimator is a research
-simulation; formal privacy/accuracy review remains pending. The six project
+simulation. The user reports independent review of this 3-star work; its review
+memorandum is not part of this checkout. The six project
 targets are connected, undirected, **non-induced**
 3-stars (`K1,3`), 3-paths (`P4`), tailed triangles, 4-cycles (`C4`), diamonds
 (`K4` minus one edge), and 4-cliques (`K4`). A copy counts once per distinct
@@ -25,6 +26,21 @@ See [current status](docs/status/STATUS.md),
 The [source review](docs/SOURCE_REVIEW.md) and
 [setup checkpoint](docs/status/checkpoints/01_setup_and_source_review.md) preserve
 phase 01 findings.
+
+**Phase 05 is design only and stopped for mathematical review.** See the
+[candidate 4-clique design](docs/FOUR_CLIQUE_DESIGN.md) and
+[checkpoint 05](docs/status/checkpoints/05_four_clique_design.md) for pseudocode,
+sensitivity/cap-bias analysis, privacy assumptions and unresolved questions.
+No private 4-clique estimator is implemented. Its non-private identity/algebra
+checks agree with actual ESCAPE on 1,112 graphs. Reproduce them after setup:
+
+```bash
+ESCAPE_ROOT=/path/to/escape .venv/bin/python scripts/check_four_clique_design.py
+```
+
+The script saves raw reference output and its summary under ignored
+`build/phase05/`; it does not run a privacy mechanism. The CLI's informational
+phase label still describes the implemented phase-04 software.
 
 ## Setup on Ubuntu / WSL
 
@@ -273,6 +289,7 @@ docs/ALGORITHMS.md      Implemented 3-star algorithms, formats and validation
 docs/PRIVACY_NOTES.md   Intended model/accounting and unresolved proof questions
 docs/ESCAPE_VALIDATION.md  Reference build/interface, comparisons and limitations
 docs/EXPERIMENTS.md     Reproduction, metric definitions and observed findings
+docs/FOUR_CLIQUE_DESIGN.md  Candidate design, mathematical assumptions and review questions
 docs/status/REVIEW_PACKAGE.md  Technical handoff for independent review
 docs/references.json    Reviewed commits and source hashes
 docs/status/           Current status and numbered phase checkpoints
@@ -282,5 +299,5 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Phase 04 stops after experiments, tests and review documentation. Do not design
-or implement the 4-clique or start another phase without explicit follow-up.**
+**Phase 05 stops after the 4-clique design and mathematical-review documentation.
+Do not implement the candidate or start another phase without explicit follow-up.**

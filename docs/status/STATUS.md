@@ -1,72 +1,86 @@
 # Project status
 
-Updated: **2026-10-28** (America/Vancouver).
+Updated: **2026-10-29** (America/Vancouver).
 
-**Current phase: 04 — Experiments and independent-review handoff COMPLETE.
-STOP POINT REACHED.** Reproducible non-induced 3-star experiments, plots, tests
-and technical reports are complete. The private mechanism is unchanged. Formal
-privacy/accuracy review remains pending. Do not design or implement the 4-clique
-or start another phase without explicit follow-up.
+**Current phase: 05 — Candidate LEDP 4-clique design COMPLETE. STOP POINT
+REACHED.** Design, source/paper review and non-private counting/algebra checks
+are complete. No private 4-clique estimator was implemented or evaluated.
+Await independent mathematical review and an explicit follow-up before the
+next implementation or experimental phase.
+
+The user's explicit phase-05 request supersedes the earlier phase-04 stopping
+point for this design scope. The user reports independent review of the 3-star
+work; no review memorandum or detailed approval findings were supplied in this
+phase. The existing implementation and historical review package remain intact.
 
 ## Current phase checklist
 
-- [x] Read permanent instructions, status and all three prior checkpoints.
-- [x] Freeze 15 synthetic graph configurations covering five requested families.
-- [x] Evaluate epsilon 0.25, 0.5, 1, 2, 4 with 500 distinct trial streams per cell.
-- [x] Separate graph-generation seeds from privacy-mechanism stream coordinates.
-- [x] Save exact config, original graphs, provenance, raw CSV and aggregate CSV.
-- [x] Compute n, m, exact truth, mean, bias, variance, SD, MAE, RMSE, relative errors and timing.
-- [x] Preserve all negative estimates and mark zero-truth relative errors undefined.
-- [x] Verify all experiment graph counts with actual ESCAPE; use brute force for n<=12.
-- [x] Produce four readable figures in PNG/PDF directly from saved CSVs.
-- [x] Investigate mean deviations and noisy empirical variance with ideal moments.
-- [x] Reproduce every estimate and every non-timing metric in a clean second run.
-- [x] Regenerate all eight figure files with identical hashes.
-- [x] Run full WSL setup/tests and explicit ESCAPE integration tests.
-- [x] Review estimator source for clipping/rounding/formula changes; none introduced.
-- [x] Expand algorithm/privacy notes, experiment documentation and reviewer file list.
-- [x] Preserve prior checkpoints, dependency lock and both external repositories.
-- [x] Verify generated results/plots are ignored; prepare a separate review bundle.
-- [x] Stop without any 4-clique design/implementation or further research phase.
+- [x] Read AGENTS.md, status, phase-04 handoff, checkpoints 01–04 and research docs.
+- [x] Inspect actual k-CoreD / EdgeOrientΔ source and relevant primary papers.
+- [x] Inspect ESCAPE's directed-diamond/clique method and orientation invariants.
+- [x] Specify consistent private-level/public-ID ordering and prove exact identities.
+- [x] Specify candidate pseudocode, local information and every released transcript.
+- [x] Derive conditional RR-weighted sensitivity including cap-induced replacement.
+- [x] Separate uncapped unbiasedness from capped target/bias; examine shared-edge covariance.
+- [x] State all epsilon allocations, independence assumptions and unresolved proof obligations.
+- [x] Compare fairly with the debiased-RR AISTATS 2025 baseline without utility claims.
+- [x] Validate on 1,112 graphs using actual ESCAPE and independent exact oracles.
+- [x] Check 124,542 orders and 10,240 finite sensitivity comparisons.
+- [x] Run the full configured regression suite, including ESCAPE tests.
+- [x] Record reproducible evidence, source integrity, limitations and reviewer file list.
+- [x] Stop at design; no full private estimator, new utility grid or later phase.
 
-## Actual results
+## Findings and actual verification
 
-- **256 passed in 15.15s** in the full configured suite, no failures/skips.
-- Separate real ESCAPE suite: **34 passed, 222 deselected in 10.04s**.
-- **15 graphs, 75 cells, 37,500 trials**; all 15 experiment truth counts match
-  ESCAPE. The earlier 24-case reference suite also passes.
-- Exact seed replay succeeds for every estimate. A complete second run matches
-  all non-timing CSV fields; all eight figure hashes match regeneration.
-- Observed RMSE decreases with epsilon on **15/15 graphs**, but low-count graphs
-  can have very poor relative accuracy. Maximum absolute mean deviation is
-  **2.281724 analytic SE**; three of 75 exceed 2 SE, none exceed 3 SE.
-- Empirical/ideal variance ratios span **0.279039–1.681334**. Fourth-moment
-  diagnostics put these two extrema within one sample-variance SE of their
-  ideal values. Five hundred trials do not precisely resolve heavy tails.
-- **6,882 negative estimates** retained; **five zero-truth cells** have undefined
-  relative metrics. No correction adjustment, clipping, rounding or trial removal.
-- No new third-party dependencies; 25 pins match the unchanged hash lock.
-  WSL setup reinstall of the editable project succeeds without network access.
-- External reference trees remain clean with all 82 ESCAPE and 127 Go tracked
-  file hashes unchanged. Core estimator/counter sources and checkpoints 01–03
-  match the phase-04 starting commit.
+The repaired candidate is plausible **conditional on an audited private-ordering
+contract** and the proposed full-transcript composition argument. Important
+obstacles are inconsistent equal-level ties in the Go code, RR-amplified local
+sensitivity, cap-induced bias, and covariance when roots reuse closing-edge
+reports. Low out-degree alone does not imply independent local errors or a
+utility advantage. These are review findings, not a completed LEDP guarantee.
 
-## Artifacts and handoff
+- **1,112/1,112 graph comparisons agree:** brute-force four-sets, outgoing triples,
+  directed diamonds and actual ESCAPE. This includes all 1,100 labeled graphs
+  through five vertices and 12 additional examples.
+- **124,542 ordering checks** pass, including all permutations for the exhaustive
+  small graphs. Mock levels and non-private peeling test identities only;
+  k-CoreD was not executed in this phase.
+- **10,240 finite sensitivity checks** pass at RR parameter `log(2)`. Independent
+  RR product expectations pass for all eight true three-edge configurations.
+  A shared-coin counterexample and K5 cap-loss examples are recorded explicitly.
+- **256 passed in 14.49s**, zero failures/skips. This includes **34** marked
+  ESCAPE integration tests (33 reference-module cases and one pipeline case).
+- Both external source fingerprints remain identical: **82 ESCAPE and 127 Go
+  tracked files**, clean worktrees. Existing package source, tests, dependency
+  lock, checkpoints 01–04 and phase-04 review package are unchanged.
+- No new dependencies. ESCAPE compilation succeeds with the existing **160
+  upstream warnings**. No unresolved execution blocker was observed.
 
-- [Independent-review package and exact file list](REVIEW_PACKAGE.md)
-- [Checkpoint 04: work, commands, tests and limitations](checkpoints/04_experiments_and_review.md)
-- [Experiments and observed findings](../EXPERIMENTS.md)
-- [Compact machine-readable accuracy evidence](accuracy_04.json)
-- [Algorithms](../ALGORITHMS.md) and [privacy contract/open questions](../PRIVACY_NOTES.md)
-- [README reproduction commands](../../README.md)
+## Design, evidence and handoff
 
-Generated local results: `experiments/results/three_star_phase04/`.
-Generated local figures: `plots/three_star_phase04/`.
-Local review bundle: `build/phase04/review_package.tar.gz` with a SHA-256 sidecar.
-These files are ignored by Git; transfer them separately or reproduce them.
-The small `accuracy_04.json` summary is intentionally retained with source docs.
+- [FOUR_CLIQUE_DESIGN.md: specification, derivations, source findings and review questions](../FOUR_CLIQUE_DESIGN.md)
+- [Checkpoint 05: files, exact commands, observed results and limitations](checkpoints/05_four_clique_design.md)
+- [Compact validation evidence](validation_05.json)
+- [Non-private design-check script](../../scripts/check_four_clique_design.py)
 
-Phase 04 began from clean commit
-`ea02371d0e38dc6ad4ebb1801a7fa112844bee81`. Changes remain local and uncommitted;
-new source/config/report files are listed in checkpoint 04 for review. No commit
-or push was performed. Await explicit instructions before any next phase.
+Ignored raw evidence is under `build/phase05/`, particularly
+`design_checks.json` (actual ESCAPE input/output for all 1,112 graphs), build
+provenance, compiler log, pytest log/XML and reference fingerprints. Send it
+separately to reviewers or reproduce it using the design document's commands.
+The small `validation_05.json` is intentional source-controlled evidence; it
+does not replace the raw output. New files remain local/uncommitted for review;
+no commit or push was performed. Starting revision:
+`8b0735e6b48559d86d1dcd943c6b44920ff736b3`.
+
+## Preserved phase-04 work
+
+The completed 3-star pipeline contains 15 graphs, 75 cells and 37,500 trials.
+Its unchanged reports are [checkpoint 04](checkpoints/04_experiments_and_review.md),
+[3-star review package](REVIEW_PACKAGE.md), [experiments](../EXPERIMENTS.md),
+[algorithms](../ALGORITHMS.md), [privacy notes](../PRIVACY_NOTES.md), and
+[accuracy evidence](accuracy_04.json). Phase 04's stopping/review statements are
+historical; they are not authorization to implement this new candidate.
+
+Generated 3-star results remain in `experiments/results/three_star_phase04/`,
+figures in `plots/three_star_phase04/`, and its separate review bundle in
+`build/phase04/review_package.tar.gz`. These artifacts remain ignored by Git.

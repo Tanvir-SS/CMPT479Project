@@ -1,0 +1,181 @@
+{
+  "result_type": "nonprivate_design_validation",
+  "status": "passed",
+  "graph_cases": 1112,
+  "order_checks": 124542,
+  "private_ordering_executed": false,
+  "private_estimator_implemented": false,
+  "algebra": {
+    "rr_product_cases": [
+      {
+        "true_bits": [
+          0,
+          0,
+          0
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          0,
+          0,
+          1
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          0,
+          1,
+          0
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          0,
+          1,
+          1
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          1,
+          0,
+          0
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          1,
+          0,
+          1
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          1,
+          1,
+          0
+        ],
+        "expected_product": 0
+      },
+      {
+        "true_bits": [
+          1,
+          1,
+          1
+        ],
+        "expected_product": 1
+      }
+    ],
+    "shared_coin_absent_triangle_expected_product": 2,
+    "sensitivity_neighbor_comparisons": 10240,
+    "max_observed_sensitivity_at_eta_log2": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 12,
+      "4": 24
+    },
+    "K5_cap_counts": {
+      "2": 0,
+      "3": 2,
+      "4": 5
+    },
+    "independent_endpoint_coin_K4_expected_count": "4*(1/2)^3 = 1/2"
+  },
+  "raw_report": "build/phase05/design_checks.json",
+  "raw_report_sha256": "b45e427071bc88181c58408d0471a273be5792d5513f1fcaa55720aa9680a853",
+  "script_sha256": "078cb2701688a51d3b1b47cbabbca2314ac1869835af40268c832fd5cfd0310c",
+  "named_graphs": [
+    {
+      "case": "K6",
+      "n": 6,
+      "m": 15,
+      "escape_K4": 15,
+      "orders_checked": 6
+    },
+    {
+      "case": "K7",
+      "n": 7,
+      "m": 21,
+      "escape_K4": 35,
+      "orders_checked": 6
+    },
+    {
+      "case": "star_n8",
+      "n": 8,
+      "m": 7,
+      "escape_K4": 0,
+      "orders_checked": 6
+    },
+    {
+      "case": "path_n8",
+      "n": 8,
+      "m": 7,
+      "escape_K4": 0,
+      "orders_checked": 6
+    },
+    {
+      "case": "book_four_centers",
+      "n": 7,
+      "m": 15,
+      "escape_K4": 4,
+      "orders_checked": 6
+    },
+    {
+      "case": "K4_four_isolates",
+      "n": 8,
+      "m": 6,
+      "escape_K4": 1,
+      "orders_checked": 6
+    },
+    {
+      "case": "K33",
+      "n": 6,
+      "m": 9,
+      "escape_K4": 0,
+      "orders_checked": 6
+    },
+    {
+      "case": "cycle_n6",
+      "n": 6,
+      "m": 6,
+      "escape_K4": 0,
+      "orders_checked": 6
+    },
+    {
+      "case": "ER_n8_p04_seed5001",
+      "n": 8,
+      "m": 9,
+      "escape_K4": 0,
+      "orders_checked": 6
+    },
+    {
+      "case": "ER_n10_p07_seed5002",
+      "n": 10,
+      "m": 34,
+      "escape_K4": 30,
+      "orders_checked": 6
+    },
+    {
+      "case": "BA_n10_m3_seed5003",
+      "n": 10,
+      "m": 21,
+      "escape_K4": 0,
+      "orders_checked": 6
+    },
+    {
+      "case": "SBM_n10_seed5004",
+      "n": 10,
+      "m": 19,
+      "escape_K4": 1,
+      "orders_checked": 6
+    }
+  ],
+  "executable_sha256": "b7d0b760d348c2c8a0297c9299483c7287a76bb043cc04ebadb9943bc3ce7a21"
+}

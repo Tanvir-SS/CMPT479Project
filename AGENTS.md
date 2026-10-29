@@ -22,11 +22,11 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. Phase 03
-  explicitly authorizes ESCAPE integration, exact 3-star comparisons and a small
-  controlled epsilon diagnostic. **Stop once validation passes. Do not start
-  the full epsilon experiment grid, large experiments, 4-clique estimation or
-  other private algorithms without a later explicit instruction.**
+- Never silently continue past an explicitly requested stopping point. Phase 04
+  authorizes reproducible 3-star experiments, accuracy analysis, plots and an
+  independent-review handoff. **Stop after experiments, tests and documentation
+  are complete. Do not implement or design the 4-clique algorithm or proceed to
+  another phase without an explicit follow-up instruction.**
 - Use Python 3.11 and `.venv`; keep code under `src/private_graphlets/`. Recreate
   with `bash scripts/setup.sh`; run `.venv/bin/python -m pytest -q`.
 - Pin direct dependencies in `pyproject.toml`, regenerate the complete hashed

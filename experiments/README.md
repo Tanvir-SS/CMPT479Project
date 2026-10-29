@@ -1,10 +1,10 @@
 # Experiments
 
-Only bounded, seeded Monte Carlo checks on tiny synthetic graphs have been run:
-phase 02 automated tests and phase 03's two-graph, three-epsilon diagnostic
-(3,000 trials per cell). The latter is reproduced by `scripts/validate_escape.py`
-and documented in `docs/ESCAPE_VALIDATION.md`. No full epsilon grid or large
-dataset utility experiments have been implemented or run. Future configurations belong
+Phase 04 evaluates 15 synthetic graphs (five families, 3–100 vertices) at epsilon
+0.25/0.5/1/2/4 with 500 trials per cell. Run `scripts/run_experiments.py` and
+consult `docs/EXPERIMENTS.md`. Earlier bounded phase-02 tests and the phase-03
+diagnostic remain reproducible separately. No large real-world dataset study
+has been run. Configurations belong
 in `configs/`, generated outputs in `results/`. Every run must record the project
 commit, source/data hashes, Python and dependency versions, seed, graph semantics,
 privacy parameters and budget split, clipping/orientation assumptions, repetitions,

@@ -7,6 +7,10 @@ No private 4-clique estimator or orientation algorithm has been added. The
 [source review](SOURCE_REVIEW.md) records the exact-count identity also specified
 by the user from ESCAPE Section 6, Theorem 5.
 
+Phase 04 adds the reproducible experiment/plot pipeline in
+[EXPERIMENTS.md](EXPERIMENTS.md). It calls the existing estimator unchanged;
+exact truth, analytic diagnostics and metrics remain separate non-private tools.
+
 ## Graph model and input contract
 
 `private_graphlets.graph.SimpleGraph` is an immutable, validated adjacency tuple
@@ -127,6 +131,41 @@ package simulates local releases; it does not implement client isolation or
 transport. The privacy assumptions and unreviewed accounting are in
 [PRIVACY_NOTES.md](PRIVACY_NOTES.md).
 
+### Pseudocode for independent review
+
+```text
+EXACT_THREE_STARS(G):
+    total <- Python integer 0
+    for each vertex v, including isolates:
+        total <- total + choose(number of distinct neighbors of v, 3)
+    return total
+
+CONCEPTUAL_LOCAL_REPORT(v, epsilon):
+    d <- number of distinct neighbors known locally at v
+    b <- 2 / epsilon
+    Z_v <- independent Laplace(location=0, scale=b)
+    send Y_v = d + Z_v to coordinator
+
+COORDINATOR(noisy reports Y[0..n-1], epsilon):
+    b <- 2 / epsilon
+    for each report Y_v:
+        L_v <- Y_v*(Y_v-1)*(Y_v-2)/6 - b^2*(Y_v-1)
+    return accurate floating sum of L_v
+    # No clipping, rounding, integer conversion, or exact-data correction.
+
+RESEARCH_TRIAL(G, epsilon, master_seed, graph_index, epsilon_index, trial):
+    stream <- PCG64(SeedSequence(master_seed,
+                                spawn_key=(graph_index, epsilon_index, trial)))
+    call existing estimate_three_stars(G, epsilon, rng=stream)
+    record estimate/time separately as non-private synthetic evaluation
+```
+
+The conceptual protocol communicates one scalar per vertex, O(n) total. A client
+can obtain its degree in O(d(v)) when scanning a list, or O(1) from an already
+built set length; it does O(1) additional randomization/postprocessing work.
+The coordinator does O(n) work. The simulator retains O(n) temporary arrays;
+the input graph occupies O(n+m). Its timing is not distributed-network timing.
+
 `result.to_dict()` supplies a versioned JSON schema:
 
 | Field | Meaning |
@@ -175,8 +214,10 @@ data-dependent numerical failures are outside any reviewed privacy guarantee.
 
 ## Automated validation and statistical tolerances
 
-Run `.venv/bin/python -m pytest -q` for **all** project tests. No external
-executable or large dataset is required. The suite includes:
+Run `ESCAPE_ROOT=/path/to/escape .venv/bin/python -m pytest -q` for **all** tests,
+including real integration checks. Without ESCAPE configuration the integration
+tests explicitly skip; the Python-only suite needs no external executable.
+The suite includes:
 
 - Required named graphs, overlapping centers, complete bipartite and wheel
   examples, disconnected components and isolates; exact and brute-force agreement
@@ -214,9 +255,23 @@ V(d,b) = 2a²b² + (7t² − 2/3)b⁴ + 14b⁶.
 
 The local mean's SE is `sqrt(V/N)`. With independent per-vertex reports the graph
 mean's SE is `sqrt(Σ_v V(d_v,b)/N)`. Exact degrees used in this **test-only**
-calibration are not released by the estimator. The variance formula is itself
+calibration and public synthetic experiment diagnostics are not released by the
+estimator. The variance formula is itself
 checked against the separate quadrature calculation. Six-SE checks are practical
 large-sample diagnostics with a conservative margin for repeated comparisons;
 they are not exact Gaussian confidence guarantees for the heavy-tailed cubic.
 Fixed test seeds aid reproducibility and are never changed to make tests pass.
 Neither these checks nor favorable empirical means prove unbiasedness or DP.
+
+For review, the centered local error expands to
+`(a-b²)Z + (t/2)Z² + Z³/6 - tb²`. Squaring, applying the even Laplace moments
+through order six and canceling the mean terms yields the displayed V. Marginal
+mean calculations need the specified noise moments; independence additionally
+justifies summing variances and the proposed transcript density factorization.
+This derivation concerns ideal arithmetic, not a finite-precision DP proof.
+
+The experiment runner costs O(G*E*T*n_max) mechanism work plus graph generation,
+exact/reference checks and I/O, for G graphs, E budgets and T trials per cell.
+Its in-memory trial table is O(G*E*T); persisted graph storage is O(sum(n+m)).
+It does not invoke ESCAPE per trial. Brute-force checks are restricted to n<=12.
+Verification optionally repeats all mechanism calls; plotting reads saved CSVs.

@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "result_type": "nonprivate_accuracy_review",
+  "verification": {
+    "status": "verified",
+    "graphs": 15,
+    "cells": 75,
+    "trials": 37500,
+    "exact_seed_replay": false,
+    "runtime_replayed": false
+  },
+  "results_path": "experiments/results/three_star_phase04",
+  "analysis_source_sha256": "a37d6b8bed9d109179574d5b029897ca8511ff79ac67bfeed59e0720664a9232",
+  "input_sha256": {
+    "config.json": "4bdad90b16e5c806071788e28a8b555cd3b2c454246ec166cffe799d0f7ba584",
+    "graphs.csv": "c9d11ffc05679c0a8355dd85c142d87dcf991333ce348d4725d6e66920886a4c",
+    "trials.csv": "b345e46b3c75db7de760f405d81f653f5fea6b44aeb9d8fae44206fa5a011658",
+    "summary.csv": "e5880f3f5b58e387c182e142fbf90f72e9b10931b64d667bd874ab768b38d807",
+    "manifest.json": "8d189fe68d5a0cb42cd9fd20efbef5a15930d49883c52f5b5be505d4f2dc1256"
+  },
+  "graph_counts": [
+    {
+      "graph_id": "star_n5",
+      "num_vertices": 5,
+      "num_edges": 4,
+      "exact_three_stars": 4
+    },
+    {
+      "graph_id": "star_n20",
+      "num_vertices": 20,
+      "num_edges": 19,
+      "exact_three_stars": 969
+    },
+    {
+      "graph_id": "star_n50",
+      "num_vertices": 50,
+      "num_edges": 49,
+      "exact_three_stars": 18424
+    },
+    {
+      "graph_id": "er_n30_p004",
+      "num_vertices": 30,
+      "num_edges": 24,
+      "exact_three_stars": 9
+    },
+    {
+      "graph_id": "er_n60_p010",
+      "num_vertices": 60,
+      "num_edges": 191,
+      "exact_three_stars": 2602
+    },
+    {
+      "graph_id": "er_n100_p015",
+      "num_vertices": 100,
+      "num_edges": 735,
+      "exact_three_stars": 52744
+    },
+    {
+      "graph_id": "ba_n30_m1",
+      "num_vertices": 30,
+      "num_edges": 29,
+      "exact_three_stars": 279
+    },
+    {
+      "graph_id": "ba_n60_m2",
+      "num_vertices": 60,
+      "num_edges": 116,
+      "exact_three_stars": 2281
+    },
+    {
+      "graph_id": "ba_n100_m4",
+      "num_vertices": 100,
+      "num_edges": 384,
+      "exact_three_stars": 24852
+    },
+    {
+      "graph_id": "sbm_n30",
+      "num_vertices": 30,
+      "num_edges": 39,
+      "exact_three_stars": 48
+    },
+    {
+      "graph_id": "sbm_n60",
+      "num_vertices": 60,
+      "num_edges": 165,
+      "exact_three_stars": 1392
+    },
+    {
+      "graph_id": "sbm_n100",
+      "num_vertices": 100,
+      "num_edges": 568,
+      "exact_three_stars": 34317
+    },
+    {
+      "graph_id": "complete_n3",
+      "num_vertices": 3,
+      "num_edges": 3,
+      "exact_three_stars": 0
+    },
+    {
+      "graph_id": "complete_n10",
+      "num_vertices": 10,
+      "num_edges": 45,
+      "exact_three_stars": 840
+    },
+    {
+      "graph_id": "complete_n25",
+      "num_vertices": 25,
+      "num_edges": 300,
+      "exact_three_stars": 50600
+    }
+  ],
+  "max_absolute_mean_z": 2.281723889425818,
+  "mean_deviations_above_2_se": 3,
+  "mean_deviations_above_3_se": 0,
+  "negative_estimates": 6882,
+  "undefined_relative_cells": 5,
+  "graphs_with_monotonically_decreasing_observed_rmse": 15,
+  "variance_ratio_extremes_posthoc": [
+    {
+      "selection": "minimum",
+      "graph_id": "complete_n3",
+      "epsilon": 1.0,
+      "observed_variance": 835.6279732994502,
+      "variance_ratio": 0.27903872661379686,
+      "ideal_variance": 2994.6666666666674,
+      "ideal_fourth_central_moment": 4263183217.777775,
+      "sample_variance_standard_error": 2916.9337096804625,
+      "sample_variance_relative_se": 0.9740428683260669,
+      "observed_variance_z": -0.7401740691610473,
+      "quadrature_expansion_agree": true
+    },
+    {
+      "selection": "maximum",
+      "graph_id": "star_n5",
+      "epsilon": 1.0,
+      "observed_variance": 9391.560149412473,
+      "variance_ratio": 1.6813343679326915,
+      "ideal_variance": 5585.777777777781,
+      "ideal_fourth_central_moment": 8020944652.44444,
+      "sample_variance_standard_error": 3997.4663958119213,
+      "sample_variance_relative_se": 0.7156508108352019,
+      "observed_variance_z": 0.9520486215023463,
+      "quadrature_expansion_agree": true
+    }
+  ],
+  "pipeline_seconds": 3.5978327600005287,
+  "mechanism_seconds_total": 1.8678994260171748,
+  "mechanism_seconds_mean": 4.9810651360457995e-05
+}

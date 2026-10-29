@@ -164,7 +164,8 @@ checks are separate from the 24-case total.
 The optional original fixture command is
 `.venv/bin/python scripts/check_escape.py --escape-root /path/to/escape`;
 `--source` remains an alias. It now uses the same adapter. Without a root,
-pytest explicitly skips 33 integration tests. A configured failure is an error.
+the phase-03 suite explicitly skipped 33 integration tests. Phase 04 adds one
+experiment-pipeline integration test (34 total). A configured failure is an error.
 The validation script always requires a checkout. Unit-test executable stubs
 exercise errors only; they never enter the saved reference comparison report.
 

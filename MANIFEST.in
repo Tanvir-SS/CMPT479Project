@@ -4,4 +4,5 @@ recursive-include docs *.md *.json
 recursive-include data *.md
 recursive-include data/fixtures *.edges *.json
 recursive-include experiments *.md
+recursive-include experiments/configs *.json
 recursive-include plots *.md

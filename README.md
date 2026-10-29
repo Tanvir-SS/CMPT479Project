@@ -5,7 +5,9 @@ low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
 **Implemented: exact non-induced 3-star counting, the specified bias-corrected
 Laplace estimator, and an independent ESCAPE reference adapter.** All 24 phase-03
-validation graphs agree across formula, brute force and ESCAPE. The estimator is a research
+validation graphs agree across formula, brute force and ESCAPE. Phase 04 adds
+reproducible experiments: **15 graphs, five budgets, 500 trials per cell**,
+saved CSVs and plots. The estimator is a research
 simulation; formal privacy/accuracy review remains pending. The six project
 targets are connected, undirected, **non-induced**
 3-stars (`K1,3`), 3-paths (`P4`), tailed triangles, 4-cycles (`C4`), diamonds
@@ -14,7 +16,9 @@ subgraph, not once per labeling. For example, `K4` contains 4 non-induced
 3-stars and 3 non-induced 4-cycles, but no induced star or induced 4-cycle.
 
 See [current status](docs/status/STATUS.md),
-[phase 03 checkpoint](docs/status/checkpoints/03_escape_validation.md),
+[phase 04 checkpoint](docs/status/checkpoints/04_experiments_and_review.md),
+[independent-review handoff](docs/status/REVIEW_PACKAGE.md),
+[experiments](docs/EXPERIMENTS.md),
 [ESCAPE validation](docs/ESCAPE_VALIDATION.md),
 [algorithm specification](docs/ALGORITHMS.md), and
 [privacy notes](docs/PRIVACY_NOTES.md) for implementation and actual validation.
@@ -108,6 +112,40 @@ See [ALGORITHMS.md](docs/ALGORITHMS.md) for APIs, file/output schemas and test
 tolerances, and [PRIVACY_NOTES.md](docs/PRIVACY_NOTES.md) for assumptions and
 unresolved questions. No formal DP proof is claimed.
 
+## Reproduce the accuracy experiments
+
+After setting up the read-only ESCAPE checkout as below, run from the project root:
+
+```bash
+export ESCAPE_ROOT="$(realpath ../escape)"
+.venv/bin/python scripts/run_experiments.py run
+.venv/bin/python scripts/run_experiments.py verify --replay
+.venv/bin/python scripts/run_experiments.py plot
+.venv/bin/python scripts/analyze_experiments.py --output build/phase04/accuracy.json
+.venv/bin/python -m pytest -q
+.venv/bin/python -m pytest -q -m escape_integration
+```
+
+The checked-in config is `experiments/configs/three_star_phase04.json`. Results
+go to `experiments/results/three_star_phase04/` (`trials.csv`, `summary.csv`,
+`graphs.csv`, original graphs, exact config and provenance). Four figures in
+PNG/PDF go to `plots/three_star_phase04/`. These outputs are Git-ignored and must
+be generated after cloning or transferred separately for review. The compact
+saved [accuracy summary](docs/status/accuracy_04.json) records observed findings.
+
+An existing result directory is never overwritten. For another run choose
+`run --output experiments/results/my_run`; supply `--results` with that directory
+to verify, plot and analyze. The root argument `--escape-root` overrides the
+environment. Verification rechecks hashes and metrics; `--replay` additionally
+regenerates all estimates exactly. Timings are not expected to match. To verify
+figure regeneration, use `plot --output build/phase04/regenerated-plots` and
+compare the figure hashes in each `plot_manifest.json`.
+
+All experiments are non-private synthetic evaluation, with published seeds and
+exact truth. Relative errors are undefined for zero true counts. No estimate
+is clipped or rounded. See [EXPERIMENTS.md](docs/EXPERIMENTS.md) for metric
+definitions, observed accuracy, finite-sample limitations and precise commands.
+
 ## Dependencies and reproducibility
 
 Direct scientific dependencies are NumPy 2.2.6, NetworkX 3.4.2, pandas 2.2.3,
@@ -175,7 +213,7 @@ export ESCAPE_ROOT="$(realpath ../escape)"
 
 Alternatively pass `--escape-root /path/to/escape` to either script or pytest;
 the argument overrides the environment. No personal path is required by the
-adapter. Without either setting, **33 real integration tests explicitly skip**;
+adapter. Without either setting, **34 real integration tests explicitly skip**;
 ordinary Python setup still works. A configured missing/broken checkout or failed
 build is an error, never a skip or a substitute Python result.
 
@@ -227,13 +265,15 @@ scripts/               Locked setup, lock regeneration and ESCAPE checks
 data/fixtures/         Tiny public synthetic reference inputs and expected counts
 data/raw/              Ignored original datasets
 data/processed/        Ignored processed datasets
-experiments/configs/   Reserved for future reviewed experiment configurations
+experiments/configs/   Versioned experiment configuration, seeds and budgets
 experiments/results/   Ignored generated research output
 plots/                 Ignored generated figures
 docs/SOURCE_REVIEW.md   Source map, counting identities and implementation concerns
 docs/ALGORITHMS.md      Implemented 3-star algorithms, formats and validation
 docs/PRIVACY_NOTES.md   Intended model/accounting and unresolved proof questions
 docs/ESCAPE_VALIDATION.md  Reference build/interface, comparisons and limitations
+docs/EXPERIMENTS.md     Reproduction, metric definitions and observed findings
+docs/status/REVIEW_PACKAGE.md  Technical handoff for independent review
 docs/references.json    Reviewed commits and source hashes
 docs/status/           Current status and numbered phase checkpoints
 build/                 Ignored local builds and verification logs
@@ -242,6 +282,5 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Phase 03 stops after ESCAPE validation. The full privacy experiment grid, large
-experiments, 4-clique estimation and other algorithms require a later explicit
-instruction.**
+**Phase 04 stops after experiments, tests and review documentation. Do not design
+or implement the 4-clique or start another phase without explicit follow-up.**

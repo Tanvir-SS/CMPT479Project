@@ -11,6 +11,11 @@ in `PrivateThreeStarResult` and do not consume or justify any private mechanism
 budget. The [bounded epsilon diagnostic](ESCAPE_VALIDATION.md) is implementation
 evidence only; no mechanism, privacy assumption or proof status changed.
 
+Phase 04 extends this evaluation to 15 synthetic graphs, five epsilon values
+and 500 trials per cell. [EXPERIMENTS.md](EXPERIMENTS.md) and
+[REVIEW_PACKAGE.md](status/REVIEW_PACKAGE.md) give the actual evidence. The
+mechanism code and private result schema are unchanged.
+
 ## Neighboring graphs and public assumptions
 
 The intended domain is simple undirected graphs on the **same fixed, public,
@@ -130,6 +135,67 @@ Open questions/limitations for that review:
    parameter selection or data-dependent preprocessing. None is used to improve
    the present estimates; such changes can affect unbiasedness/accounting.
 
-No orientation or external reference algorithm is needed for this 3-star
-mechanism. ESCAPE integration, larger utility experiments and 4-clique work are
-outside phase 02 and remain unstarted.
+## Explicit implementation contract and sources of randomness
+
+| Boundary | Exact contract |
+|---|---|
+| Valid graph input | Simple, undirected, labeled, fixed public vertices `0..n-1`; full adjacency is sensitive input. UTF-8 loader validates `n m`, IDs, loops and unique-edge count; isolates are declared by n. |
+| Local information | Vertex v uses only its own incident neighbors to obtain d(v), plus public epsilon. No private degree orientation, neighbor degrees or exact star count is used. |
+| Conceptual message | One scalar `Y_v=d(v)+Laplace(0,2/epsilon)` from every vertex, including degree-zero vertices, with public vertex identity. The coordinator's intended transcript includes all reports. |
+| Coordinator output | Deterministic corrected sum; the API returns only aggregate, epsilon, scale, public n and constant simulation metadata. The CLI adds software versions. |
+| Actual simulation | One process owns the entire graph and temporarily stores true/noisy degrees. This is not an implemented distributed security boundary. |
+| Invalid/numeric input | Raises errors on invalid epsilon, graph input and detected numeric overflow/underflow; no replacement estimate. Error and runtime transcripts require separate privacy review. |
+| Non-private research outputs | Trial estimates with stream coordinates/timings, graph seeds, graph files, exact counts and metrics. These are synthetic-data evaluation artifacts, not private release records. |
+
+Randomness is fully specified for reproduction:
+
+1. Production-style local randomness is **not implemented**. `make_rng` calls
+   NumPy `default_rng`; given the pinned version its default bit generator is
+   PCG64. A supplied seed is deterministic; without a seed it uses OS entropy
+   to seed a simulation PRNG. Neither is claimed cryptographically secure.
+2. The phase-04 runner explicitly creates PCG64 with
+   `SeedSequence(202610280400, spawn_key=(graph_index, epsilon_index, trial))`.
+   The indices are zero-based and saved. Every trial has a distinct stream;
+   each invocation draws one fresh Laplace variate per vertex. No common-noise
+   coupling is used across epsilon values, graphs or trials. Independence is
+   an ideal-model assumption supported, not proved, by this PRNG construction.
+3. NetworkX ER/BA/SBM graph generators receive separate integer seeds
+   4101–4103, 4201–4203 and 4301–4303. Their graph-generation RNGs do not feed
+   mechanism streams. Stars and complete graphs are deterministic. Exact
+   generated edges and NetworkX version are saved so the graph realization is
+   reviewable independently of future generator changes.
+4. Aggregation and plotting introduce no randomness. Plotting reads saved data;
+   there is no bootstrap, seed search, tail filtering or graphical resampling.
+
+Within-vertex samples, inter-vertex noise and trial streams are treated as
+independent for variance/Monte Carlo calculations. Graphs stay fixed within a
+cell; reported mechanism uncertainty is conditional on those generated graphs,
+not uncertainty over an entire random-graph population. Replaying an existing
+stream is verification and is never counted as an additional independent trial.
+
+## Budget table and review boundary
+
+| Operation | Intended accounting in the ideal model |
+|---|---|
+| One endpoint's degree report | Sensitivity 1, epsilon/2, Laplace scale 2/epsilon. |
+| One changed undirected edge | Both endpoints change: epsilon/2 + epsilon/2 = epsilon. Unchanged vertices do not add factors for this neighbor pair. |
+| Corrected local polynomial and aggregate from the same reports | Deterministic postprocessing; no additional budget intended. |
+| Releasing k fresh invocations on the same protected graph | Basic sequential accounting would be k*epsilon; no privacy ledger is implemented. |
+| Full phase-04 grid on one protected graph, if it were deployed | 500*(0.25+0.5+1+2+4) = 3875 by basic composition, not epsilon per whole experiment. Published seeds/exact evaluation already preclude treating these artifacts as DP releases. |
+| Graph generation, ESCAPE, exact oracle, CSV metrics, timings and plots | No private budget is assigned. These are non-private synthetic disclosures, not zero-cost private releases on protected data. |
+
+For epsilon 0.25/0.5/1/2/4 the per-endpoint budgets are
+0.125/0.25/0.5/1/2 and scales are 8/4/2/1/0.5. No other private mechanism or
+budget split is hidden in the experiment pipeline. The intended ideal delta
+is zero; **no delta=0 guarantee is claimed for this executable**.
+
+Empirical evidence includes exact/reference agreement, deterministic formula
+checks, noise moments, independence diagnostics, quadrature checks, private
+schema tests, 500-trial accuracy measurements and exact replay of all 37,500
+estimates. It cannot establish the joint-transcript DP inequality, PRNG
+independence, real-arithmetic unbiasedness, finite-precision privacy, or a
+uniform finite-sample accuracy bound. Those remain independent review tasks.
+
+No orientation or external algorithm is required inside this private 3-star
+mechanism. ESCAPE supplies only non-private evaluation truth. 4-clique design
+and implementation remain explicitly unstarted.

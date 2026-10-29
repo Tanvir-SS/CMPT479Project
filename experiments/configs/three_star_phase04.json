@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "experiment_id": "three_star_phase04",
+  "epsilons": [0.25, 0.5, 1.0, 2.0, 4.0],
+  "trials": 500,
+  "privacy_seed": 202610280400,
+  "representative_graph": "ba_n60_m2",
+  "graphs": [
+    {"id": "star_n5", "family": "star", "n": 5},
+    {"id": "star_n20", "family": "star", "n": 20},
+    {"id": "star_n50", "family": "star", "n": 50},
+    {"id": "er_n30_p004", "family": "erdos_renyi", "n": 30, "p": 0.04, "seed": 4101},
+    {"id": "er_n60_p010", "family": "erdos_renyi", "n": 60, "p": 0.10, "seed": 4102},
+    {"id": "er_n100_p015", "family": "erdos_renyi", "n": 100, "p": 0.15, "seed": 4103},
+    {"id": "ba_n30_m1", "family": "barabasi_albert", "n": 30, "m": 1, "seed": 4201},
+    {"id": "ba_n60_m2", "family": "barabasi_albert", "n": 60, "m": 2, "seed": 4202},
+    {"id": "ba_n100_m4", "family": "barabasi_albert", "n": 100, "m": 4, "seed": 4203},
+    {"id": "sbm_n30", "family": "stochastic_block", "sizes": [15, 15], "p": [[0.20, 0.01], [0.01, 0.20]], "seed": 4301},
+    {"id": "sbm_n60", "family": "stochastic_block", "sizes": [20, 20, 20], "p": [[0.25, 0.015, 0.015], [0.015, 0.25, 0.015], [0.015, 0.015, 0.25]], "seed": 4302},
+    {"id": "sbm_n100", "family": "stochastic_block", "sizes": [50, 50], "p": [[0.12, 0.02], [0.02, 0.30]], "seed": 4303},
+    {"id": "complete_n3", "family": "complete", "n": 3},
+    {"id": "complete_n10", "family": "complete", "n": 10},
+    {"id": "complete_n25", "family": "complete", "n": 25}
+  ]
+}

@@ -3,8 +3,9 @@
 CMPT 479/982 research project on Local Edge Differential Privacy (LEDP) and
 low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
-**Implemented: exact non-induced 3-star counting and the specified bias-corrected
-Laplace estimator, with automated tests.** The private estimator is a research
+**Implemented: exact non-induced 3-star counting, the specified bias-corrected
+Laplace estimator, and an independent ESCAPE reference adapter.** All 24 phase-03
+validation graphs agree across formula, brute force and ESCAPE. The estimator is a research
 simulation; formal privacy/accuracy review remains pending. The six project
 targets are connected, undirected, **non-induced**
 3-stars (`K1,3`), 3-paths (`P4`), tailed triangles, 4-cycles (`C4`), diamonds
@@ -13,7 +14,8 @@ subgraph, not once per labeling. For example, `K4` contains 4 non-induced
 3-stars and 3 non-induced 4-cycles, but no induced star or induced 4-cycle.
 
 See [current status](docs/status/STATUS.md),
-[phase 02 checkpoint](docs/status/checkpoints/02_three_star_implementation.md),
+[phase 03 checkpoint](docs/status/checkpoints/03_escape_validation.md),
+[ESCAPE validation](docs/ESCAPE_VALIDATION.md),
 [algorithm specification](docs/ALGORITHMS.md), and
 [privacy notes](docs/PRIVACY_NOTES.md) for implementation and actual validation.
 The [source review](docs/SOURCE_REVIEW.md) and
@@ -159,16 +161,43 @@ git clone https://bitbucket.org/seshadhri/escape.git ../escape
 git -C ../escape checkout 7ec2f93c524a0b47cdc8c639602e90d1c1fceff3
 git clone https://github.com/mundrapranay/DistributedLEDPGraphAlgos.git ../DistributedLEDPGraphAlgos
 git -C ../DistributedLEDPGraphAlgos checkout b03da893ba1c38d3931708bac919562c5ab57963
-.venv/bin/python scripts/check_escape.py --source ../escape
+export ESCAPE_ROOT="$(realpath ../escape)"
+
+# All 24 three-way comparisons plus six bounded epsilon diagnostics.
+.venv/bin/python scripts/validate_escape.py
+
+# All Python and real ESCAPE tests; the fixture builds ESCAPE once.
+.venv/bin/python -m pytest -q
+
+# Optional original eight hand-counted six-column fixtures.
+.venv/bin/python scripts/check_escape.py
 ```
 
-The ESCAPE check compiles the original C++ translation units directly with g++
-and runs eight small synthetic fixtures, keeping binaries, logs and `out.txt`
-under ignored `build/reference-checks/escape/`. It checks the six connected count
-columns and header convention, using hand-checked expectations, and does not
-implement an estimator. It avoids the upstream Makefile's `-lc++` link setting.
-Do not run the upstream wrapper in the original repository: it writes `out.txt`
-in its working directory. No reference executable is part of the Python package.
+Alternatively pass `--escape-root /path/to/escape` to either script or pytest;
+the argument overrides the environment. No personal path is required by the
+adapter. Without either setting, **33 real integration tests explicitly skip**;
+ordinary Python setup still works. A configured missing/broken checkout or failed
+build is an error, never a skip or a substitute Python result.
+
+Compilation reads the original four C++ translation units and puts the binary,
+command, source hashes and warning log in `build/escape/` (`build/escape-pytest/`
+for pytest). It avoids the upstream Makefile's `-lc++` setting. Each invocation
+runs in a temporary directory because ESCAPE hardcodes `out.txt`; raw output is
+retained in the JSON report before temporary files are removed. Original sources
+are unchanged. No reference executable is shipped in the Python package.
+
+Default outputs are `build/phase03/validation.json` and
+`build/phase03/epsilon_samples.json`. To choose a report location, pass
+`--output path/to/report.json`; the saved phase-03 evidence is
+[validation_03.json](docs/status/validation_03.json). All these reports contain
+**non-private evaluation of synthetic graphs**, including exact truth and seeds.
+The existing private result schema is unchanged.
+
+The adapter canonicalizes our validated edge lists, pads inputs with fewer than
+four vertices using isolates, and limits inputs to 1,000 vertices. Connected
+four-vertex counts are preserved by padding; disconnected columns describe the
+normalized graph. See [ESCAPE_VALIDATION.md](docs/ESCAPE_VALIDATION.md) for the
+output map, API, failures, numerical limits and actual diagnostic results.
 
 The Go reference requires Go 1.21 or newer according to `go.mod` (verified here
 with Go 1.26.4). To reproduce its compile checks without writing to the original:
@@ -184,7 +213,7 @@ export GOTOOLCHAIN=local
 (cd build/reference-checks/go-source && go build ./...)
 ```
 
-These are upstream checks, independent of pytest. The checkpoint records their
+These Go checks are separate from pytest. The checkpoint records their
 actual outcomes; `[no test files]` is compilation evidence, not behavioral or DP
 validation. Do not run the Go experiment driver without reviewing its hard-coded
 paths and parameter overrides described in the source review.
@@ -192,8 +221,8 @@ paths and parameter overrides described in the source review.
 ## Layout and development workflow
 
 ```text
-src/private_graphlets/  Graph validation, exact counters, noise, estimator and CLI
-tests/                 Exact, mechanism, statistical, CLI and installation tests
+src/private_graphlets/  Graphs, counters, noise, estimator, CLI and ESCAPE adapter
+tests/                 Exact, mechanism, statistical, CLI and ESCAPE integration tests
 scripts/               Locked setup, lock regeneration and ESCAPE checks
 data/fixtures/         Tiny public synthetic reference inputs and expected counts
 data/raw/              Ignored original datasets
@@ -204,6 +233,7 @@ plots/                 Ignored generated figures
 docs/SOURCE_REVIEW.md   Source map, counting identities and implementation concerns
 docs/ALGORITHMS.md      Implemented 3-star algorithms, formats and validation
 docs/PRIVACY_NOTES.md   Intended model/accounting and unresolved proof questions
+docs/ESCAPE_VALIDATION.md  Reference build/interface, comparisons and limitations
 docs/references.json    Reviewed commits and source hashes
 docs/status/           Current status and numbered phase checkpoints
 build/                 Ignored local builds and verification logs
@@ -212,6 +242,6 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Phase 02 stops after verified 3-star implementation. ESCAPE integration, large
+**Phase 03 stops after ESCAPE validation. The full privacy experiment grid, large
 experiments, 4-clique estimation and other algorithms require a later explicit
 instruction.**

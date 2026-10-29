@@ -69,7 +69,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "name": "private-graphlets",
         "version": __version__,
         "python": platform.python_version(),
-        "phase": "02_three_star_implementation",
+        "phase": "03_escape_validation",
         "count_semantics": "connected, undirected, non-induced, size-4",
         "patterns": ["3-star", "3-path", "tailed triangle", "4-cycle", "diamond", "4-clique"],
         "implemented_estimators": ["3-star"],

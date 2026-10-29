@@ -6,6 +6,8 @@ It is not a security audit, a DP proof, or a reproduction of paper experiments.
 No new private algorithm was implemented during phase 01. This document preserves
 that review; phase 02 now implements the specified 3-star simulation, documented
 in [ALGORITHMS.md](ALGORITHMS.md) and [PRIVACY_NOTES.md](PRIVACY_NOTES.md).
+Phase 03 adds the reference adapter and three-way comparisons described in
+[ESCAPE_VALIDATION.md](ESCAPE_VALIDATION.md), without modifying either reference.
 
 ## Sources and scope
 

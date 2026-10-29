@@ -4,6 +4,13 @@
 This document identifies the intended model and accounting for later independent
 review. Passing automated tests is not proof of differential privacy.
 
+Phase 03 adds a **non-private ESCAPE reference/evaluation path**. Its canonical
+input, exact counts, diagnostic stdout, generator seeds and evaluation records
+are only suitable for public/synthetic validation data. They are never included
+in `PrivateThreeStarResult` and do not consume or justify any private mechanism
+budget. The [bounded epsilon diagnostic](ESCAPE_VALIDATION.md) is implementation
+evidence only; no mechanism, privacy assumption or proof status changed.
+
 ## Neighboring graphs and public assumptions
 
 The intended domain is simple undirected graphs on the **same fixed, public,

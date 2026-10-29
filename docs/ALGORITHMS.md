@@ -1,7 +1,9 @@
-# Implemented algorithms — phase 02
+# Implemented algorithms — 3-star counting
 
-Only **non-induced 3-star counting** is implemented. No 4-clique estimator,
-orientation algorithm, or ESCAPE integration was added in this phase. The
+Only **non-induced 3-star counting** is implemented. Phase 02 implemented the
+counters and simulator; phase 03 adds an independent ESCAPE reference adapter
+and validation, described in [ESCAPE_VALIDATION.md](ESCAPE_VALIDATION.md).
+No private 4-clique estimator or orientation algorithm has been added. The
 [source review](SOURCE_REVIEW.md) records the exact-count identity also specified
 by the user from ESCAPE Section 6, Theorem 5.
 

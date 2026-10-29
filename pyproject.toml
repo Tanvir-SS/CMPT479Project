@@ -35,3 +35,4 @@ where = ["src"]
 testpaths = ["tests"]
 addopts = "-ra --strict-config --strict-markers"
 filterwarnings = ["error"]
+markers = ["escape_integration: builds and executes the configured external ESCAPE source"]

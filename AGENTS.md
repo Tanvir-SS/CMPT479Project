@@ -22,11 +22,11 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. Phase 02
-  explicitly authorizes exact and bias-corrected private non-induced 3-star
-  counting, CLI and tests. **Stop once these are implemented and verified. Do
-  not start ESCAPE integration, large experiments, 4-clique estimation or other
-  private algorithms without a later explicit instruction.**
+- Never silently continue past an explicitly requested stopping point. Phase 03
+  explicitly authorizes ESCAPE integration, exact 3-star comparisons and a small
+  controlled epsilon diagnostic. **Stop once validation passes. Do not start
+  the full epsilon experiment grid, large experiments, 4-clique estimation or
+  other private algorithms without a later explicit instruction.**
 - Use Python 3.11 and `.venv`; keep code under `src/private_graphlets/`. Recreate
   with `bash scripts/setup.sh`; run `.venv/bin/python -m pytest -q`.
 - Pin direct dependencies in `pyproject.toml`, regenerate the complete hashed
@@ -47,3 +47,8 @@ and its latest checkpoint before changing the project.
   sampling are research simulations, not cryptographically secure mechanisms.
 - Formal privacy and accuracy proofs remain subject to independent review.
   Treat deferred work as deferred, not completed; preserve historical checkpoints.
+- Configure ESCAPE with `ESCAPE_ROOT` or `--escape-root`. Run integration tests
+  with that configuration; an unconfigured skip is not a passed comparison.
+  Preserve actual ESCAPE output and provenance separately from Python counters.
+  The adapter pads graphs below four vertices with isolates and accepts at most
+  1,000 vertices. Do not silently bypass its precision/scope guards.

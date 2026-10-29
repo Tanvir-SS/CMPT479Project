@@ -22,11 +22,11 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. Phase 04
-  authorizes reproducible 3-star experiments, accuracy analysis, plots and an
-  independent-review handoff. **Stop after experiments, tests and documentation
-  are complete. Do not implement or design the 4-clique algorithm or proceed to
-  another phase without an explicit follow-up instruction.**
+- Never silently continue past an explicitly requested stopping point. Phase 06
+  authorizes the fixed-order and k-CoreD 4-clique prototype, baseline, tests,
+  small public-synthetic comparisons and independent-review handoff. **Stop when
+  those are complete. Do not expand to other patterns or start another phase
+  without explicit follow-up.** Preserve all earlier reports as historical records.
 - Use Python 3.11 and `.venv`; keep code under `src/private_graphlets/`. Recreate
   with `bash scripts/setup.sh`; run `.venv/bin/python -m pytest -q`.
 - Pin direct dependencies in `pyproject.toml`, regenerate the complete hashed
@@ -52,3 +52,10 @@ and its latest checkpoint before changing the project.
   Preserve actual ESCAPE output and provenance separately from Python counters.
   The adapter pads graphs below four vertices with isolates and accepts at most
   1,000 vertices. Do not silently bypass its precision/scope guards.
+- The 4-clique prototype is `experimental_unverified`. Keep noised k-CoreD,
+  public fixed order and non-private oracle labels distinct; never substitute
+  one silently. Use `(private_level, public_ID)` throughout the orientation.
+- Preserve one RR report per unordered pair, independent stage randomness,
+  prefix cap selection, replacement-aware sensitivity and client-side count
+  noise. Track original and retained-clique targets separately in synthetic
+  evaluation. Do not claim low-out-degree utility or executable LEDP from tests.

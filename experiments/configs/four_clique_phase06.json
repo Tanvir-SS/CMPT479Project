@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "four_clique_phase06",
+  "trials": 100,
+  "master_seed": 202610290600,
+  "epsilons": [0.5, 1.0, 2.0, 4.0],
+  "beta": 0.05,
+  "kcore": {"psi": 0.5, "threshold_fraction": 0.5, "bias_factor": 1},
+  "representative_graph": "er_dense14",
+  "methods": [
+    {"id": "baseline", "kind": "baseline"},
+    {"id": "fixed_uncapped", "kind": "oriented", "ordering": "fixed", "cap_mode": "uncapped"},
+    {"id": "fixed_cap3", "kind": "oriented", "ordering": "fixed", "cap_mode": "public", "cap": 3},
+    {"id": "kcore_noisy_cap", "kind": "oriented", "ordering": "kcore", "cap_mode": "noisy"},
+    {"id": "kcore_cap3", "kind": "oriented", "ordering": "kcore", "cap_mode": "public", "cap": 3}
+  ],
+  "graphs": [
+    {"id": "empty6", "family": "erdos_renyi", "n": 6, "p": 0.0, "seed": 6100},
+    {"id": "K4", "family": "complete", "n": 4},
+    {"id": "K8", "family": "complete", "n": 8},
+    {"id": "book6", "family": "book", "centers": 6},
+    {"id": "er_sparse14", "family": "erdos_renyi", "n": 14, "p": 0.25, "seed": 6101},
+    {"id": "er_dense14", "family": "erdos_renyi", "n": 14, "p": 0.65, "seed": 6102},
+    {"id": "ba16", "family": "barabasi_albert", "n": 16, "m": 3, "seed": 6201},
+    {"id": "sbm16", "family": "stochastic_block", "sizes": [8,8], "p": [[0.7,0.1],[0.1,0.7]], "seed": 6301}
+  ]
+}

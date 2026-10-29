@@ -1,0 +1,181 @@
+{
+  "result_type": "nonprivate_synthetic_evaluation",
+  "privacy_status": "experimental_unverified",
+  "status": "verified",
+  "graphs": 8,
+  "cells": 160,
+  "trials": 16000,
+  "replayed": false,
+  "graph_counts": [
+    {
+      "graph": "empty6",
+      "n": 6,
+      "m": 0,
+      "degeneracy": 0,
+      "exact_count": 0
+    },
+    {
+      "graph": "K4",
+      "n": 4,
+      "m": 6,
+      "degeneracy": 3,
+      "exact_count": 1
+    },
+    {
+      "graph": "K8",
+      "n": 8,
+      "m": 28,
+      "degeneracy": 7,
+      "exact_count": 70
+    },
+    {
+      "graph": "book6",
+      "n": 9,
+      "m": 21,
+      "degeneracy": 3,
+      "exact_count": 6
+    },
+    {
+      "graph": "er_sparse14",
+      "n": 14,
+      "m": 18,
+      "degeneracy": 2,
+      "exact_count": 0
+    },
+    {
+      "graph": "er_dense14",
+      "n": 14,
+      "m": 58,
+      "degeneracy": 6,
+      "exact_count": 71
+    },
+    {
+      "graph": "ba16",
+      "n": 16,
+      "m": 39,
+      "degeneracy": 3,
+      "exact_count": 0
+    },
+    {
+      "graph": "sbm16",
+      "n": 16,
+      "m": 47,
+      "degeneracy": 5,
+      "exact_count": 22
+    }
+  ],
+  "comparisons_against_baseline": {
+    "fixed_cap3": {
+      "lower_observed_rmse_cells": 0,
+      "cells": 32,
+      "ratio_min": 1.1223049509295469,
+      "ratio_median": 4.9210289178362405,
+      "ratio_max": 48093906.84225882
+    },
+    "fixed_uncapped": {
+      "lower_observed_rmse_cells": 0,
+      "cells": 32,
+      "ratio_min": 5.609966397895981,
+      "ratio_median": 97.02558616053466,
+      "ratio_max": 270775496.8642773
+    },
+    "kcore_cap3": {
+      "lower_observed_rmse_cells": 0,
+      "cells": 32,
+      "ratio_min": 2.66327303069836,
+      "ratio_median": 13.379574880915243,
+      "ratio_max": 95474850.71645239
+    },
+    "kcore_noisy_cap": {
+      "lower_observed_rmse_cells": 0,
+      "cells": 32,
+      "ratio_min": 31.300874080714895,
+      "ratio_median": 1194.9101629639686,
+      "ratio_max": 1723942959.1905413
+    }
+  },
+  "negative_estimates": 7326,
+  "undefined_relative_cells": 60,
+  "noisy_cap_full_fraction": 0.920625,
+  "noisy_cap_clipped_trials": 0,
+  "rmse_at_largest_epsilon": [
+    {
+      "graph": "K4",
+      "baseline": 0.34074058960300874,
+      "fixed_cap3": 2.57797879915995,
+      "fixed_uncapped": 2.8081981821956084,
+      "kcore_cap3": 5.152368285546127,
+      "kcore_noisy_cap": 15.993765231972542
+    },
+    {
+      "graph": "K8",
+      "baseline": 10.37898143430774,
+      "fixed_cap3": 65.33166373405614,
+      "fixed_uncapped": 58.225737090852654,
+      "kcore_cap3": 66.68615190010271,
+      "kcore_noisy_cap": 324.8711909613442
+    },
+    {
+      "graph": "ba16",
+      "baseline": 0.7424143192857166,
+      "fixed_cap3": 4.822918698349456,
+      "fixed_uncapped": 374.4095279443685,
+      "kcore_cap3": 9.967541218971453,
+      "kcore_noisy_cap": 1823.7282603142094
+    },
+    {
+      "graph": "book6",
+      "baseline": 2.273123351616852,
+      "fixed_cap3": 6.498668003485459,
+      "fixed_uncapped": 86.76831435454923,
+      "kcore_cap3": 9.41067615212826,
+      "kcore_noisy_cap": 465.4867625185245
+    },
+    {
+      "graph": "empty6",
+      "baseline": 6.421616595413803e-08,
+      "fixed_cap3": 3.0884063031653466,
+      "fixed_uncapped": 17.388164242950612,
+      "kcore_cap3": 6.13102885805426,
+      "kcore_noisy_cap": 110.7050071628476
+    },
+    {
+      "graph": "er_dense14",
+      "baseline": 11.038987327625689,
+      "fixed_cap3": 69.5501223979346,
+      "fixed_uncapped": 300.0803299546467,
+      "kcore_cap3": 71.78502287022441,
+      "kcore_noisy_cap": 1907.8589457805335
+    },
+    {
+      "graph": "er_sparse14",
+      "baseline": 0.022666131015291382,
+      "fixed_cap3": 4.176042978742804,
+      "fixed_uncapped": 310.9187858122464,
+      "kcore_cap3": 8.384036569980303,
+      "kcore_noisy_cap": 1085.793639073037
+    },
+    {
+      "graph": "sbm16",
+      "baseline": 4.613672133855273,
+      "fixed_cap3": 21.48326920541791,
+      "fixed_uncapped": 472.9418544947903,
+      "kcore_cap3": 23.32866175572558,
+      "kcore_noisy_cap": 2014.546215562292
+    }
+  ],
+  "tail_diagnostic": {
+    "graph": "empty6",
+    "epsilon": 4.0,
+    "ideal_baseline_sd": 2.6587690339114027e-05,
+    "observed_baseline_rmse": 6.421616595413803e-08,
+    "interpretation": "100 trials may miss rare high-weight RR products; not an exact variance estimate"
+  },
+  "input_sha256": {
+    "config.json": "e7267cca4dc617a7c9e3b8edaf88b10d7d3d817713f00d9170ee5fa1de017714",
+    "trials.csv": "06de034653a4d7162f5464e1c194f42965287060353ae0901dda79fb51ab6a3f",
+    "summary.csv": "71c38d5c15aa257a291bb2ecc8ed518d9a1a0b40b718792483d7d8fad44c86ed",
+    "manifest.json": "86cbc43c2d66952536f45040100c49995777c5a0b4d7aa7ec52a188219954aba"
+  },
+  "analysis_script_sha256": "b62b98fb225da4cb4f554f908de1ec2dbd21dd52a1491bbc2b51854c81cd6b6b"
+}

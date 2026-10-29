@@ -28,20 +28,48 @@ The [source review](docs/SOURCE_REVIEW.md) and
 [setup checkpoint](docs/status/checkpoints/01_setup_and_source_review.md) preserve
 phase 01 findings.
 
-**Phase 05 is design only and stopped for mathematical review.** See the
-[candidate 4-clique design](docs/FOUR_CLIQUE_DESIGN.md) and
-[checkpoint 05](docs/status/checkpoints/05_four_clique_design.md) for pseudocode,
-sensitivity/cap-bias analysis, privacy assumptions and unresolved questions.
-No private 4-clique estimator is implemented. Its non-private identity/algebra
-checks agree with actual ESCAPE on 1,112 graphs. Reproduce them after setup:
+**Phase 06 implements an experimental 4-clique prototype with k-CoreD ordering,
+public/noisy caps, local count noise and a six-factor debiased-RR baseline.**
+Its full executable privacy proof and low-out-degree utility remain unverified.
+See [implementation](docs/FOUR_CLIQUE_IMPLEMENTATION.md),
+[k-CoreD audit](docs/KCORED_INTEGRATION.md),
+[preliminary experiments](docs/FOUR_CLIQUE_EXPERIMENTS.md) and
+[review package 06](docs/status/REVIEW_PACKAGE_06.md).
+The [phase-05 design](docs/FOUR_CLIQUE_DESIGN.md) remains the mathematical
+specification. Its exact checks still agree with ESCAPE on 1,112 graphs:
 
 ```bash
 ESCAPE_ROOT=/path/to/escape .venv/bin/python scripts/check_four_clique_design.py
 ```
 
 The script saves raw reference output and its summary under ignored
-`build/phase05/`; it does not run a privacy mechanism. The CLI's informational
-phase label still describes the implemented phase-04 software.
+`build/phase05/`; it does not run a privacy mechanism.
+
+After setup, these commands run the new functionality in the WSL virtual environment:
+
+```bash
+.venv/bin/private-graphlets exact-four-cliques data/fixtures/clique.edges
+.venv/bin/private-graphlets estimate-four-cliques data/fixtures/clique.edges \
+  --epsilon 2 --seed 123 --ordering fixed --cap-mode uncapped
+.venv/bin/private-graphlets estimate-four-cliques data/fixtures/clique.edges \
+  --epsilon 2 --seed 123 --ordering kcore --cap-mode noisy
+.venv/bin/private-graphlets estimate-four-cliques data/fixtures/clique.edges \
+  --epsilon 4 --seed 123 --ordering kcore --cap-mode public --cap 3
+.venv/bin/private-graphlets baseline-four-cliques data/fixtures/clique.edges --epsilon 2 --seed 123
+ESCAPE_ROOT=/path/to/escape .venv/bin/python -m pytest -q
+ESCAPE_ROOT=/path/to/escape .venv/bin/python scripts/run_four_clique_experiments.py run
+.venv/bin/python scripts/run_four_clique_experiments.py verify --replay
+.venv/bin/python scripts/run_four_clique_experiments.py plot
+```
+
+Use `--budget O D R C` for explicit allocations summing to total epsilon;
+`--public-order 0,1,2,3` is accepted only for declared public fixed order.
+No noise-disabled/non-private oracle option exists in the private CLI.
+The 8-graph comparison uses 100 trials per cell, 16,000 trials total. Results
+are saved under `experiments/results/four_clique_phase06/`, plots under
+`plots/four_clique_phase06/`; both are ignored. A new run refuses to overwrite
+existing output: use `--output` to choose a new directory. No seed appears in
+private result records. All simulations, including unseeded calls, are unverified.
 
 ## Setup on Ubuntu / WSL
 
@@ -300,5 +328,6 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Phase 05 stops after the 4-clique design and mathematical-review documentation.
-Do not implement the candidate or start another phase without explicit follow-up.**
+**Phase 06 stops after the integrated 4-clique prototype, preliminary comparison,
+tests and review documentation. Do not expand to other patterns or start another
+phase without explicit follow-up.**

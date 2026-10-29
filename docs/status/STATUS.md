@@ -2,85 +2,86 @@
 
 Updated: **2026-10-29** (America/Vancouver).
 
-**Current phase: 05 — Candidate LEDP 4-clique design COMPLETE. STOP POINT
-REACHED.** Design, source/paper review and non-private counting/algebra checks
-are complete. No private 4-clique estimator was implemented or evaluated.
-Await independent mathematical review and an explicit follow-up before the
-next implementation or experimental phase.
+**Current phase: 06 — Full 4-clique research prototype COMPLETE. STOP POINT
+REACHED.** Fixed-order counting, k-CoreD integration, full local-report protocol,
+baseline, tests and preliminary synthetic comparisons are complete. Await
+independent mathematical review and explicit follow-up before another phase.
+No other pattern or expanded experimental grid has been started.
 
-The user's explicit phase-05 request supersedes the earlier phase-04 stopping
-point for this design scope. The user reports independent review of the 3-star
-work; no review memorandum or detailed approval findings were supplied in this
-phase. The existing implementation and historical review package remain intact.
+The k-CoreD integration **succeeded** as a noised research implementation.
+The full executable privacy proof and adapted ordering's low-out-degree utility
+guarantee remain **unresolved**. Every experimental result is labeled
+`experimental_unverified`; tests do not establish LEDP.
 
 ## Current phase checklist
 
-- [x] Read AGENTS.md, status, phase-04 handoff, checkpoints 01–04 and research docs.
-- [x] Inspect actual k-CoreD / EdgeOrientΔ source and relevant primary papers.
-- [x] Inspect ESCAPE's directed-diamond/clique method and orientation invariants.
-- [x] Specify consistent private-level/public-ID ordering and prove exact identities.
-- [x] Specify candidate pseudocode, local information and every released transcript.
-- [x] Derive conditional RR-weighted sensitivity including cap-induced replacement.
-- [x] Separate uncapped unbiasedness from capped target/bias; examine shared-edge covariance.
-- [x] State all epsilon allocations, independence assumptions and unresolved proof obligations.
-- [x] Compare fairly with the debiased-RR AISTATS 2025 baseline without utility claims.
-- [x] Validate on 1,112 graphs using actual ESCAPE and independent exact oracles.
-- [x] Check 124,542 orders and 10,240 finite sensitivity comparisons.
-- [x] Run the full configured regression suite, including ESCAPE tests.
-- [x] Record reproducible evidence, source integrity, limitations and reviewer file list.
-- [x] Stop at design; no full private estimator, new utility grid or later phase.
+- [x] Read instructions, Phase-5 design/checkpoint and relevant reference/review documents.
+- [x] Implement and test exact/oriented counters, one-owner RR, stable cap selection and local noise.
+- [x] Run fixed-order tests before automatically proceeding to k-CoreD.
+- [x] Audit and port actual k-CoreD threshold/promotion/stop behavior.
+- [x] Use one consistent `(private_level, public_ID)` order throughout.
+- [x] Record full coordinator transcript and explicit two-endpoint ordering accounting.
+- [x] Integrate public/noisy/uncapped modes with explicit total-budget allocation.
+- [x] Add independent six-factor debiased-RR baseline at the same total epsilon.
+- [x] Keep public fixed, noised private and non-private oracle configurations distinct.
+- [x] Validate counts against actual ESCAPE and independent exact oracles.
+- [x] Run all regression tests, fix the observed CSV verification issue, preserve earlier tests.
+- [x] Complete 8-graph, 160-cell, 16,000-trial preliminary comparison.
+- [x] Save truth/retained targets, all raw trials/metrics, seeds/config and reference provenance.
+- [x] Replay every estimate/non-timing diagnostic and regenerate all eight plot files.
+- [x] Preserve 3-star results, external source trees and dependency lock.
+- [x] Complete implementation/audit/experiment documentation and independent-review package.
+- [x] Stop; no expanded grid, other pattern or next phase.
 
-## Findings and actual verification
+## Actual tests and findings
 
-The repaired candidate is plausible **conditional on an audited private-ordering
-contract** and the proposed full-transcript composition argument. Important
-obstacles are inconsistent equal-level ties in the Go code, RR-amplified local
-sensitivity, cap-induced bias, and covariance when roots reuse closing-edge
-reports. Low out-degree alone does not imply independent local errors or a
-utility advantage. These are review findings, not a completed LEDP guarantee.
+- **376 passed in 28.54s**, zero failures/errors/skips in the final full suite.
+  All **256 previous tests** remain unchanged; **120 new tests** pass.
+  **43 marked ESCAPE integration cases** are included.
+- Initial full run had **1 failed, 375 passed** from CSV integer/float dtype
+  inference. The verifier fix preserves all numerical comparisons; no
+  estimator, seed or statistical tolerance was altered.
+- Phase-5 recheck: **1,112 actual ESCAPE comparisons**, **124,542 order checks**
+  and **10,240 finite sensitivity checks**, all pass.
+- **8/8 experiment graph counts** agree across actual ESCAPE, independent
+  four-sets, forward triples and the separately labeled noiseless k-CoreD oracle.
+- **16,000 trials**, 100 per graph/epsilon/method. All saved estimates and
+  non-timing diagnostics replay exactly. A complete repeated run matches every
+  non-timing CSV field; it is the same observations reproduced, not new trials.
+- Every oriented method has higher **observed** RMSE than the baseline in all
+  **32 graph–epsilon comparisons**. No general ranking or utility advantage is
+  claimed. Noisy caps equal n-1 in **92.0625%** of their trials; cap 3 loses many
+  original cliques. One hundred trials poorly resolve some RR tails.
+- **7,326 negative estimates** retained; **60 cells** have undefined relative
+  error because truth is zero. No output clipping or round-off projection.
+- All **82 ESCAPE + 127 Go tracked files** remain unchanged and clean. The
+  original 3-star artifact set still verifies: 15 graphs, 75 cells, 37,500 trials.
+- No third-party dependency changes. Offline editable reinstall, dependency
+  check, README CLI examples and wheel/source packaging succeed.
 
-- **1,112/1,112 graph comparisons agree:** brute-force four-sets, outgoing triples,
-  directed diamonds and actual ESCAPE. This includes all 1,100 labeled graphs
-  through five vertices and 12 additional examples.
-- **124,542 ordering checks** pass, including all permutations for the exhaustive
-  small graphs. Mock levels and non-private peeling test identities only;
-  k-CoreD was not executed in this phase.
-- **10,240 finite sensitivity checks** pass at RR parameter `log(2)`. Independent
-  RR product expectations pass for all eight true three-edge configurations.
-  A shared-coin counterexample and K5 cap-loss examples are recorded explicitly.
-- **256 passed in 14.49s**, zero failures/skips. This includes **34** marked
-  ESCAPE integration tests (33 reference-module cases and one pipeline case).
-- Both external source fingerprints remain identical: **82 ESCAPE and 127 Go
-  tracked files**, clean worktrees. Existing package source, tests, dependency
-  lock, checkpoints 01–04 and phase-04 review package are unchanged.
-- No new dependencies. ESCAPE compilation succeeds with the existing **160
-  upstream warnings**. No unresolved execution blocker was observed.
+## Reports and artifacts
 
-## Design, evidence and handoff
+- [Independent-review package 06 and exact file list](REVIEW_PACKAGE_06.md)
+- [Checkpoint 06: commands, outcomes, failures, differences and limitations](checkpoints/06_full_four_clique_implementation.md)
+- [Internal fixed-order checkpoint](checkpoints/06a_fixed_order_internal.md)
+- [Internal k-CoreD checkpoint](checkpoints/06b_kcore_internal.md)
+- [4-clique implementation](../FOUR_CLIQUE_IMPLEMENTATION.md)
+- [k-CoreD source/transcript audit](../KCORED_INTEGRATION.md)
+- [Preliminary experiments and observations](../FOUR_CLIQUE_EXPERIMENTS.md)
+- [Compact machine-readable observations](accuracy_06.json)
+- [Original Phase-5 design](../FOUR_CLIQUE_DESIGN.md) and [privacy notes](../PRIVACY_NOTES.md)
 
-- [FOUR_CLIQUE_DESIGN.md: specification, derivations, source findings and review questions](../FOUR_CLIQUE_DESIGN.md)
-- [Checkpoint 05: files, exact commands, observed results and limitations](checkpoints/05_four_clique_design.md)
-- [Compact validation evidence](validation_05.json)
-- [Non-private design-check script](../../scripts/check_four_clique_design.py)
+Ignored generated outputs: `experiments/results/four_clique_phase06/`,
+`plots/four_clique_phase06/` and `build/phase06/`.
+Transfer these separately or reproduce them with README commands.
+The small accuracy JSON is intentionally retained with the source reports.
+Source changes are local/uncommitted; no commit or push was performed.
+Starting revision: `396f9215ac1c97b54e3717f4acf56f95442ae743`.
 
-Ignored raw evidence is under `build/phase05/`, particularly
-`design_checks.json` (actual ESCAPE input/output for all 1,112 graphs), build
-provenance, compiler log, pytest log/XML and reference fingerprints. Send it
-separately to reviewers or reproduce it using the design document's commands.
-The small `validation_05.json` is intentional source-controlled evidence; it
-does not replace the raw output. New files remain local/uncommitted for review;
-no commit or push was performed. Starting revision:
-`8b0735e6b48559d86d1dcd943c6b44920ff736b3`.
+## Preserved earlier work
 
-## Preserved phase-04 work
-
-The completed 3-star pipeline contains 15 graphs, 75 cells and 37,500 trials.
-Its unchanged reports are [checkpoint 04](checkpoints/04_experiments_and_review.md),
-[3-star review package](REVIEW_PACKAGE.md), [experiments](../EXPERIMENTS.md),
-[algorithms](../ALGORITHMS.md), [privacy notes](../PRIVACY_NOTES.md), and
-[accuracy evidence](accuracy_04.json). Phase 04's stopping/review statements are
-historical; they are not authorization to implement this new candidate.
-
-Generated 3-star results remain in `experiments/results/three_star_phase04/`,
-figures in `plots/three_star_phase04/`, and its separate review bundle in
-`build/phase04/review_package.tar.gz`. These artifacts remain ignored by Git.
+Checkpoints 01–05 and the phase-04 [3-star review package](REVIEW_PACKAGE.md)
+remain historical records. The user reported independent review of 3-star work;
+no review memorandum was supplied in this phase. Its unchanged mechanism,
+counters, tests and results remain available under the original paths.
+The present stop permits no further implementation without explicit follow-up.

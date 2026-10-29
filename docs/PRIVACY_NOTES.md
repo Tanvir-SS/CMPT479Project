@@ -1,5 +1,11 @@
 # Privacy notes — 3-star research simulation
 
+**Scope update, 2026-10-29:** the 3-star discussion below preserves the phase-04
+review record. The user subsequently reports independent 3-star review; its
+memorandum is not supplied here. Phase 06 adds a separate experimental 4-clique
+protocol, documented in the addendum at the end and in
+[KCORED_INTEGRATION.md](KCORED_INTEGRATION.md). Its proof remains unresolved.
+
 **No formal privacy proof has been completed or reviewed for this implementation.**
 This document identifies the intended model and accounting for later independent
 review. Passing automated tests is not proof of differential privacy.
@@ -198,4 +204,69 @@ uniform finite-sample accuracy bound. Those remain independent review tasks.
 
 No orientation or external algorithm is required inside this private 3-star
 mechanism. ESCAPE supplies only non-private evaluation truth. 4-clique design
-and implementation remain explicitly unstarted.
+and implementation were explicitly unstarted at the end of that phase-04 record.
+
+## Phase 06 addendum — Experimental 4-clique protocol
+
+The fixed public vertex set and one-undirected-edge add/remove adjacency are
+unchanged. Each client uses only its incident list in the intended local model.
+The simulator holds all clients in one process; an aggregate API is not a
+security boundary against access to process memory. All configurations emit
+`privacy_status=experimental_unverified`; NumPy randomness is simulation-only.
+
+`four_clique.simulate_four_cliques` constructs the complete modeled coordinator
+transcript. It contains private degree-derived **thresholds**, all noised
+promotion bits, derived levels/order, noisy cap reports `Q_v`, published cap B,
+one RR bit per unordered pair including nonedges, and locally noised scalar
+scores. It excludes raw degrees, original adjacency, selected neighbors,
+unnoised scores, seed/state and exact evaluation. The released noisy cap is
+postprocessing of charged reports; exact clipping/max-out-degree diagnostics
+exist only in the separate public-synthetic experiment runner.
+
+With total epsilon e, the full protocol initially uses
+`epsilon_O=epsilon_D=epsilon_R=epsilon_C=e/4`. For public/uncapped k-CoreD mode,
+`epsilon_O=min(e/3,1)`, D=0 and R=C=(e-O)/2. Fixed order omits O and redistributes
+over remaining stages; the baseline spends all e on RR. Custom allocations must
+sum to e and match active stages. Each k-CoreD endpoint initially spends at most
+`f*epsilon_O/2`, then at most `(1-f)*epsilon_O/2` over threshold-limited level
+queries; both endpoints compose to O. The default f is .5.
+
+Conditional on the same total order, outgoing-degree-vector L1 sensitivity is
+1. Each cap report uses independent `Laplace(0,1/epsilon_D)` and the coordinator
+adds `log(n/beta)/epsilon_D` before ceiling and restricting B to `[0,n-1]`.
+Clients always enforce B. The tail parameter beta controls utility loss and
+is not a privacy delta; rare cap underestimation must not invalidate privacy.
+
+RR has flip probability `1/(exp(epsilon_R)+1)` and weights
+`W=(R-p)/(1-2p)`, implemented as `-a` or `M` with
+`a=1/expm1(epsilon_R)`, `M=a+1`. Only the smaller public-ID endpoint owns a pair.
+Distinct pair coins and all ordering/cap/count randomness are independent in
+the ideal model. Reuse of one pair report across products is postprocessing;
+fresh duplicate endpoint/query reports would require further accounting.
+
+For a fixed preceding transcript, one earlier endpoint's true outgoing set can
+change. Stable prefix selection changes at most one retained neighbor, so the
+proposed count sensitivity is `Delta_B=choose(B-1,2)*M²*(M+a)` for B>=3, zero
+otherwise. Each client sends `F_v+Laplace(0,Delta_B/epsilon_C)`. Noise precedes
+the coordinator; all clients participate when B>=3. Coordinator-side noise
+after receiving true scores would require a different trust model. The final
+sum is postprocessing and is not rounded or projected to nonnegative values.
+
+The conditional proof must compare identical prior transcripts; a changed edge
+can otherwise alter many levels and orientations. The candidate composition is
+O+D+R+C, covering the whole interactive transcript. The port's audit and
+outstanding finite-precision, error, timing, adaptive interaction and client
+isolation issues are in [the integration audit](KCORED_INTEGRATION.md). No
+complete implementation-level LEDP guarantee is asserted.
+
+Uncapped ideal expectation equals original K4. Capped expectation instead equals
+the retained-clique target averaged over order/cap randomness; no loss correction
+is implemented. RR products at different roots can be correlated. Testing exact
+counts, RR moments, conditional sensitivity, query budgets and replay cannot
+establish the full privacy inequality or all utility claims.
+
+The [phase-06 experiments](FOUR_CLIQUE_EXPERIMENTS.md) publish synthetic truth,
+seeds, diagnostics and timings and are **not private releases**. Repeating five
+methods 100 times at e=.5/1/2/4 on one protected graph would spend 3,750 under
+basic composition if each invocation satisfied its ideal contract; that ledger
+alone would not justify publishing the experiment's exact metadata/seeds.

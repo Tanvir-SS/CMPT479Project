@@ -3,16 +3,22 @@
 CMPT 479/982 research project on Local Edge Differential Privacy (LEDP) and
 low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
-**Current scope: repository setup and source review only. No private estimator
-is implemented.** The six targets are connected, undirected, **non-induced**
+**Implemented: exact non-induced 3-star counting and the specified bias-corrected
+Laplace estimator, with automated tests.** The private estimator is a research
+simulation; formal privacy/accuracy review remains pending. The six project
+targets are connected, undirected, **non-induced**
 3-stars (`K1,3`), 3-paths (`P4`), tailed triangles, 4-cycles (`C4`), diamonds
 (`K4` minus one edge), and 4-cliques (`K4`). A copy counts once per distinct
 subgraph, not once per labeling. For example, `K4` contains 4 non-induced
 3-stars and 3 non-induced 4-cycles, but no induced star or induced 4-cycle.
 
 See [current status](docs/status/STATUS.md),
-[setup checkpoint](docs/status/checkpoints/01_setup_and_source_review.md), and
-[source review](docs/SOURCE_REVIEW.md) for findings and actual validation.
+[phase 02 checkpoint](docs/status/checkpoints/02_three_star_implementation.md),
+[algorithm specification](docs/ALGORITHMS.md), and
+[privacy notes](docs/PRIVACY_NOTES.md) for implementation and actual validation.
+The [source review](docs/SOURCE_REVIEW.md) and
+[setup checkpoint](docs/status/checkpoints/01_setup_and_source_review.md) preserve
+phase 01 findings.
 
 ## Setup on Ubuntu / WSL
 
@@ -34,9 +40,8 @@ python -m private_graphlets --help
 python -m pytest -q
 ```
 
-The remote must first contain these project files; phase 01 creates local files
-and does not push a commit. A private remote requires GitHub access (use SSH if
-configured: `git@github.com:Tanvir-SS/CMPT479Project.git`).
+Check out the project revision you intend to reproduce. A private remote requires
+GitHub access (use SSH if configured: `git@github.com:Tanvir-SS/CMPT479Project.git`).
 
 Python package availability depends on your Ubuntu release and configured apt
 repositories. If apt cannot find Python 3.11 or `python3.11-venv`, obtain both
@@ -69,6 +74,38 @@ To verify a fresh environment without replacing your working `.venv`, run
 This copies Git-visible project files to a temporary directory, runs setup there
 offline, preserves `build/reproduction-check.log`, and removes the temporary copy.
 
+## Count non-induced 3-stars
+
+The edge list starts with `n m`, declaring vertices `0..n-1` and the number of
+**unique undirected edges**. Subsequent lines contain two vertex IDs. Duplicates
+and reverse copies count once; the deduplicated count must match `m`. Self-loops
+are rejected. Blank lines and `#` comments are accepted. Declaring `n` preserves
+isolated vertices; `0 0` and `5 0` are valid edgeless inputs.
+
+```bash
+# One structured simulation result; seed is optional.
+private-graphlets estimate-three-stars data/fixtures/star.edges --epsilon 2 --seed 123
+
+# Separate NON-PRIVATE ground-truth result.
+private-graphlets exact-three-stars data/fixtures/star.edges
+
+# Run every automated test, including small Monte Carlo diagnostics.
+python -m pytest -q
+```
+
+The estimator uses exactly `b=2/epsilon` and the local correction
+`Y*(Y-1)*(Y-2)/6 - b**2*(Y-1)`. It preserves negative/fractional estimates and
+returns the aggregate, public parameters and software metadata as JSON. It does
+not release raw degrees, true edge counts, exact star counts or the seed. The
+fixed vertex set is assumed public. NumPy randomness, with or without a seed,
+is for simulations and is not cryptographically secure. Record seeds separately
+only in non-private experiment metadata for public/synthetic data. Never publish
+exact-evaluation records alongside purported private outputs on protected data.
+
+See [ALGORITHMS.md](docs/ALGORITHMS.md) for APIs, file/output schemas and test
+tolerances, and [PRIVACY_NOTES.md](docs/PRIVACY_NOTES.md) for assumptions and
+unresolved questions. No formal DP proof is claimed.
+
 ## Dependencies and reproducibility
 
 Direct scientific dependencies are NumPy 2.2.6, NetworkX 3.4.2, pandas 2.2.3,
@@ -96,7 +133,9 @@ The lock targets Python 3.11 on Ubuntu/Linux. Package pins and hashes control
 dependencies; they do not guarantee identical floating point results across
 architectures or BLAS implementations. Future runs must record environment,
 dataset hashes, graph preprocessing, random seeds, privacy budgets, repetitions,
-and project/reference revisions. No random research run occurs during setup.
+and project/reference revisions in separate non-private research metadata.
+Setup runs the automated tests, including bounded seeded Monte Carlo checks on
+tiny synthetic graphs. No large dataset experiments have been run.
 
 For a distributable wheel and source archive:
 
@@ -153,8 +192,8 @@ paths and parameter overrides described in the source review.
 ## Layout and development workflow
 
 ```text
-src/private_graphlets/  Installable package and information-only CLI
-tests/                 Installation, CLI and scientific-stack smoke tests
+src/private_graphlets/  Graph validation, exact counters, noise, estimator and CLI
+tests/                 Exact, mechanism, statistical, CLI and installation tests
 scripts/               Locked setup, lock regeneration and ESCAPE checks
 data/fixtures/         Tiny public synthetic reference inputs and expected counts
 data/raw/              Ignored original datasets
@@ -163,6 +202,8 @@ experiments/configs/   Reserved for future reviewed experiment configurations
 experiments/results/   Ignored generated research output
 plots/                 Ignored generated figures
 docs/SOURCE_REVIEW.md   Source map, counting identities and implementation concerns
+docs/ALGORITHMS.md      Implemented 3-star algorithms, formats and validation
+docs/PRIVACY_NOTES.md   Intended model/accounting and unresolved proof questions
 docs/references.json    Reviewed commits and source hashes
 docs/status/           Current status and numbered phase checkpoints
 build/                 Ignored local builds and verification logs
@@ -171,5 +212,6 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Stop after setup and source review. Private 3-star estimation and all other
-private algorithms require a later explicit instruction.**
+**Phase 02 stops after verified 3-star implementation. ESCAPE integration, large
+experiments, 4-clique estimation and other algorithms require a later explicit
+instruction.**

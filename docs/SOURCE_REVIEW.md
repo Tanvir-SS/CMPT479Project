@@ -3,7 +3,9 @@
 Review date: **2026-10-28** (America/Vancouver). This is a source-level review
 plus the small checks recorded in [checkpoint 01](status/checkpoints/01_setup_and_source_review.md).
 It is not a security audit, a DP proof, or a reproduction of paper experiments.
-No new private algorithm is implemented in this project.
+No new private algorithm was implemented during phase 01. This document preserves
+that review; phase 02 now implements the specified 3-star simulation, documented
+in [ALGORITHMS.md](ALGORITHMS.md) and [PRIVACY_NOTES.md](PRIVACY_NOTES.md).
 
 ## Sources and scope
 
@@ -379,5 +381,6 @@ bit, which releases use both endpoints' data, total-order tie breaking,
 clipping/bounds, and explicit budget composition. Establish exact small-graph
 oracles, then derive unbiasedness/sensitivity/variance as appropriate before
 coding private estimators. A successful smoke test supplies no formal privacy
-claim. **All of this later work remains deferred; the private 3-star estimator
-has not been started.**
+claim. At the end of phase 01 this later work was deferred. See the current
+[status](status/STATUS.md) for the subsequently authorized 3-star implementation;
+no orientation or ESCAPE integration was added in phase 02.

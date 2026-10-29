@@ -16,7 +16,7 @@ def test_module_info(tmp_path):
     info = json.loads(result.stdout)
     assert info["version"] == __version__
     assert info["python"].startswith("3.11.")
-    assert info["implemented_estimators"] == []
+    assert info["implemented_estimators"] == ["3-star"]
     assert "non-induced" in info["count_semantics"]
     assert len(info["patterns"]) == 6
 
@@ -28,7 +28,7 @@ def test_installed_console_help(tmp_path):
         check=True, capture_output=True, text=True,
     )
     assert "info" in result.stdout
-    assert "research scaffold" in result.stdout
+    assert "research simulations" in result.stdout
 
 
 def test_version(tmp_path):

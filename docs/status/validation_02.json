@@ -1,0 +1,328 @@
+{
+  "all_labeled_graphs_through_five_vertices": 1100,
+  "baseline_commit": "f34984478e0d0275ea4372eb1a0378c10c729d86",
+  "dependencies_changed": false,
+  "external_reference_fingerprints_unchanged": true,
+  "implementation_commit_note": "Phase 02 changes are uncommitted; baseline_commit predates this implementation.",
+  "kind": "synthetic_unit_test_validation",
+  "locked_dependencies_verified": 25,
+  "numpy": "2.2.6",
+  "phase": "02_three_star_implementation",
+  "pytest": {
+    "cases_by_module": {
+      "tests.test_cli": 12,
+      "tests.test_exact": 19,
+      "tests.test_graph": 39,
+      "tests.test_noise": 22,
+      "tests.test_smoke": 4,
+      "tests.test_statistics": 17,
+      "tests.test_three_star": 25
+    },
+    "errors": 0,
+    "failures": 0,
+    "passed": 138,
+    "seconds_reported": 6.04,
+    "skipped": 0
+  },
+  "pytest_version": "8.3.5",
+  "python": "3.11.16",
+  "requirements_lock_sha256": "ffbb7a1cbe39daaaecba70d68bdd163d5e8e27bbf3a39f17a47f6e13fff6ed4f",
+  "statistical_comparisons": [
+    {
+      "expected": 0.0,
+      "observed": -0.000245671904,
+      "standard_error": 0.0126491,
+      "standardized_residual": -0.0194,
+      "test_case": "noise mean eps=0.5"
+    },
+    {
+      "expected": 32.0,
+      "observed": 32.2366958,
+      "standard_error": 0.16,
+      "standardized_residual": 1.4793,
+      "test_case": "noise variance eps=0.5"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.0344204392,
+      "standard_error": 0.0715542,
+      "standardized_residual": 0.481,
+      "test_case": "noise cross moment eps=0.5"
+    },
+    {
+      "expected": 1024.0,
+      "observed": 1034.11149,
+      "standard_error": 13.5462,
+      "standardized_residual": 0.7464,
+      "test_case": "squared noise cross moment eps=0.5"
+    },
+    {
+      "expected": 0.25,
+      "observed": 0.25053,
+      "standard_error": 0.000968246,
+      "standardized_residual": 0.5474,
+      "test_case": "joint signs eps=0.5"
+    },
+    {
+      "expected": 0.0,
+      "observed": -6.1417976e-05,
+      "standard_error": 0.00316228,
+      "standardized_residual": -0.0194,
+      "test_case": "noise mean eps=2.0"
+    },
+    {
+      "expected": 2.0,
+      "observed": 2.01479349,
+      "standard_error": 0.01,
+      "standardized_residual": 1.4793,
+      "test_case": "noise variance eps=2.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.00215127745,
+      "standard_error": 0.00447214,
+      "standardized_residual": 0.481,
+      "test_case": "noise cross moment eps=2.0"
+    },
+    {
+      "expected": 4.0,
+      "observed": 4.03949801,
+      "standard_error": 0.052915,
+      "standardized_residual": 0.7464,
+      "test_case": "squared noise cross moment eps=2.0"
+    },
+    {
+      "expected": 0.25,
+      "observed": 0.25053,
+      "standard_error": 0.000968246,
+      "standardized_residual": 0.5474,
+      "test_case": "joint signs eps=2.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": -1.5354494e-05,
+      "standard_error": 0.000790569,
+      "standardized_residual": -0.0194,
+      "test_case": "noise mean eps=8.0"
+    },
+    {
+      "expected": 0.125,
+      "observed": 0.125924593,
+      "standard_error": 0.000625001,
+      "standardized_residual": 1.4793,
+      "test_case": "noise variance eps=8.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.000134454841,
+      "standard_error": 0.000279508,
+      "standardized_residual": 0.481,
+      "test_case": "noise cross moment eps=8.0"
+    },
+    {
+      "expected": 0.015625,
+      "observed": 0.0157792891,
+      "standard_error": 0.000206699,
+      "standardized_residual": 0.7464,
+      "test_case": "squared noise cross moment eps=8.0"
+    },
+    {
+      "expected": 0.25,
+      "observed": 0.25053,
+      "standard_error": 0.000968246,
+      "standardized_residual": 0.5474,
+      "test_case": "joint signs eps=8.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.128987761,
+      "standard_error": 0.135402,
+      "standardized_residual": 0.9526,
+      "test_case": "local d=0 eps=0.8"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.253677356,
+      "standard_error": 0.130236,
+      "standardized_residual": 1.9478,
+      "test_case": "local d=1 eps=0.8"
+    },
+    {
+      "expected": 0.0,
+      "observed": -0.0462774722,
+      "standard_error": 0.135402,
+      "standardized_residual": -0.3418,
+      "test_case": "local d=2 eps=0.8"
+    },
+    {
+      "expected": 1.0,
+      "observed": 1.21135272,
+      "standard_error": 0.150461,
+      "standardized_residual": 1.4047,
+      "test_case": "local d=3 eps=0.8"
+    },
+    {
+      "expected": 4.0,
+      "observed": 3.98837002,
+      "standard_error": 0.174465,
+      "standardized_residual": -0.0667,
+      "test_case": "local d=4 eps=0.8"
+    },
+    {
+      "expected": 84.0,
+      "observed": 84.0854691,
+      "standard_error": 0.409628,
+      "standardized_residual": 0.2087,
+      "test_case": "local d=9 eps=0.8"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.00536643975,
+      "standard_error": 0.0101379,
+      "standardized_residual": 0.5293,
+      "test_case": "local d=0 eps=2.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.0159796301,
+      "standard_error": 0.00818196,
+      "standardized_residual": 1.953,
+      "test_case": "local d=1 eps=2.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": -0.00270237882,
+      "standard_error": 0.0101379,
+      "standardized_residual": -0.2666,
+      "test_case": "local d=2 eps=2.0"
+    },
+    {
+      "expected": 1.0,
+      "observed": 1.03004152,
+      "standard_error": 0.0155009,
+      "standardized_residual": 1.9381,
+      "test_case": "local d=3 eps=2.0"
+    },
+    {
+      "expected": 4.0,
+      "observed": 3.99331846,
+      "standard_error": 0.023863,
+      "standardized_residual": -0.28,
+      "test_case": "local d=4 eps=2.0"
+    },
+    {
+      "expected": 84.0,
+      "observed": 83.9986026,
+      "standard_error": 0.111536,
+      "standardized_residual": -0.0125,
+      "test_case": "local d=9 eps=2.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": -0.000129037267,
+      "standard_error": 0.000458511,
+      "standardized_residual": -0.2814,
+      "test_case": "local d=0 eps=8.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.000178331075,
+      "standard_error": 0.00014639,
+      "standardized_residual": 1.2182,
+      "test_case": "local d=1 eps=8.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": -5.75207984e-05,
+      "standard_error": 0.000458511,
+      "standardized_residual": -0.1255,
+      "test_case": "local d=2 eps=8.0"
+    },
+    {
+      "expected": 1.0,
+      "observed": 1.00188874,
+      "standard_error": 0.00162839,
+      "standardized_residual": 1.1599,
+      "test_case": "local d=3 eps=8.0"
+    },
+    {
+      "expected": 4.0,
+      "observed": 3.99694519,
+      "standard_error": 0.00360148,
+      "standardized_residual": -0.8482,
+      "test_case": "local d=4 eps=8.0"
+    },
+    {
+      "expected": 84.0,
+      "observed": 83.9925448,
+      "standard_error": 0.0253398,
+      "standardized_residual": -0.2942,
+      "test_case": "local d=9 eps=8.0"
+    },
+    {
+      "expected": 0.0,
+      "observed": -0.147289772,
+      "standard_error": 1.10555,
+      "standardized_residual": -0.1332,
+      "test_case": "graph isolates eps=0.8"
+    },
+    {
+      "expected": 4.0,
+      "observed": 4.11018708,
+      "standard_error": 1.27987,
+      "standardized_residual": 0.0861,
+      "test_case": "graph star eps=0.8"
+    },
+    {
+      "expected": 4.0,
+      "observed": 3.30599646,
+      "standard_error": 1.22851,
+      "standardized_residual": -0.5649,
+      "test_case": "graph K4 eps=0.8"
+    },
+    {
+      "expected": 2.0,
+      "observed": 2.80901729,
+      "standard_error": 1.58003,
+      "standardized_residual": 0.512,
+      "test_case": "graph overlap_and_isolates eps=0.8"
+    },
+    {
+      "expected": 0.0,
+      "observed": 0.000577312808,
+      "standard_error": 0.0149459,
+      "standardized_residual": 0.0386,
+      "test_case": "graph isolates eps=4.0"
+    },
+    {
+      "expected": 4.0,
+      "observed": 4.01520656,
+      "standard_error": 0.0344811,
+      "standardized_residual": 0.441,
+      "test_case": "graph star eps=4.0"
+    },
+    {
+      "expected": 4.0,
+      "observed": 3.96648081,
+      "standard_error": 0.0346777,
+      "standardized_residual": -0.9666,
+      "test_case": "graph K4 eps=4.0"
+    },
+    {
+      "expected": 2.0,
+      "observed": 2.01812258,
+      "standard_error": 0.0278679,
+      "standardized_residual": 0.6503,
+      "test_case": "graph overlap_and_isolates eps=4.0"
+    }
+  ],
+  "statistical_note": "Values transcribed from rounded test stdout; diagnostics, not proofs.",
+  "statistical_standard_error_limit": 6,
+  "wheel_modules_checked": [
+    "graph",
+    "exact",
+    "noise",
+    "three_star",
+    "cli"
+  ]
+}

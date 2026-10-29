@@ -2,55 +2,65 @@
 
 Updated: **2026-10-28** (America/Vancouver).
 
-**Current phase: 01 — Setup and source review COMPLETE. STOP POINT REACHED.**
-The environment, package scaffold, documentation, reference review and initial
-checks are complete. No private estimator or private experiment is implemented.
-Do not start the private 3-star estimator without an explicit later instruction.
+**Current phase: 02 — Non-induced 3-star implementation COMPLETE.
+STOP POINT REACHED.** Exact counters, the specified bias-corrected Laplace
+simulation, CLI and automated tests are implemented and verified. Formal privacy
+and accuracy proofs remain pending independent review. Do not begin ESCAPE
+integration, large experiments, 4-clique estimation or other algorithms.
 
 ## Current phase checklist
 
-- [x] Inspect ESCAPE's six connected non-induced counts, orientation, and formats.
-- [x] Inspect k-CoreD / EdgeOrientΔ levels, RR, noise, coordinator and aggregation.
-- [x] Document mathematical identities, code-to-paper differences and source issues.
-- [x] Create the `src/private_graphlets/` package, CLI and research directories.
-- [x] Create Python 3.11 `.venv`, pinned dependencies, hashed lock and setup scripts.
-- [x] Configure pytest and verify the installed CLI and scientific stack.
-- [x] Verify clean offline recreation in a fresh temporary environment.
-- [x] Compile ESCAPE externally and check eight hand-counted fixtures.
-- [x] Compile/check the Go code in an isolated archive of the pinned source.
-- [x] Document Ubuntu/WSL setup and establish permanent `AGENTS.md` instructions.
-- [x] Record source fingerprints, environment versions and checkpoint 01.
+- [x] Read permanent instructions, source review, status and checkpoint 01.
+- [x] Define and validate simple undirected graphs and a headered edge-list format.
+- [x] Preserve isolates; deduplicate undirected edges; reject loops and malformed input.
+- [x] Implement exact `Σ_v C(d(v),3)` with Python integer arithmetic.
+- [x] Implement an independent brute-force counter for small graphs.
+- [x] Implement Laplace scale `2/epsilon`, finite-positive epsilon validation and seeded simulation RNG.
+- [x] Implement the requested correction unchanged, with no clipping/rounding.
+- [x] Keep private results separate from exact evaluation and exclude raw degrees/seeds.
+- [x] Add private-estimate and exact-evaluation CLI commands with structured JSON.
+- [x] Validate named graphs and all 1,100 labeled simple graphs through five vertices.
+- [x] Test scale, RNG replay/advancement, noise moments and independence diagnostics.
+- [x] Test polynomial and graph-level empirical unbiasedness with analytic SE tolerances.
+- [x] Run the entire pytest suite and check packaging and installed dependencies.
+- [x] Document algorithms, privacy assumptions, numerical limits and unresolved questions.
+- [x] Record checkpoint 02 and actual validation evidence; preserve checkpoint 01.
 - [x] Verify both external reference repositories remain unchanged.
-- [x] Stop at the requested boundary; private 3-star estimation remains unstarted.
+- [x] Stop without ESCAPE integration, large experiments or 4-clique development.
 
-## Validation and limitations
+## Actual verification
 
-- Main Python setup: **4 passed in 0.99s**; dependency check succeeded.
-- Fresh offline environment: **4 passed in 0.95s**; dependency check succeeded.
-- ESCAPE: **8/8** fixture vectors matched; compiled with upstream warnings.
-- Go: `go test ./...` and `go build ./...` succeeded; all five packages report
-  **no test files**. No Go accuracy or privacy validation was performed.
-- Wheel and source distribution build succeeded. All **25** installed locked
-  dependency versions match; exact versions are in [environment_01.json](environment_01.json).
-- Reference fingerprints matched before/after checks and both Git worktrees are
-  clean. Project files are local and uncommitted; the existing `main` branch has
-  no commits, and nothing was pushed.
+- **138 passed in 6.04s**, with no failed, errored or skipped tests.
+- Exact degree/oracle agreement on **1,100** labeled simple graphs, plus named
+  examples covering required counts, overlapping patterns and isolates.
+- **41** Monte Carlo moment comparisons passed their preselected **6-SE**
+  thresholds; maximum absolute standardized residual **1.9530**. These are
+  bounded synthetic unit tests, not formal privacy/accuracy proofs.
+- Wheel and source archive built; wheel contains all five algorithm/CLI modules.
+- `pip check` succeeded; all **25** installed dependency pins match the unchanged
+  hash lock. No dependency installation or upgrade occurred in phase 02.
+- External source fingerprints match phase 01 (82 ESCAPE and 127 Go tracked
+  files, clean worktrees). No reference binaries were executed in phase 02.
 
-The first Python test run exposed a Matplotlib/pyparsing incompatibility under
-warnings-as-errors; pyparsing 3.2.3 resolved it. Reference issues remain documented,
-including Go's inconsistent tie orientation, driver parameter overrides, clipping
-and sensitivity questions, and ESCAPE's numeric/input limitations. There is no
-formal DP proof or empirical research result for this project yet.
+Phase 02 began from commit `f34984478e0d0275ea4372eb1a0378c10c729d86`
+(`Initial Environment Setup`). Current implementation changes are local and
+uncommitted; no commit or push was performed during this phase.
 
-## Reports and next phase
+## Limitations and reports
 
-- [Checkpoint 01: setup and source review](checkpoints/01_setup_and_source_review.md)
+NumPy randomness is simulation-only even without a seed. The intended fixed
+public vertex set, edge neighboring relation and two-endpoint privacy accounting
+are documented, but not formally verified. Float64 numerical extremes fail
+explicitly; finite-precision DP, secure deployment, repeated-release accounting
+and full accuracy review remain unresolved.
+
+- [Checkpoint 02: implementation, commands and results](checkpoints/02_three_star_implementation.md)
+- [Machine-readable validation evidence](validation_02.json)
+- [Algorithms and test methodology](../ALGORITHMS.md)
+- [Privacy notes and open questions](../PRIVACY_NOTES.md)
+- [Checkpoint 01: historical setup/source review](checkpoints/01_setup_and_source_review.md)
 - [Source review](../SOURCE_REVIEW.md)
-- [Reference commits and hashes](../references.json)
-- [Reproduction instructions](../../README.md)
+- [Usage and reproduction](../../README.md)
 
-Await the next explicit scope. Suggested future prerequisites are a precise LEDP
-model and count specification, a consistent orientation contract, exact small-graph
-oracles, and mathematical derivations before any private implementation. These
-are suggestions only, not active work. For each authorized future phase create
-`checkpoints/02_<phase>.md` (then 03, 04, …) and update this checklist and summary.
+Await a later explicit scope. Create `checkpoints/03_<phase>.md` and update this
+checklist for the next authorized phase. No further phase is active.

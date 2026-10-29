@@ -22,10 +22,11 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. The setup
-  phase ends after environment, structure, source review, and initial tests.
-  **Do not implement the private 3-star estimator or any new private algorithm
-  until the user explicitly authorizes a later phase.**
+- Never silently continue past an explicitly requested stopping point. Phase 02
+  explicitly authorizes exact and bias-corrected private non-induced 3-star
+  counting, CLI and tests. **Stop once these are implemented and verified. Do
+  not start ESCAPE integration, large experiments, 4-clique estimation or other
+  private algorithms without a later explicit instruction.**
 - Use Python 3.11 and `.venv`; keep code under `src/private_graphlets/`. Recreate
   with `bash scripts/setup.sh`; run `.venv/bin/python -m pytest -q`.
 - Pin direct dependencies in `pyproject.toml`, regenerate the complete hashed
@@ -37,5 +38,12 @@ and its latest checkpoint before changing the project.
   future simulation runs, but do not treat seeded PRNGs as production DP noise.
 - Check graph validation, isolated vertices, ordering consistency, duplicate-edge
   handling, integer overflow, and normalization before trusting count comparisons.
-- No formal DP guarantees, utility experiments, or private estimators exist at
-  the end of phase 01. Treat deferred work as deferred, not completed.
+- The 3-star simulator uses exactly `b=2/epsilon` and
+  `Y*(Y-1)*(Y-2)/6 - b**2*(Y-1)`. Do not tune its correction, clip, truncate or
+  round negative results to improve empirical accuracy. Include isolated vertices.
+- Keep private result records separate from non-private exact evaluation. Never
+  attach raw degrees, exact edge/count data, seeds or RNG state to private records.
+  The vertex set is assumed fixed and public. Both seeded and unseeded NumPy
+  sampling are research simulations, not cryptographically secure mechanisms.
+- Formal privacy and accuracy proofs remain subject to independent review.
+  Treat deferred work as deferred, not completed; preserve historical checkpoints.

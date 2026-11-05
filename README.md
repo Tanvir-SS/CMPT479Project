@@ -37,7 +37,7 @@ phase 01 findings.
 independent permutation oracle. Import `count_four_paths` and
 `count_four_paths_bruteforce` from `private_graphlets.four_path_exact`, and
 `count_triangles` from `private_graphlets.triangle_exact`. These are non-private
-evaluation APIs; no private P4 estimator is implemented. See the
+evaluation APIs. See the
 [algorithm contract](docs/ALGORITHMS.md#exact-p4-and-triangle-counters-p4-phase-1)
 and [checkpoint 09](docs/status/checkpoints/09_exact_four_path_triangle.md).
 
@@ -48,7 +48,25 @@ released order/cap/RR table and adds only local count noise. The separate
 transcript with explicit `TriangleBudget` allocations. See
 [TRIANGLE_PROTOCOL.md](docs/TRIANGLE_PROTOCOL.md) for interfaces, conditional
 sensitivity, retained-triangle target and unresolved privacy questions.
-The full private P4 estimator remains unimplemented.
+**P4 Phase 3 adds the full experimental private P4 simulator** in
+`private_graphlets.four_path`: explicit `FourPathBudget`, five named randomness
+domains, independently noised degrees and one RR matrix shared with the reusable
+triangle component. The original P4 target can have positive truncation bias;
+outputs remain `experimental_unverified`. See
+[FOUR_PATH_IMPLEMENTATION.md](docs/FOUR_PATH_IMPLEMENTATION.md) and
+[checkpoint 11](docs/status/checkpoints/11_private_four_path_implementation.md).
+**Phase 4A adds non-private analytical MSE evaluation and a bounded validation
+study**, including shared-RR covariance and random order/cap effects. See
+[FOUR_PATH_ACCURACY.md](docs/FOUR_PATH_ACCURACY.md) and
+[checkpoint 12](docs/status/checkpoints/12_four_path_accuracy_validation.md).
+The five-graph, 300-trial-per-stream pilot and its deterministic replay are
+complete. No Phase 4B study, plotting or 2025 baseline is implemented.
+
+```bash
+# NON-PRIVATE synthetic evaluation; refuses an existing output directory.
+.venv/bin/python scripts/run_four_path_experiments.py run
+.venv/bin/python scripts/run_four_path_experiments.py verify --replay
+```
 
 **Phase 06 implements an experimental 4-clique prototype with k-CoreD ordering,
 public/noisy caps, local count noise and a six-factor debiased-RR baseline.**

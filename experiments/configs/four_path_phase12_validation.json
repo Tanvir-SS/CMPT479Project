@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "experiment_id": "four_path_phase12_validation",
+  "master_seed": 202611051204,
+  "trials": 300,
+  "prediction_trials": 300,
+  "budget": {"degree": 2.0, "ordering": 0.5, "rr": 1.0, "cap": 1.0, "count": 2.0},
+  "beta": 0.05,
+  "kcore": {"psi": 0.5, "threshold_fraction": 0.5, "bias_factor": 1},
+  "uncertainty_multiplier": 3.0,
+  "max_relative_se": 0.25,
+  "graphs": [
+    {"id": "path", "family": "fixture", "name": "path"},
+    {"id": "cycle", "family": "fixture", "name": "cycle"},
+    {"id": "diamond", "family": "fixture", "name": "diamond"},
+    {"id": "clique", "family": "fixture", "name": "clique"},
+    {"id": "er8", "family": "erdos_renyi", "n": 8, "p": 0.35, "seed": 120401}
+  ]
+}

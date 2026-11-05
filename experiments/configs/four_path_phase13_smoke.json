@@ -1,0 +1,179 @@
+{
+  "schema_version": 13,
+  "experiment_id": "four_path_phase13_smoke",
+  "master_seed": 202611051300,
+  "trials": 3,
+  "prediction_trials": 3,
+  "kcore": {
+    "psi": 0.5,
+    "threshold_fraction": 0.5,
+    "bias_factor": 1
+  },
+  "uncertainty_multiplier": 3.0,
+  "max_relative_se": 0.15,
+  "graphs": [
+    {
+      "id": "er05_n20",
+      "family": "erdos_renyi",
+      "n": 20,
+      "p": 0.05,
+      "seed": 130020
+    },
+    {
+      "id": "er30_n50",
+      "family": "erdos_renyi",
+      "n": 50,
+      "p": 0.3,
+      "seed": 131050
+    },
+    {
+      "id": "complete_n20",
+      "family": "complete",
+      "n": 20
+    }
+  ],
+  "cells": [
+    {
+      "id": "A_er05_n20_pilot",
+      "experiment": "A",
+      "graph": "er05_n20",
+      "allocation": "pilot",
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      },
+      "beta": 0.05
+    },
+    {
+      "id": "B_er30_n50_e1",
+      "experiment": "B",
+      "graph": "er30_n50",
+      "allocation": "e1",
+      "budget": {
+        "degree": 0.3,
+        "ordering": 0.1,
+        "rr": 0.25,
+        "cap": 0.15,
+        "count": 0.2
+      },
+      "beta": 0.05
+    },
+    {
+      "id": "C_er30_n50_balanced",
+      "experiment": "C",
+      "graph": "er30_n50",
+      "allocation": "balanced",
+      "budget": {
+        "degree": 0.8,
+        "ordering": 0.8,
+        "rr": 0.8,
+        "cap": 0.8,
+        "count": 0.8
+      },
+      "beta": 0.05
+    },
+    {
+      "id": "D2_complete_n20_cap05",
+      "experiment": "D2",
+      "graph": "complete_n20",
+      "allocation": "cap05",
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 0.5,
+        "count": 2
+      },
+      "beta": 0.9
+    }
+  ],
+  "controls": [
+    {
+      "id": "K4_B1",
+      "n": 4,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "cap": 1,
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      }
+    },
+    {
+      "id": "K4_B2",
+      "n": 4,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "cap": 2,
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      }
+    },
+    {
+      "id": "K10_B2",
+      "n": 10,
+      "order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "cap": 2,
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      }
+    },
+    {
+      "id": "K10_B4",
+      "n": 10,
+      "order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "cap": 4,
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      }
+    }
+  ]
+}

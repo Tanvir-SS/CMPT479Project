@@ -1,5 +1,24 @@
 # Privacy notes — 3-star research simulation
 
+**P4 Phase 4A, 2026-11-05:** [FOUR_PATH_ACCURACY.md](FOUR_PATH_ACCURACY.md)
+derives ideal unconditional MSE by averaging fixed-order/cap conditional error,
+including shared RR and `9*E[missed_triangles^2]`. Its calculator and all saved
+experiment diagnostics are explicitly non-private. The 300-trial-per-stream
+pilot uses published synthetic graphs/seeds, not protected-data releases.
+The ideal O(n^6) MSE/O(n^3) RMSE bound is a mathematical accuracy statement,
+not privacy certification or empirical scaling evidence. No private mechanism
+was changed, and independent executable/adaptive privacy review remains pending.
+
+**P4 Phase 3, 2026-11-05:** the full simulator and its ideal-model derivations
+are documented in [FOUR_PATH_IMPLEMENTATION.md](FOUR_PATH_IMPLEMENTATION.md).
+Degree reports use scale `2/epsilon_degree` for vector L1 sensitivity two. The
+nominal total is degree + ordering + RR + cap + count. One RR transcript is
+shared; the degree-product is postprocessing, while the triangle component still
+needs its local count noise. The original P4 target can incur positive bias
+`3*(T-E[T_retained])`. Shared-RR covariance is included in focused moment tests.
+No executable LEDP, universal RMSE theorem or O(n^2) end-to-end communication
+claim is made; full table dissemination could cost O(n^3).
+
 **P4 Phase 2, 2026-11-05:** the new modified EdgeOrientΔ triangle component
 has a separate [protocol specification](TRIANGLE_PROTOCOL.md). Its fixed-history
 prefix sensitivity is `(B-1)*(M+a)` for B>=2, zero otherwise. The standalone

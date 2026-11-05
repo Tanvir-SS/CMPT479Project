@@ -2,7 +2,56 @@
 
 Updated: **2026-11-05 (America/Vancouver)**.
 
-**Current phase: 10 — Modified EdgeOrientΔ triangles (P4 Phase 2) COMPLETE.**
+**Current phase: 12 — P4 MSE verification/infrastructure (Phase 4A) COMPLETE.**
+See [checkpoint 12](checkpoints/12_four_path_accuracy_validation.md) and
+[accuracy analysis](../FOUR_PATH_ACCURACY.md). Added non-private conditional MSE
+decomposition, random-history predictor and reproducible run/verify infrastructure.
+Fresh baseline: **587 passed**; new tests: **72 passed**; targeted: **267 passed**;
+final full suite: **659 passed in 21.24s**, no failures/errors/skips.
+The five-graph pilot ran **1500 full trials + 1500 independent predictions**;
+all artifacts verified with deterministic replay. All MSE discrepancies were
+within the predeclared three-combined-SE threshold; precision remains limited.
+No sampled missed triangles: truncation is covered by deterministic tests, not
+empirically exercised by this pilot. All references verified; private code unchanged.
+**STOP: Phase 4B is not started.** No baseline, large sweep, plots, commit or push.
+
+## Current phase checklist
+
+- [x] Read instructions, prior checkpoints and implementation/evaluation contracts.
+- [x] Rerun existing tests and independently derive complete ideal MSE.
+- [x] Implement non-private conditional decomposition and random-H predictor.
+- [x] Implement separate streams/artifacts, provenance, integrity and replay.
+- [x] Verify conditional moments, covariance and second-moment truncation averaging.
+- [x] Run new, targeted and full test suites without changing private algorithms.
+- [x] Run the fixed small pilot and verify/replay its artifacts.
+- [x] Record uncertainty, asymptotic assumptions, costs and limitations; stop.
+
+## Historical Phase 11 status
+
+**Phase 11 — Complete private P4 simulator (P4 Phase 3) COMPLETE.**
+See [checkpoint 11](checkpoints/11_private_four_path_implementation.md) and
+[implementation](../FOUR_PATH_IMPLEMENTATION.md). The five-stage simulator uses
+independent degree reports and exactly one RR table shared with the unchanged
+Phase 2 triangle component. The original P4 target may have positive truncation
+bias; privacy remains **experimental_unverified**. Fresh baseline: **501 passed**;
+new tests: **86 passed**; targeted: **301 passed**; final full suite:
+**587 passed in 19.42s**, no failures/errors/skips. All references verified.
+**STOP: Phase 4 is not started.** No baseline, full study, plots, commit or push.
+
+## Phase 11 checklist
+
+- [x] Read instructions, prior checkpoints, privacy APIs and conventions.
+- [x] Rerun the complete Phase 2 suite as a fresh baseline.
+- [x] Add explicit five-stage budget and separate named RNG streams.
+- [x] Add client-local noised degree reports and all-pairs postprocessing.
+- [x] Share exactly one immutable RR matrix with the unchanged triangle component.
+- [x] Verify assembly, transcript boundaries, means, bias, variance and covariance.
+- [x] Run new/targeted/full tests and verify reference/source preservation.
+- [x] Document limitations and computational/communication costs; stop before Phase 4.
+
+## Historical Phase 10 status
+
+**Phase 10 — Modified EdgeOrientΔ triangles (P4 Phase 2) COMPLETE.**
 See [checkpoint 10](checkpoints/10_modified_triangle_protocol.md) and
 [protocol specification](../TRIANGLE_PROTOCOL.md). Path A consumes an existing
 order/cap/RR table; Path B runs explicit-budget private ordering, cap and one RR
@@ -12,7 +61,7 @@ Baseline rerun: **430 passed**; targeted: **215 passed**; final full suite:
 **501 passed in 19.61s**, no failures/errors/skips. All references verified.
 **STOP: Phase 3 is not started.** No complete private P4 estimator or experiments.
 
-## Current phase checklist
+## Phase 10 checklist
 
 - [x] Read existing instructions, checkpoint, privacy contracts and Go source.
 - [x] Rerun the existing suite rather than assume historical results.

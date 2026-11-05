@@ -6,8 +6,13 @@ Phase 06's experimental clique/order implementation is documented separately in
 [FOUR_CLIQUE_IMPLEMENTATION.md](FOUR_CLIQUE_IMPLEMENTATION.md).
 Checkpoint 09 (P4 Phase 1) adds exact P4 and triangle counters, described below.
 P4 Phase 2 adds the experimental modified EdgeOrientΔ triangle component in
-[TRIANGLE_PROTOCOL.md](TRIANGLE_PROTOCOL.md); no complete private P4 estimator
-is implemented. The
+[TRIANGLE_PROTOCOL.md](TRIANGLE_PROTOCOL.md). P4 Phase 3 connects it to independently
+noised degrees and a shared RR table in the experimental complete P4 simulator;
+see [FOUR_PATH_IMPLEMENTATION.md](FOUR_PATH_IMPLEMENTATION.md) for its five-stage
+API, original-count target, truncation bias and unverified privacy status.
+Phase 4A's separate **non-private** accuracy calculator and experiment harness
+are documented in [FOUR_PATH_ACCURACY.md](FOUR_PATH_ACCURACY.md); they are not
+imported by private release modules. The
 [source review](SOURCE_REVIEW.md) records the exact-count identity also specified
 by the user from ESCAPE Section 6, Theorem 5.
 

@@ -1,0 +1,91 @@
+{
+  "review_date": "2026-11-05",
+  "original_checkouts": {
+    "escape": {
+      "path_at_review": "/home/tsshergi/escape",
+      "commit": "7ec2f93c524a0b47cdc8c639602e90d1c1fceff3",
+      "origin": "https://bitbucket.org/seshadhri/escape.git",
+      "status_porcelain": "",
+      "tracked_file_count": 82,
+      "tracked_tree_sha256": "db615f0af069a53864cb6516957906744b0778dc27695022a5ccffa5e015021d",
+      "reviewed_file_sha256": {
+        "Escape/FourVertex.h": "02ced4d7a04e7a6d7c0950f61f68b0ade630c8293d579b3288b43fd75649a31d",
+        "Escape/Digraph.h": "b2510da195a8fd1c1202c2d82e4db5ea21f7abfb758e82f599a18f42d208139c",
+        "Escape/GetAllCounts.h": "3d26892d81fbd869b44f7715e6c9c511bb24cf52e2a9e4de476e84079461e126",
+        "exe/count_four.cpp": "ca8a75dbd0c1d1c4dc08dfd1c940b07cfe0f98075a514619a9f4a9173d96a0e2",
+        "Escape/Triadic.h": "cdf6bf972fc8f6157d4118ae6c8ad7bd621f8ada38b7462228915bf6b1822db0",
+        "Escape/Conversion.h": "0ab3786155d04d038981b6b65a0e1fea83d16023194c289683cf4f9535ed3984",
+        "Escape/Graph.h": "7d9e4a84204c537b30b51b3ea6335e45effd6df8cf979c5936d4fa0336a22de5",
+        "Graph.cpp": "9ff0562d44996311f6518eec9e279150c3565549b60e167e37e68de97e4f6e47",
+        "GraphIO.cpp": "ed8568d50414433ed7328aeb745a09f813fdae6aebfec6535be0d8f362943f27",
+        "common.mk": "df85e91c5f2c7c87b16014292c98404964f6527b3cd36c447daa0a3a7b1b14d9",
+        "wrappers/subgraph_counts.py": "e0b839b67d2f4ab145d36686f3a2ef36cf6e6138c3304f1ebaa586c435afef71",
+        "LICENSE": "0e9637365ad4449e124cc8ec0de83102dfcd33e2d63922d99e25b94342ad1f7b"
+      }
+    },
+    "kcored": {
+      "path_at_review": "/home/tsshergi/DistributedLEDPGraphAlgos",
+      "commit": "b03da893ba1c38d3931708bac919562c5ab57963",
+      "origin": "git@github.com:mundrapranay/DistributedLEDPGraphAlgos.git",
+      "status_porcelain": "",
+      "tracked_file_count": 127,
+      "tracked_tree_sha256": "edcbcc10297a614f68a77760f5dae2974aaefa313117c2aa9edd745752491a14",
+      "reviewed_file_sha256": {
+        "algorithms/kcore-ldp.go": "6f498f3ca4ec94060023b66709f5966e2229eb4179aa156b1e9a27ed8267968b",
+        "algorithms/triangle-counting-ldp.go": "2deafff3bbfdc3d2e229af88722625fb47b7e093fae9942b0bd5c68370ca90c5",
+        "algorithms/rr-baseline.go": "43298cdac8268d98e068effdf194865bb5f719bdb0ee8453ad2d0632b243e3df",
+        "algorithms/rr-triangle-count.go": "2d531c9d8778fdf5227d02ee4bf9c2995dd4607e9076d124eacf5ef2ec654d97",
+        "data-structures/lds.go": "24ef79d9a3b8a2aa2f77156fccca53624f7c013c2046cbec7272464cd4b3d3d4",
+        "data-structures/graph.go": "719604af0452efb1bf0ce33308f2561a5613ce65510200d2081578095d262571",
+        "noise/geometric.go": "db6c59ad6166f6763a88f8c80777d69bf1ed05ab765432554cc7c41274db1d7d",
+        "noise/noise.go": "ba61caf7e5ecf814894463c0c90690b003658b61bc0914b95140016eef3cddf6",
+        "experiments/experiments.go": "e7033bda812a5a401c666521509bffa9588d24e1a6ebb1106526c97b8cade198",
+        "cmd/main.go": "cef34042d65717f2ccf8c54ea5b3a54c545da3f59ee10e942355b644706ab5c5",
+        "scripts/graph_partitioner.py": "76861a3dcab3e1717576f1b5942f76ad10566581bb777de28c3067a52c86a3e1",
+        "go.mod": "b408e838aeb2a6fe6c517e00e7e976386bf2ab7a5405ae5adb1d780ddcc109bc",
+        "go.sum": "d0689ff580cf2242954869f58acd154fd41f2582c8bc4097e6000adc4a65190c",
+        "LICENSE": "e6b2497f739a2e91269e34beb5f838f3d325e4d0f2461c986c6531d4118cb786"
+      }
+    },
+    "baseline": {
+      "path_at_review": "/home/tsshergi/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy",
+      "commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac",
+      "origin": "https://github.com/gcwsilver/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy.git",
+      "status_porcelain": "",
+      "tracked_file_count": 3,
+      "tracked_tree_sha256": "8cf765392e70365d6cea5f2b0e5445f908bb95e00db6f61beab4ad5ff1f9d6d9",
+      "reviewed_file_sha256": {
+        "README.md": "34eed4e4d6971af6a242c32f383affabf111ed7d0d7dc787789edcaf118eff92",
+        "babarasi_rr_mse.ipynb": "150a19105fec3638495006cb0a7328de372aa5ecebaa1b07d243293a786abd00",
+        "babarasi_square.ipynb": "f50ff289ccf1dcbe5a5a449b97724772866c7b1807ab21a36eec26e910dd7f5a"
+      }
+    }
+  },
+  "remote_access": [
+    {
+      "url": "https://bitbucket.org/seshadhri/escape.git",
+      "returncode": 0,
+      "stdout": "7ec2f93c524a0b47cdc8c639602e90d1c1fceff3\tHEAD\n4a85ad55b8786431889bf369effcf1d2e4164b07\trefs/heads/clang-workaround\nf2492f040c63825158a7e86221403f4ff2cd2d13\trefs/heads/cliques_through_sampling\n7ec2f93c524a0b47cdc8c639602e90d1c1fceff3\trefs/heads/master\n307957fd9bf024e7dea6db63f95d798a799c6519\trefs/heads/pybindings\nff6469596053eb7d88aa7d001eb4b0a327fc82d2\trefs/heads/sesh1\n",
+      "stderr": ""
+    },
+    {
+      "url": "https://github.com/mundrapranay/DistributedLEDPGraphAlgos.git",
+      "returncode": 0,
+      "stdout": "b03da893ba1c38d3931708bac919562c5ab57963\tHEAD\n7b006b1afb460347ef8f5f7df16ec34da61a6665\trefs/heads/gompi\nb03da893ba1c38d3931708bac919562c5ab57963\trefs/heads/main\n4bf8f6ed7747a53411ab6f16a2a4d2c8a952c3f0\trefs/heads/ppt\na1507589d1c88762efbad70540771deca94016c9\trefs/heads/vldb\nfc4d2fee03b986b6cae797015ede44513f12bf37\trefs/tags/v1.0\n",
+      "stderr": ""
+    },
+    {
+      "url": "https://github.com/gcwsilver/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy.git",
+      "returncode": 0,
+      "stdout": "85eff6efa2b1d649ee238620a998ec7f1d305aac\tHEAD\n85eff6efa2b1d649ee238620a998ec7f1d305aac\trefs/heads/main\n",
+      "stderr": ""
+    }
+  ],
+  "baseline_inclusion_permission": {
+    "reported_by": "project owner",
+    "date": "2026-11-05",
+    "scope": "Authors confirmed inclusion of their code in this academic research repository, as reported by the project owner.",
+    "license_assigned": false,
+    "broader_redistribution_scope": "Not documented; confirm before broader reuse."
+  }
+}

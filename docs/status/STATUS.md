@@ -1,87 +1,95 @@
 # Project status
 
-Updated: **2026-10-29** (America/Vancouver).
+Updated: **2026-11-05 (UTC)**.
 
-**Current phase: 06 — Full 4-clique research prototype COMPLETE. STOP POINT
-REACHED.** Fixed-order counting, k-CoreD integration, full local-report protocol,
-baseline, tests and preliminary synthetic comparisons are complete. Await
-independent mathematical review and explicit follow-up before another phase.
-No other pattern or expanded experimental grid has been started.
-
-The k-CoreD integration **succeeded** as a noised research implementation.
-The full executable privacy proof and adapted ordering's low-out-degree utility
-guarantee remain **unresolved**. Every experimental result is labeled
-`experimental_unverified`; tests do not establish LEDP.
+**Current phase: 07 — Repository portability COMPLETE. STOP POINT REACHED.**
+All three references are pinned submodules; recursive-clone and ZIP setup are
+verified. Algorithms, privacy mechanisms, budgets, configurations and saved
+research results are unchanged. No main-repository commit or push was performed.
+Await explicit follow-up before further work.
 
 ## Current phase checklist
 
-- [x] Read instructions, Phase-5 design/checkpoint and relevant reference/review documents.
-- [x] Implement and test exact/oriented counters, one-owner RR, stable cap selection and local noise.
-- [x] Run fixed-order tests before automatically proceeding to k-CoreD.
-- [x] Audit and port actual k-CoreD threshold/promotion/stop behavior.
-- [x] Use one consistent `(private_level, public_ID)` order throughout.
-- [x] Record full coordinator transcript and explicit two-endpoint ordering accounting.
-- [x] Integrate public/noisy/uncapped modes with explicit total-budget allocation.
-- [x] Add independent six-factor debiased-RR baseline at the same total epsilon.
-- [x] Keep public fixed, noised private and non-private oracle configurations distinct.
-- [x] Validate counts against actual ESCAPE and independent exact oracles.
-- [x] Run all regression tests, fix the observed CSV verification issue, preserve earlier tests.
-- [x] Complete 8-graph, 160-cell, 16,000-trial preliminary comparison.
-- [x] Save truth/retained targets, all raw trials/metrics, seeds/config and reference provenance.
-- [x] Replay every estimate/non-timing diagnostic and regenerate all eight plot files.
-- [x] Preserve 3-star results, external source trees and dependency lock.
-- [x] Complete implementation/audit/experiment documentation and independent-review package.
-- [x] Stop; no expanded grid, other pattern or next phase.
+- [x] Read instructions, prior status/checkpoint and current research/setup documentation.
+- [x] Record clean starting Git state and hashes; run 376-test baseline regression.
+- [x] Inspect all three originals, including baseline files, commit, remote and licensing.
+- [x] Verify public upstream access and pin all three exact reviewed revisions.
+- [x] Include baseline under owner-reported author permission; assign no new license.
+- [x] Add safe, idempotent submodule/ZIP bootstrap and three-reference integrity checks.
+- [x] Resolve explicit root > environment > project-relative bundled checkout.
+- [x] Validate default and explicit-override ESCAPE builds and exact comparisons.
+- [x] Run full regression: 392 passed, no skips/failures with bundled references.
+- [x] Test actual recursive clone of a temporary snapshot with all three public upstreams.
+- [x] Test ZIP-equivalent snapshot bootstrap and fresh locked environment.
+- [x] Verify Python-only installation works with optional references absent.
+- [x] Preserve algorithm modules, lock, configurations, saved results and original sources.
+- [x] Finish team instructions, source review, checkpoint and permission provenance.
+- [x] Stop without new utility experiments, optimization, commit or push.
 
-## Actual tests and findings
+## Actual verification
 
-- **376 passed in 28.54s**, zero failures/errors/skips in the final full suite.
-  All **256 previous tests** remain unchanged; **120 new tests** pass.
-  **43 marked ESCAPE integration cases** are included.
-- Initial full run had **1 failed, 375 passed** from CSV integer/float dtype
-  inference. The verifier fix preserves all numerical comparisons; no
-  estimator, seed or statistical tolerance was altered.
-- Phase-5 recheck: **1,112 actual ESCAPE comparisons**, **124,542 order checks**
-  and **10,240 finite sensitivity checks**, all pass.
-- **8/8 experiment graph counts** agree across actual ESCAPE, independent
-  four-sets, forward triples and the separately labeled noiseless k-CoreD oracle.
-- **16,000 trials**, 100 per graph/epsilon/method. All saved estimates and
-  non-timing diagnostics replay exactly. A complete repeated run matches every
-  non-timing CSV field; it is the same observations reproduced, not new trials.
-- Every oriented method has higher **observed** RMSE than the baseline in all
-  **32 graph–epsilon comparisons**. No general ranking or utility advantage is
-  claimed. Noisy caps equal n-1 in **92.0625%** of their trials; cap 3 loses many
-  original cliques. One hundred trials poorly resolve some RR tails.
-- **7,326 negative estimates** retained; **60 cells** have undefined relative
-  error because truth is zero. No output clipping or round-off projection.
-- All **82 ESCAPE + 127 Go tracked files** remain unchanged and clean. The
-  original 3-star artifact set still verifies: 15 graphs, 75 cells, 37,500 trials.
-- No third-party dependency changes. Offline editable reinstall, dependency
-  check, README CLI examples and wheel/source packaging succeed.
+- Before changes: **376 passed in 26.59s** using original ESCAPE.
+- After changes: **392 passed in 28.53s**, including **43 ESCAPE integration cases**.
+- Explicit ESCAPE argument over invalid environment: **43 passed**, 349 deselected.
+- Fresh recursive clone: **392 passed in 31.94s** with new Python 3.11.16 venv.
+- ZIP-style extraction/bootstrap: **392 passed in 31.39s** with new venv.
+- Fresh Python-only setup: **349 passed, 43 explicitly skipped** (ESCAPE absent).
+- **8/8 exact ESCAPE fixtures** agree; five exact/private/baseline CLI examples run.
+- Previous saved 3-star results verify: **15 graphs / 75 cells / 37,500 trials**.
+- Previous saved 4-clique results verify: **8 graphs / 160 cells / 16,000 trials**.
+- All **212 original reference tracked files** remain unchanged and clean.
+- All **87 protected algorithm/config/data/result/plot files** remain byte-identical.
+  The only edited existing package module is the ESCAPE adapter's path resolver.
+- No dependency changes; wheel/source builds and artifact exclusion checks pass.
 
-## Reports and artifacts
+The clone test uses a disposable Git snapshot because these changes are not yet
+committed/pushed. It actually executes `git clone --recurse-submodules` and fetches
+all three public upstreams. ZIP verification uses the same main-file snapshot
+without Git metadata or submodule contents. Both repeat bootstrap successfully
+and install the unchanged, hashed lock from a prepared wheelhouse. This does not
+claim that unpublished changes are already served by GitHub.
 
-- [Independent-review package 06 and exact file list](REVIEW_PACKAGE_06.md)
-- [Checkpoint 06: commands, outcomes, failures, differences and limitations](checkpoints/06_full_four_clique_implementation.md)
-- [Internal fixed-order checkpoint](checkpoints/06a_fixed_order_internal.md)
-- [Internal k-CoreD checkpoint](checkpoints/06b_kcore_internal.md)
-- [4-clique implementation](../FOUR_CLIQUE_IMPLEMENTATION.md)
-- [k-CoreD source/transcript audit](../KCORED_INTEGRATION.md)
-- [Preliminary experiments and observations](../FOUR_CLIQUE_EXPERIMENTS.md)
-- [Compact machine-readable observations](accuracy_06.json)
-- [Original Phase-5 design](../FOUR_CLIQUE_DESIGN.md) and [privacy notes](../PRIVACY_NOTES.md)
+## References
 
-Ignored generated outputs: `experiments/results/four_clique_phase06/`,
-`plots/four_clique_phase06/` and `build/phase06/`.
-Transfer these separately or reproduce them with README commands.
-The small accuracy JSON is intentionally retained with the source reports.
-Source changes are local/uncommitted; no commit or push was performed.
-Starting revision: `396f9215ac1c97b54e3717f4acf56f95442ae743`.
+| Reference | Pinned revision | Inclusion |
+|---|---|---|
+| ESCAPE | `7ec2f93c524a0b47cdc8c639602e90d1c1fceff3` | Submodule; Apache-2.0 |
+| DistributedLEDPGraphAlgos | `b03da893ba1c38d3931708bac919562c5ab57963` | Submodule; MIT |
+| Counting Graphlets of Size k under Local Differential Privacy | `85eff6efa2b1d649ee238620a998ec7f1d305aac` | Submodule; owner reports author permission for this academic repository, no license assigned |
 
-## Preserved earlier work
+The baseline has two 4-cycle notebooks and a README, not an all-six-pattern
+package. Our six-factor 4-clique comparator is independent and unchanged. Go
+and notebook sources are optional references, not Python runtime dependencies.
 
-Checkpoints 01–05 and the phase-04 [3-star review package](REVIEW_PACKAGE.md)
-remain historical records. The user reported independent review of 3-star work;
-no review memorandum was supplied in this phase. Its unchanged mechanism,
-counters, tests and results remain available under the original paths.
-The present stop permits no further implementation without explicit follow-up.
+## Reports, team handoff and limitations
+
+- [Team setup: clone/ZIP, commands, Git workflow and troubleshooting](../TEAM_SETUP.md)
+- [Checkpoint 07: all changed files, commands, outcomes and owner commit/push commands](checkpoints/07_repository_portability.md)
+- [Compact actual verification record](portability_07.json)
+- [Baseline source inspection and permission provenance](../SOURCE_REVIEW.md#phase-07-baseline-inspection-and-portable-references)
+- [Portable pin/hash manifest](../../third_party/references.json)
+- [Original source and public-access evidence](../references_phase07.json)
+
+The owner must commit and push before team members can download this phase from
+GitHub. `.gitmodules` and gitlinks are staged by submodule addition; other changes
+await review/staging. Ignored logs live under `build/phase07/`. Generated research
+results/plots remain ignored. No private emails or personal information are stored.
+Permission beyond the stated academic inclusion requires confirmation before
+broader redistribution; no open-source license is inferred for the notebooks.
+For pytest overrides use `--escape-root=/absolute/path` to avoid initial root
+selection treating a separate absolute argument as a test location.
+
+## Future work — not completed or authorized in this phase
+
+- Independent formal privacy/accuracy/utility review of the existing experimental
+  4-clique mechanism: [Phase-6 review package](REVIEW_PACKAGE_06.md). Executable
+  LEDP and adapted low-out-degree utility guarantees remain unresolved.
+- An equivalent general-RR baseline comparison for the private **3-star** estimator
+  has **not** been completed. Review the necessary specialization, normalization
+  and edge-budget convention before implementation and a separately authorized
+  experiment phase. Including authors' notebooks does not complete that task.
+- Further utility experiments, optimization or patterns require explicit follow-up.
+
+Historical [Phase 06](checkpoints/06_full_four_clique_implementation.md),
+[3-star review](REVIEW_PACKAGE.md), checkpoints 01–05 and all saved findings are
+preserved. Their mathematical qualifications and observed results still apply.

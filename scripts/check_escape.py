@@ -15,7 +15,7 @@ def main() -> None:
     project = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--escape-root", "--source", dest="escape_root", type=Path,
-                        help="ESCAPE source (defaults to ESCAPE_ROOT); --source is an alias.")
+                        help="ESCAPE source (defaults to ESCAPE_ROOT, then third_party/escape); --source is an alias.")
     args = parser.parse_args()
     build = project / "build/reference-checks/escape"
     adapter = EscapeAdapter(build_count_four(args.escape_root, build_dir=build))

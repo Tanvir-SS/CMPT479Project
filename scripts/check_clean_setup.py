@@ -17,6 +17,9 @@ def main() -> None:
         ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
         cwd=project,
     ).decode().split("\0")[:-1]
+    # Gitlinks are directories, not files. This check intentionally exercises
+    # Python-only setup; use the Phase-7 clone/ZIP check for reference bootstrap.
+    files = [name for name in files if (project / name).is_file()]
     log_path = project / "build/reproduction-check.log"
     with tempfile.TemporaryDirectory(prefix="cmpt479-reproduction-") as temporary:
         checkout = Path(temporary) / "project"
@@ -25,7 +28,7 @@ def main() -> None:
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(project / name, target)
         env = os.environ.copy()
-        for key in ("VIRTUAL_ENV", "PYTHONPATH", "PYTHONHOME"):
+        for key in ("VIRTUAL_ENV", "PYTHONPATH", "PYTHONHOME", "ESCAPE_ROOT", "KCORED_ROOT", "BASELINE_ROOT"):
             env.pop(key, None)
         env.update(PIP_NO_INDEX="1", PIP_FIND_LINKS=str(wheelhouse))
         with log_path.open("w") as log:

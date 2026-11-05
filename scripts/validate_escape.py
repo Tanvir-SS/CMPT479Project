@@ -16,7 +16,7 @@ from private_graphlets.escape_validation import compare_case, epsilon_diagnostic
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--escape-root", type=Path, help="ESCAPE source; defaults to ESCAPE_ROOT.")
+    parser.add_argument("--escape-root", type=Path, help="ESCAPE source; defaults to ESCAPE_ROOT, then third_party/escape.")
     parser.add_argument("--build-dir", type=Path, default=Path("build/escape"))
     parser.add_argument("--output", type=Path, default=Path("build/phase03/validation.json"))
     parser.add_argument("--samples-output", type=Path,

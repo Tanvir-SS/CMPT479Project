@@ -4,6 +4,11 @@ Harry testing the push
 CMPT 479/982 research project on Local Edge Differential Privacy (LEDP) and
 low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
+**Team installation:** [TEAM_SETUP.md](docs/TEAM_SETUP.md) covers recursive Git
+clones, GitHub ZIP downloads, all three pinned reference repositories, path
+overrides, tests and collaboration. Phase 07 changes portability only; research
+algorithms and previous results are unchanged.
+
 **Implemented: exact non-induced 3-star counting, the specified bias-corrected
 Laplace estimator, and an independent ESCAPE reference adapter.** All 24 phase-03
 validation graphs agree across formula, brute force and ESCAPE. Phase 04 adds
@@ -39,7 +44,7 @@ The [phase-05 design](docs/FOUR_CLIQUE_DESIGN.md) remains the mathematical
 specification. Its exact checks still agree with ESCAPE on 1,112 graphs:
 
 ```bash
-ESCAPE_ROOT=/path/to/escape .venv/bin/python scripts/check_four_clique_design.py
+.venv/bin/python scripts/check_four_clique_design.py
 ```
 
 The script saves raw reference output and its summary under ignored
@@ -56,8 +61,8 @@ After setup, these commands run the new functionality in the WSL virtual environ
 .venv/bin/private-graphlets estimate-four-cliques data/fixtures/clique.edges \
   --epsilon 4 --seed 123 --ordering kcore --cap-mode public --cap 3
 .venv/bin/private-graphlets baseline-four-cliques data/fixtures/clique.edges --epsilon 2 --seed 123
-ESCAPE_ROOT=/path/to/escape .venv/bin/python -m pytest -q
-ESCAPE_ROOT=/path/to/escape .venv/bin/python scripts/run_four_clique_experiments.py run
+.venv/bin/python -m pytest -q
+.venv/bin/python scripts/run_four_clique_experiments.py run
 .venv/bin/python scripts/run_four_clique_experiments.py verify --replay
 .venv/bin/python scripts/run_four_clique_experiments.py plot
 ```
@@ -81,8 +86,9 @@ The default `python3` on Ubuntu 22.04 may be Python 3.10; use `python3.11` expli
 sudo apt-get update
 sudo apt-get install git build-essential python3.11 python3.11-venv
 python3.11 --version
-git clone https://github.com/Tanvir-SS/CMPT479Project.git
+git clone --recurse-submodules https://github.com/Tanvir-SS/CMPT479Project.git
 cd CMPT479Project
+bash scripts/bootstrap_references.sh
 bash scripts/setup.sh
 source .venv/bin/activate
 private-graphlets info
@@ -122,8 +128,11 @@ PIP_NO_INDEX=1 PIP_FIND_LINKS="$PWD/build/wheelhouse" bash scripts/setup.sh
 
 To verify a fresh environment without replacing your working `.venv`, run
 `.venv/bin/python scripts/check_clean_setup.py` after downloading the wheelhouse.
-This copies Git-visible project files to a temporary directory, runs setup there
-offline, preserves `build/reproduction-check.log`, and removes the temporary copy.
+This copies Git-visible project files (excluding reference gitlinks) to a temporary
+directory and verifies Python-only setup offline, with explicit ESCAPE skips. It
+preserves `build/reproduction-check.log`. To test complete recursive-clone and ZIP
+setup with references, run `.venv/bin/python scripts/check_portable_setup.py`; see
+[TEAM_SETUP.md](docs/TEAM_SETUP.md).
 
 ## Count non-induced 3-stars
 
@@ -162,7 +171,6 @@ unresolved questions. No formal DP proof is claimed.
 After setting up the read-only ESCAPE checkout as below, run from the project root:
 
 ```bash
-export ESCAPE_ROOT="$(realpath ../escape)"
 .venv/bin/python scripts/run_experiments.py run
 .venv/bin/python scripts/run_experiments.py verify --replay
 .venv/bin/python scripts/run_experiments.py plot
@@ -234,33 +242,51 @@ If the home cache is unwritable, set
 
 ## Reference checks (optional for Python setup)
 
-The reference repositories are separate, read-only checkouts. Their exact reviewed
-revisions and source fingerprints are in [references.json](docs/references.json).
-The original locations on this machine are `/home/tsshergi/escape` and
-`/home/tsshergi/DistributedLEDPGraphAlgos`. On another machine:
+All three reference repositories are pinned Git submodules under `third_party/`.
+Their roles are independent exact verification (ESCAPE), the original Go k-CoreD /
+EdgeOrientΔ implementation, and the baseline authors' 4-cycle notebooks. None
+replaces our Python algorithms. Go and the notebooks are not runtime dependencies.
 
 ```bash
-git clone https://bitbucket.org/seshadhri/escape.git ../escape
-git -C ../escape checkout 7ec2f93c524a0b47cdc8c639602e90d1c1fceff3
-git clone https://github.com/mundrapranay/DistributedLEDPGraphAlgos.git ../DistributedLEDPGraphAlgos
-git -C ../DistributedLEDPGraphAlgos checkout b03da893ba1c38d3931708bac919562c5ab57963
-export ESCAPE_ROOT="$(realpath ../escape)"
-
-# All 24 three-way comparisons plus six bounded epsilon diagnostics.
-.venv/bin/python scripts/validate_escape.py
-
-# All Python and real ESCAPE tests; the fixture builds ESCAPE once.
+bash scripts/bootstrap_references.sh
+.venv/bin/python scripts/reference_fingerprints.py --verify
 .venv/bin/python -m pytest -q
-
-# Optional original eight hand-counted six-column fixtures.
-.venv/bin/python scripts/check_escape.py
+.venv/bin/python scripts/check_escape.py  # eight exact-only reference fixtures
 ```
 
-Alternatively pass `--escape-root /path/to/escape` to either script or pytest;
-the argument overrides the environment. No personal path is required by the
-adapter. Without either setting, **34 real integration tests explicitly skip**;
-ordinary Python setup still works. A configured missing/broken checkout or failed
-build is an error, never a skip or a substitute Python result.
+For a GitHub ZIP, extract the main repository, run the same bootstrap command,
+then `bash scripts/setup.sh`. Bootstrap handles absent Git metadata, fetches
+public HTTPS upstreams and verifies pinned revisions/content. It refuses modified
+or mismatched existing source trees. ZIP-equivalent snapshots and recursive
+clones were tested; unpublished Phase-7 changes require the owner's commit/push
+before GitHub can serve them. See [team instructions](docs/TEAM_SETUP.md).
+
+Reference resolution: explicit `--escape-root` > `ESCAPE_ROOT` >
+`third_party/escape`. Defaults and relative overrides use the project root,
+independently of the working directory. `KCORED_ROOT` and `BASELINE_ROOT` plus
+`--kcored-root` / `--baseline-root` configure the fingerprint utility similarly.
+Without an ESCAPE checkout, its **43 integration cases explicitly skip**; ordinary
+Python estimation still works. A configured or partially populated broken checkout
+fails instead of skipping. Default bundled sources are automatically detected.
+
+Exact pins and inclusion basis:
+
+| Reference | Commit | License / permission |
+|---|---|---|
+| ESCAPE | `7ec2f93c524a0b47cdc8c639602e90d1c1fceff3` | Apache-2.0 |
+| DistributedLEDPGraphAlgos | `b03da893ba1c38d3931708bac919562c5ab57963` | MIT |
+| Counting Graphlets of Size k under Local Differential Privacy | `85eff6efa2b1d649ee238620a998ec7f1d305aac` | No license found; project owner reports author permission for inclusion in this academic repository |
+
+No license is assigned to the baseline. Broader redistribution scope requires
+confirmation; no private correspondence is published. The authors' notebooks
+implement 4-cycle examples, not all six patterns. Our 4-clique RR comparator is
+independently implemented. An equivalent 3-star baseline comparison remains future
+work. See [source review](docs/SOURCE_REVIEW.md#phase-07-baseline-inspection-and-portable-references).
+
+[third_party/references.json](third_party/references.json) is the portable pin/hash
+manifest. [references_phase07.json](docs/references_phase07.json) records original
+source inspection; [references.json](docs/references.json) and previous research
+provenance are preserved. The original three external directories are unchanged.
 
 Compilation reads the original four C++ translation units and puts the binary,
 command, source hashes and warning log in `build/escape/` (`build/escape-pytest/`
@@ -287,7 +313,7 @@ with Go 1.26.4). To reproduce its compile checks without writing to the original
 
 ```bash
 mkdir -p build/reference-checks/go-source
-git -C ../DistributedLEDPGraphAlgos archive b03da893ba1c38d3931708bac919562c5ab57963 | tar -x -C build/reference-checks/go-source
+git -C third_party/DistributedLEDPGraphAlgos archive b03da893ba1c38d3931708bac919562c5ab57963 | tar -x -C build/reference-checks/go-source
 export GOCACHE="$PWD/.cache/go-build"
 export GOMODCACHE="$PWD/.cache/go-mod"
 export GOPATH="$PWD/.cache/go"
@@ -306,7 +332,10 @@ paths and parameter overrides described in the source review.
 ```text
 src/private_graphlets/  Graphs, counters, noise, estimator, CLI and ESCAPE adapter
 tests/                 Exact, mechanism, statistical, CLI and ESCAPE integration tests
-scripts/               Locked setup, lock regeneration and ESCAPE checks
+scripts/               Locked setup, reference bootstrap/integrity and ESCAPE checks
+third_party/           Three pinned submodules plus pin/hash manifest
+.gitmodules            Public reference URLs (gitlinks pin exact commits)
+docs/TEAM_SETUP.md     Clone/ZIP setup, commands, troubleshooting and collaboration
 data/fixtures/         Tiny public synthetic reference inputs and expected counts
 data/raw/              Ignored original datasets
 data/processed/        Ignored processed datasets
@@ -328,6 +357,6 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Phase 06 stops after the integrated 4-clique prototype, preliminary comparison,
-tests and review documentation. Do not expand to other patterns or start another
-phase without explicit follow-up.**
+**Phase 07 stops after repository portability and regression validation. Do not
+change privacy mechanisms, optimize algorithms, run new utility experiments or
+start another phase without explicit follow-up. No automatic commit/push.**

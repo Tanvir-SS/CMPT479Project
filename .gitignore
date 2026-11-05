@@ -32,3 +32,6 @@ experiments/results/*
 plots/*
 !plots/README.md
 out.txt
+
+# Temporary reference downloads
+/third_party/.bootstrap-*/

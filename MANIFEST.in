@@ -7,3 +7,5 @@ recursive-include data/fixtures *.edges *.json
 recursive-include experiments *.md
 recursive-include experiments/configs *.json
 recursive-include plots *.md
+include .gitmodules
+include third_party/README.md third_party/references.json

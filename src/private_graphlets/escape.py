@@ -18,6 +18,7 @@ import subprocess
 import tempfile
 
 from private_graphlets.graph import SimpleGraph
+from private_graphlets.references import reference_path
 
 
 MAX_VERTICES = 1_000
@@ -46,14 +47,17 @@ class EscapeOutputError(EscapeError):
 
 
 def resolve_escape_root(root: str | Path | None = None) -> Path:
-    """Explicit root takes precedence over ESCAPE_ROOT; no machine-specific default."""
-    configured = root if root is not None else os.environ.get("ESCAPE_ROOT")
-    if not configured:
-        raise EscapeConfigurationError("provide --escape-root or set ESCAPE_ROOT")
-    source = Path(configured).expanduser().resolve()
+    """Explicit root > ESCAPE_ROOT > project-relative third_party/escape."""
+    try:
+        source = reference_path("escape", root)
+    except ValueError as exc:
+        raise EscapeConfigurationError(str(exc)) from exc
     for name in (*TRANSLATION_UNITS, "Escape/GetAllCounts.h"):
         if not (source / name).is_file():
-            raise EscapeConfigurationError(f"missing ESCAPE source: {source / name}")
+            raise EscapeConfigurationError(
+                f"missing ESCAPE source: {source / name}; run bash scripts/bootstrap_references.sh "
+                "or provide --escape-root / ESCAPE_ROOT"
+            )
     return source
 
 

@@ -15,7 +15,7 @@ def main():
     run = commands.add_parser("run", help="Run all configured trials; requires real ESCAPE.")
     run.add_argument("--config", type=Path, default=Path("experiments/configs/three_star_phase04.json"))
     run.add_argument("--output", type=Path, default=Path("experiments/results/three_star_phase04"))
-    run.add_argument("--escape-root", type=Path, help="ESCAPE source, or use ESCAPE_ROOT.")
+    run.add_argument("--escape-root", type=Path, help="ESCAPE source, or ESCAPE_ROOT, then third_party/escape.")
     run.add_argument("--build-dir", type=Path, default=Path("build/phase04/escape"))
     verify = commands.add_parser("verify", help="Verify saved hashes and recompute every metric.")
     verify.add_argument("--results", type=Path, default=Path("experiments/results/three_star_phase04"))

@@ -37,6 +37,8 @@ def source(tmp_path):
 
 
 def test_root_configuration(monkeypatch, source, tmp_path):
+    # Isolate this missing-default test from a real bundled checkout.
+    monkeypatch.setattr("private_graphlets.references.project_root", lambda: tmp_path)
     monkeypatch.delenv("ESCAPE_ROOT", raising=False)
     with pytest.raises(EscapeConfigurationError, match="ESCAPE_ROOT"):
         resolve_escape_root()

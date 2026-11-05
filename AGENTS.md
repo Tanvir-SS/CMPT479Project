@@ -11,7 +11,8 @@ and its latest checkpoint before changing the project.
   Sensitivity, adjacency model, composition, and all released transcripts need
   mathematical analysis. The reference code is not proof of our implementation.
 - Keep `/home/tsshergi/escape` and
-  `/home/tsshergi/DistributedLEDPGraphAlgos` unchanged. Read and hash them in place;
+  `/home/tsshergi/DistributedLEDPGraphAlgos` and
+  `/home/tsshergi/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy` unchanged. Read and hash them in place;
   compile into `build/` or use isolated copies. Never run an upstream setup,
   partitioning, cleanup, or experiment script against the original checkout.
 - Distinguish **non-induced** counts from induced counts, embeddings, and vertex
@@ -22,11 +23,25 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. Phase 06
-  authorizes the fixed-order and k-CoreD 4-clique prototype, baseline, tests,
-  small public-synthetic comparisons and independent-review handoff. **Stop when
-  those are complete. Do not expand to other patterns or start another phase
-  without explicit follow-up.** Preserve all earlier reports as historical records.
+- Never silently continue past an explicitly requested stopping point. Phase 07
+  authorizes repository portability, pinned reference setup, tests and team
+  documentation only. **Stop when complete; do not change algorithms, privacy
+  formulas/budgets, experiment configurations or results, start new experiments,
+  or commit/push automatically.** Preserve all earlier reports as historical records.
+- All three references are pinned submodules under `third_party/`. Keep their
+  sources unchanged too. Use `bash scripts/bootstrap_references.sh`, never
+  `git submodule update --remote` for reproduction. Preserve exact gitlinks and
+  `third_party/references.json`; review pin changes deliberately.
+- Baseline inclusion is authorized by the project owner's report of author
+  permission for this academic repository (2026-11-05). No license was found at
+  its pin and none is assigned here. Do not publish private correspondence;
+  confirm permission scope before broader redistribution. The two notebooks
+  demonstrate 4-cycles, not all six patterns. They are not imported by our package.
+- Reference resolution is explicit argument > `ESCAPE_ROOT` / `KCORED_ROOT` /
+  `BASELINE_ROOT` > project-relative `third_party/` checkout. Never silently
+  replace a configured source. Fingerprint all three; preserve historical
+  path/revision provenance. Go and notebook environments are not Python runtime
+  dependencies. Future 3-star baseline comparison remains unimplemented.
 - Use Python 3.11 and `.venv`; keep code under `src/private_graphlets/`. Recreate
   with `bash scripts/setup.sh`; run `.venv/bin/python -m pytest -q`.
 - Pin direct dependencies in `pyproject.toml`, regenerate the complete hashed
@@ -47,8 +62,9 @@ and its latest checkpoint before changing the project.
   sampling are research simulations, not cryptographically secure mechanisms.
 - Formal privacy and accuracy proofs remain subject to independent review.
   Treat deferred work as deferred, not completed; preserve historical checkpoints.
-- Configure ESCAPE with `ESCAPE_ROOT` or `--escape-root`. Run integration tests
-  with that configuration; an unconfigured skip is not a passed comparison.
+- Use bundled ESCAPE by default, or override with `ESCAPE_ROOT` / `--escape-root`.
+  Run integration tests against actual source; an absent-source skip is not a
+  passed comparison.
   Preserve actual ESCAPE output and provenance separately from Python counters.
   The adapter pads graphs below four vertices with isolates and accepts at most
   1,000 vertices. Do not silently bypass its precision/scope guards.

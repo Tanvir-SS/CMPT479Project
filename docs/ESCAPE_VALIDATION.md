@@ -8,6 +8,15 @@ parameters, compiler information and source/binary hashes. See the
 [checkpoint](status/checkpoints/03_escape_validation.md) for commands and tests.
 No full experiment grid or private 4-clique implementation was started.
 
+## Current setup (Phase 07)
+
+`bash scripts/bootstrap_references.sh` installs pinned sources into
+`third_party/escape`. The adapter now resolves explicit root > `ESCAPE_ROOT` >
+that checkout, anchored at the project root. Tests auto-detect bundled sources.
+The historical results and commands below remain records of Phase 03. Current
+clone/ZIP instructions are in [TEAM_SETUP.md](TEAM_SETUP.md); only path resolution
+changed, not counting, normalization, parsing or numerical guards.
+
 ## Reviewed source and build
 
 Reference: ESCAPE commit `7ec2f93c524a0b47cdc8c639602e90d1c1fceff3`.
@@ -25,7 +34,7 @@ export ESCAPE_ROOT=/path/to/escape
 .venv/bin/python -m pytest -q
 # Explicit argument alternative:
 .venv/bin/python scripts/validate_escape.py --escape-root /path/to/escape
-.venv/bin/python -m pytest -q --escape-root /path/to/escape
+.venv/bin/python -m pytest -q --escape-root=/path/to/escape
 ```
 
 The builder executes an argument list equivalent to:
@@ -107,7 +116,7 @@ sets. Parsing existing clique columns is not development of a clique estimator.
 from private_graphlets.escape import EscapeAdapter, build_count_four
 from private_graphlets.graph import load_edge_list
 
-binary = build_count_four()  # ESCAPE_ROOT, or escape_root="/path/to/escape"
+binary = build_count_four()  # Bundled source; override via ESCAPE_ROOT or escape_root=...
 adapter = EscapeAdapter(binary)
 graph = load_edge_list("data/fixtures/clique.edges")
 count = adapter.count_three_stars(graph)  # integer 4, actually runs ESCAPE

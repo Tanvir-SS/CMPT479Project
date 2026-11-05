@@ -386,3 +386,61 @@ coding private estimators. A successful smoke test supplies no formal privacy
 claim. At the end of phase 01 this later work was deferred. See the current
 [status](status/STATUS.md) for the subsequently authorized 3-star implementation;
 no orientation or ESCAPE integration was added in phase 02.
+
+## Phase-07 baseline inspection and portable references
+
+Inspection: **2026-11-05 (UTC)**. This addendum does not rewrite the earlier source
+review or research outcomes. All three original source directories remain unchanged.
+Current pins/hashes are in [third_party/references.json](../third_party/references.json);
+read-only original-checkout fingerprints and public remote responses are retained
+in [references_phase07.json](references_phase07.json).
+
+The baseline directory is a clean Git repository with remote
+`https://github.com/gcwsilver/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy.git`
+and exact HEAD `85eff6efa2b1d649ee238620a998ec7f1d305aac`. Public, unauthenticated
+`git ls-remote` returned this same HEAD and `refs/heads/main`. The
+[public repository](https://github.com/gcwsilver/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy)
+also exposes the same three files. It contains **only** `README.md`,
+`babarasi_rr_mse.ipynb` (15 cells), and `babarasi_square.ipynb` (19 cells).
+There is no installable package, tests, dependency lock or license text. All code
+cells were read as JSON without executing notebooks or retaining new output.
+
+| File | Actual implemented behavior |
+|---|---|
+| `babarasi_rr_mse.ipynb` | Creates an unseeded SBM (n=20; BA alternative commented out), enumerates ordered distinct four-vertex cycles, divides by 8, flips each unordered edge with RR (epsilon 5), and recounts cycles in the perturbed graph. Despite the filename it contains no repeated-trial MSE experiment and no polynomial debiasing step. |
+| `babarasi_square.ipynb` | Creates an unseeded SBM (n=100; BA alternative commented out), performs RR, forms adjusted weights `exp(e)/(exp(e)-1)` and `-1/(exp(e)-1)`, and evaluates a four-edge product over distinct four-vertex permutations divided by 8. This is a non-induced 4-cycle specialization. |
+
+The square notebook's preliminary true-count loop does not enforce `i != k` or
+`j != l`, unlike the other notebook. It can include repeated-vertex closed walks;
+it should not be trusted as an exact simple-cycle oracle without separate review.
+Its final `permutations(..., 4)` product does enforce distinct vertices. Some
+comments on present/absent weight assignment are reversed relative to the code.
+Both notebooks mutate the sampled graph in place, depend on cell execution order,
+and leave graph/random seeds unset. No 3-star, 4-clique or all-six-pattern
+implementation was found. The only reusable named counting function is the
+square notebook's four-edge permutation sum, not a generic pattern-count library.
+No notebook behavior or source file was changed in this phase.
+
+The README lists Python 3.9.12, NetworkX 3.2.1, Matplotlib 3.4.3 and NumPy 1.22.0.
+Cells also use `math`, `random`, and `itertools`; a notebook frontend is separate.
+Those versions are descriptive upstream requirements, not our tested lock. They
+are not installed into our Python 3.11 environment.
+
+**Inclusion permission:** the project owner reports that the authors of all three
+references confirmed permission to include their code in this academic research
+repository. The baseline is therefore included as a third pinned submodule under
+that reported permission. No software license is invented or assigned. No private
+correspondence or personal information is published. Permission scope beyond this
+academic repository is not documented and requires owner confirmation before
+broader redistribution. Public access alone was not treated as a license grant;
+[GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
+distinguishes public visibility from an explicit software license.
+
+Our `four_clique_baseline.py` remains an independent six-factor, unordered-four-set
+specialization of the general debiased-RR approach, with canonical unordered-pair
+ownership and our documented adjacency/privacy convention. It does not import the
+notebooks or reproduce their four-cycle experiments. Availability of the authors'
+source does not establish equivalent implementations for every pattern. A future
+3-star comparison still needs a reviewed three-edge specialization, counting
+normalization and budget alignment, tests, and a separately authorized experiment
+phase. Nothing in Phase 07 implements or evaluates that missing comparator.

@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-05",
+  "phase": 7,
+  "status": "complete",
+  "starting_main_commit": "58f2fadd94329ad9ffb7282e12afee5bef5c816a",
+  "main_commit_or_push_performed": false,
+  "references": {
+    "escape": {
+      "url": "https://bitbucket.org/seshadhri/escape.git",
+      "commit": "7ec2f93c524a0b47cdc8c639602e90d1c1fceff3",
+      "integration": "submodule",
+      "tracked_tree_sha256": "db615f0af069a53864cb6516957906744b0778dc27695022a5ccffa5e015021d"
+    },
+    "kcored": {
+      "url": "https://github.com/mundrapranay/DistributedLEDPGraphAlgos.git",
+      "commit": "b03da893ba1c38d3931708bac919562c5ab57963",
+      "integration": "submodule",
+      "tracked_tree_sha256": "edcbcc10297a614f68a77760f5dae2974aaefa313117c2aa9edd745752491a14"
+    },
+    "baseline": {
+      "url": "https://github.com/gcwsilver/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy.git",
+      "commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac",
+      "integration": "submodule",
+      "tracked_tree_sha256": "8cf765392e70365d6cea5f2b0e5445f908bb95e00db6f61beab4ad5ff1f9d6d9"
+    }
+  },
+  "tests": {
+    "before": {
+      "passed": 376,
+      "skipped": 0,
+      "seconds": 26.59
+    },
+    "bundled_default": {
+      "passed": 392,
+      "skipped": 0,
+      "seconds": 28.53
+    },
+    "explicit_escape_override": {
+      "passed": 43,
+      "deselected": 349,
+      "seconds": 19.46
+    },
+    "fresh_recursive_snapshot_clone": {
+      "passed": 392,
+      "skipped": 0,
+      "seconds": 31.94
+    },
+    "zip_snapshot": {
+      "passed": 392,
+      "skipped": 0,
+      "seconds": 31.39
+    },
+    "fresh_python_only": {
+      "passed": 349,
+      "skipped": 43,
+      "seconds": 18.61
+    }
+  },
+  "known_failed_check": {
+    "command": "pytest --escape-root /home/tsshergi/escape",
+    "exit": 4,
+    "tests_run": 0,
+    "resolution": "Use --escape-root=/home/tsshergi/escape to avoid pytest initial root discovery ambiguity; 43 integration cases pass."
+  },
+  "exact_escape_fixtures_passed": 8,
+  "private_and_exact_cli_examples_passed": 5,
+  "protected_preexisting_files_byte_identical": 87,
+  "original_reference_files_byte_identical": 212,
+  "lock_sha256": "ffbb7a1cbe39daaaecba70d68bdd163d5e8e27bbf3a39f17a47f6e13fff6ed4f",
+  "new_utility_experiments": false,
+  "prior_results_verified": {
+    "three_star": {
+      "graphs": 15,
+      "cells": 75,
+      "trials": 37500
+    },
+    "four_clique": {
+      "graphs": 8,
+      "cells": 160,
+      "trials": 16000
+    }
+  },
+  "fresh_setup_scope": "Temporary Git fixture and ZIP-equivalent snapshot; actual public reference fetches, new Python 3.11.16 venvs, existing hash-locked wheelhouse. Main GitHub Phase-7 publication awaits owner commit/push.",
+  "evidence_directory": "build/phase07/",
+  "baseline_permission": "Author permission for academic-repository inclusion reported by project owner; no software license assigned."
+}

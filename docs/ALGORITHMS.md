@@ -1,9 +1,13 @@
-# Implemented algorithms — 3-star counting
+# Implemented algorithms
 
-Only **non-induced 3-star counting** is implemented. Phase 02 implemented the
-counters and simulator; phase 03 adds an independent ESCAPE reference adapter
-and validation, described in [ESCAPE_VALIDATION.md](ESCAPE_VALIDATION.md).
-No private 4-clique estimator or orientation algorithm has been added. The
+The original sections below document **non-induced 3-star counting**. Phase 02
+implemented its counters and simulator; phase 03 added the ESCAPE adapter.
+Phase 06's experimental clique/order implementation is documented separately in
+[FOUR_CLIQUE_IMPLEMENTATION.md](FOUR_CLIQUE_IMPLEMENTATION.md).
+Checkpoint 09 (P4 Phase 1) adds exact P4 and triangle counters, described below.
+P4 Phase 2 adds the experimental modified EdgeOrientΔ triangle component in
+[TRIANGLE_PROTOCOL.md](TRIANGLE_PROTOCOL.md); no complete private P4 estimator
+is implemented. The
 [source review](SOURCE_REVIEW.md) records the exact-count identity also specified
 by the user from ESCAPE Section 6, Theorem 5.
 
@@ -66,6 +70,49 @@ subset, considers each of its four vertices as center, and directly tests the
 three required edges. It never calls the degree formula. Extra leaf edges do
 not invalidate a copy. Its O(n^4) work is appropriate only for small graph tests.
 Neither exact counter is called by the private estimator.
+
+## Exact P4 and triangle counters (P4 Phase 1)
+
+These APIs accept validated `SimpleGraph` objects, preserve their adjacency and
+isolates, and return Python integers. They are non-private ground truth only.
+
+- `private_graphlets.triangle_exact.count_triangles(graph: SimpleGraph) -> int`
+  intersects adjacent vertices' neighbor sets for `u < v`, counting only common
+  vertices `w > v`. Each triangle has exactly one ordering `u < v < w`.
+- `private_graphlets.four_path_exact.count_four_paths(graph: SimpleGraph) -> int`
+  computes `sum_{u<v, uv in E} (d(u)-1)*(d(v)-1) - 3*count_triangles(graph)`.
+  The central edge and its two outer neighbors select a path. The only invalid
+  selections have coincident outer vertices: one per edge of each triangle.
+  Subtracting `3*T` leaves each undirected four-distinct-vertex path once.
+- `count_four_paths_bruteforce(graph: SimpleGraph) -> int` in the same module
+  enumerates ordered distinct quadruples, checks only consecutive edges, and
+  divides by two for reversal. It never calls the identity or triangle counter.
+
+Extra host edges do not invalidate a non-induced path. K4 contains 12 P4 copies,
+not one vertex-set copy or 24 directed embeddings. ESCAPE names P4 `3-path`:
+use `run.counts.connected_four["3-path"]` (native four-vertex index 6, output
+line 13). Triangles are `run.counts.three_vertex[3]` (output line 6); adding
+isolates for ESCAPE normalization preserves this connected three-vertex count.
+
+With n vertices, m undirected edges, maximum degree D, and expected O(1)
+frozenset membership, triangle work is
+`O(n + m + sum_{uv in E} min(d(u), d(v)))`, hence `O(n + m*D)` and worst-case
+`O(n^3)`. The intersection materializes at most D elements, so auxiliary space
+is `O(1+D)`. P4 adds O(n+m) degree/product work and O(n) degree storage; its
+time bound is the same and auxiliary storage is O(1+n). The brute-force oracle
+visits `n*(n-1)*(n-2)*(n-3)` quadruples for n>=4: expected O(n^4) time and
+O(1+n) auxiliary space for `itertools.permutations`' pool/indices. These bounds
+exclude the existing O(n+m) graph and treat integer arithmetic as unit cost;
+Python integers avoid fixed-width overflow but incur bit-length-dependent costs.
+
+`tests/test_four_path_exact.py` checks all 1,100 labeled simple graphs through
+five vertices, independent triple enumeration, named fixtures, complete graphs,
+isolates, relabeling, non-induced normalization, repeatability, and immutability.
+Its marked integration tests use the existing ESCAPE fixture and preserve raw
+native evidence under ignored `build/phase09/escape/`. See
+[checkpoint 09](status/checkpoints/09_exact_four_path_triangle.md) for executed
+commands/results. No dependencies, privacy mechanisms, or experiment settings
+are changed by these exact counters.
 
 ## Noise and local correction
 

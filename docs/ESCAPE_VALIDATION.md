@@ -19,6 +19,15 @@ changed, not counting, normalization, parsing or numerical guards.
 
 ## Reviewed source and build
 
+P4 Phase 1 (checkpoint 09) additionally compares the exact Python P4 formula,
+independent ordered-quadruple oracle, and triangle counter on all eight existing
+fixtures. `tests/test_four_path_exact.py` reuses the session adapter. Native P4
+is `connected_four["3-path"]`; triangles are `three_vertex[3]`. Raw native
+input/output and separate Python values are saved under `build/phase09/escape/`,
+with build provenance at `build/escape-pytest/build.json`. See
+[checkpoint 09](status/checkpoints/09_exact_four_path_triangle.md) for current
+commands/results; the Phase 03 results below remain historical.
+
 Reference: ESCAPE commit `7ec2f93c524a0b47cdc8c639602e90d1c1fceff3`.
 The upstream README says to run `make`, then use
 `wrappers/subgraph_counts.py <input> <3|4|5> [-i]`. The root Makefile builds

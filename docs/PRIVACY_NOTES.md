@@ -1,5 +1,14 @@
 # Privacy notes — 3-star research simulation
 
+**P4 Phase 2, 2026-11-05:** the new modified EdgeOrientΔ triangle component
+has a separate [protocol specification](TRIANGLE_PROTOCOL.md). Its fixed-history
+prefix sensitivity is `(B-1)*(M+a)` for B>=2, zero otherwise. The standalone
+proposed accounting is ordering + cap + RR + count; the reusable component
+charges only count given previously released inputs. It targets retained
+triangles, preserves negative estimates and remains `experimental_unverified`.
+The derivation and tests do not certify full adaptive or executable LEDP.
+Historical discussions below remain records of their respective phases.
+
 **Scope update, 2026-10-29:** the 3-star discussion below preserves the phase-04
 review record. The user subsequently reports independent 3-star review; its
 memorandum is not supplied here. Phase 06 adds a separate experimental 4-clique

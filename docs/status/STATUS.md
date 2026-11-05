@@ -1,8 +1,52 @@
 # Project status
 
-Updated: **2026-11-05 (UTC)**.
+Updated: **2026-11-05 (America/Vancouver)**.
 
-**Current phase: 08 — Mac setup COMPLETE. STOP POINT REACHED.**
+**Current phase: 10 — Modified EdgeOrientΔ triangles (P4 Phase 2) COMPLETE.**
+See [checkpoint 10](checkpoints/10_modified_triangle_protocol.md) and
+[protocol specification](../TRIANGLE_PROTOCOL.md). Path A consumes an existing
+order/cap/RR table; Path B runs explicit-budget private ordering, cap and one RR
+transcript. Local count noise uses the derived conditional replacement bound.
+The estimator targets retained triangles and is **experimental_unverified**.
+Baseline rerun: **430 passed**; targeted: **215 passed**; final full suite:
+**501 passed in 19.61s**, no failures/errors/skips. All references verified.
+**STOP: Phase 3 is not started.** No complete private P4 estimator or experiments.
+
+## Current phase checklist
+
+- [x] Read existing instructions, checkpoint, privacy contracts and Go source.
+- [x] Rerun the existing suite rather than assume historical results.
+- [x] Derive fixed-transcript addition/removal/replacement sensitivity.
+- [x] Implement separate reusable and standalone triangle interfaces.
+- [x] Preserve shared RR ownership, deterministic order and client-side noise.
+- [x] Test exhaustive sensitivity, expectation, caps, schemas and reproducibility.
+- [x] Run targeted/full tests and verify unchanged pinned reference content.
+- [x] Document accounting, complexity and limitations; stop before Phase 3.
+
+## Historical Phase 09 status
+
+**Phase 09 — Exact P4 and triangle counting (P4 Phase 1) COMPLETE.**
+See [checkpoint 09](checkpoints/09_exact_four_path_triangle.md). Added integer
+P4/triangle counters and an independent permutation oracle. Exhaustive verification
+covers all 1,100 labeled graphs through five vertices; all eight fixture P4 and
+triangle comparisons against actual ESCAPE pass. Full suite: **430 passed in
+18.49s**, no failures/errors/skips. No private P4/triangle mechanism, experiment,
+dependency update, commit, or push. **STOP: Phase 2 is not started.**
+
+## Phase 09 checklist
+
+- [x] Read project instructions, status/checkpoint, graph/reference contracts.
+- [x] Implement exact integer triangle and non-induced P4 counters.
+- [x] Implement independent ordered-quadruple P4 oracle.
+- [x] Verify named fixtures, exhaustive small graphs, invariants and normalization.
+- [x] Execute native ESCAPE comparisons and preserve separate raw evidence.
+- [x] Run targeted tests (168 passed) and full suite (430 passed).
+- [x] Verify reference fingerprints and preserve existing private algorithms.
+- [x] Document correctness, complexity, commands and limitations; stop at Phase 1.
+
+## Historical Phase 08 status
+
+**Phase 08 — Mac setup COMPLETE. STOP POINT REACHED.**
 The follow-up setup request authorizes local installation and validation only.
 See [checkpoint 08](checkpoints/08_macos_setup.md). Python 3.11.9 `.venv` and all
 three pinned references are installed and fingerprints verified. GNU GCC 16.2.0
@@ -10,7 +54,7 @@ is selected by `.venv/bin/g++` when the environment is activated. Full setup:
 **392 passed in 22.06s**, no skips/errors; **8/8 exact ESCAPE fixtures** passed.
 The initial Apple Clang failure is recorded separately in checkpoint 08.
 
-## Current phase checklist
+## Phase 08 checklist
 
 - [x] Read setup guide, status and latest checkpoint; inspect local prerequisites.
 - [x] Bootstrap and fingerprint all three pinned references.

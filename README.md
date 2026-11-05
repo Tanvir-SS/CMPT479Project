@@ -33,6 +33,23 @@ The [source review](docs/SOURCE_REVIEW.md) and
 [setup checkpoint](docs/status/checkpoints/01_setup_and_source_review.md) preserve
 phase 01 findings.
 
+**P4 Phase 1 adds exact non-induced 4-path and triangle counting**, plus an
+independent permutation oracle. Import `count_four_paths` and
+`count_four_paths_bruteforce` from `private_graphlets.four_path_exact`, and
+`count_triangles` from `private_graphlets.triangle_exact`. These are non-private
+evaluation APIs; no private P4 estimator is implemented. See the
+[algorithm contract](docs/ALGORITHMS.md#exact-p4-and-triangle-counters-p4-phase-1)
+and [checkpoint 09](docs/status/checkpoints/09_exact_four_path_triangle.md).
+
+**P4 Phase 2 adds an experimental modified EdgeOrientΔ triangle simulator.**
+`private_graphlets.triangle.estimate_triangles_from_rr` consumes an existing
+released order/cap/RR table and adds only local count noise. The separate
+`simulate_triangles_private` runs private k-CoreD, a noisy cap and one RR
+transcript with explicit `TriangleBudget` allocations. See
+[TRIANGLE_PROTOCOL.md](docs/TRIANGLE_PROTOCOL.md) for interfaces, conditional
+sensitivity, retained-triangle target and unresolved privacy questions.
+The full private P4 estimator remains unimplemented.
+
 **Phase 06 implements an experimental 4-clique prototype with k-CoreD ordering,
 public/noisy caps, local count noise and a six-factor debiased-RR baseline.**
 Its full executable privacy proof and low-out-degree utility remain unverified.

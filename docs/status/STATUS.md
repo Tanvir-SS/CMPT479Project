@@ -2,13 +2,33 @@
 
 Updated: **2026-11-05 (UTC)**.
 
-**Current phase: 07 — Repository portability COMPLETE. STOP POINT REACHED.**
+**Current phase: 08 — Mac setup COMPLETE. STOP POINT REACHED.**
+The follow-up setup request authorizes local installation and validation only.
+See [checkpoint 08](checkpoints/08_macos_setup.md). Python 3.11.9 `.venv` and all
+three pinned references are installed and fingerprints verified. GNU GCC 16.2.0
+is selected by `.venv/bin/g++` when the environment is activated. Full setup:
+**392 passed in 22.06s**, no skips/errors; **8/8 exact ESCAPE fixtures** passed.
+The initial Apple Clang failure is recorded separately in checkpoint 08.
+
+## Current phase checklist
+
+- [x] Read setup guide, status and latest checkpoint; inspect local prerequisites.
+- [x] Bootstrap and fingerprint all three pinned references.
+- [x] Install unchanged hashed Python lock and editable package; check dependencies.
+- [x] Run full suite and record compiler failures separately from passes.
+- [x] Install/select GNU GCC after administrator authentication.
+- [x] Complete full suite and exact ESCAPE validation on macOS.
+- [x] Finalize macOS setup instructions and stop without experiments/commit/push.
+
+## Historical Phase 07 status
+
+**Phase 07 — Repository portability COMPLETE. STOP POINT REACHED.**
 All three references are pinned submodules; recursive-clone and ZIP setup are
 verified. Algorithms, privacy mechanisms, budgets, configurations and saved
 research results are unchanged. No main-repository commit or push was performed.
 Await explicit follow-up before further work.
 
-## Current phase checklist
+## Phase 07 checklist
 
 - [x] Read instructions, prior status/checkpoint and current research/setup documentation.
 - [x] Record clean starting Git state and hashes; run 376-test baseline regression.

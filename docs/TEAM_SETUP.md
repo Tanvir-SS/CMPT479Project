@@ -1,11 +1,45 @@
-# Team setup on Ubuntu / WSL
+# Team setup on Ubuntu / WSL and macOS
 
 Phase 07 makes the existing research code portable; it does not change algorithms,
 privacy accounting, experimental configurations or saved findings. The 4-clique
 prototype remains `experimental_unverified`. See [STATUS](status/STATUS.md) and
 [checkpoint 07](status/checkpoints/07_repository_portability.md) for actual checks.
 
-## Install prerequisites
+## macOS prerequisites and current verification
+
+Use native Python **3.11**, Git and GNU GCC for ESCAPE. On the Apple Silicon
+Mac checked on 2026-11-05, Python 3.11.9 and Xcode were already installed.
+`/usr/bin/g++` was Apple Clang 21, not GNU GCC. The pinned ESCAPE source failed
+to compile with its libc++ (unsupported operations on `Escape::JSIterator`).
+Do not edit the pinned reference to work around this failure.
+
+If GNU GCC is absent, install [Homebrew](https://brew.sh/) in Terminal, where
+its initial administrator authentication can be completed, then install GCC:
+
+```bash
+/opt/homebrew/bin/brew install gcc
+python3.11 -m venv .venv  # only if .venv is absent
+# This Mac installed GCC 16.2.0; use the installed major version in the path.
+ln -s /opt/homebrew/bin/g++-16 .venv/bin/g++  # only if this link is absent
+source .venv/bin/activate
+bash scripts/bootstrap_references.sh
+bash scripts/setup.sh
+python scripts/check_escape.py
+```
+
+Homebrew uses `/opt/homebrew` on Apple Silicon. Python 3.11 can be selected
+with `PYTHON_BIN=/absolute/path/to/python3.11`; do not replace system Python.
+The current adapter defaults to the executable named `g++`, so installing a
+versioned GNU compiler alone is insufficient: the local `.venv/bin/g++` symlink
+selects it when this environment is activated. Check `g++ --version` after
+activation. Run setup and tests in the activated shell (or prefix commands with
+`PATH="$PWD/.venv/bin:$PATH"`). Calling `.venv/bin/python` alone does not change
+the compiler search path. Recreate the symlink if the venv is recreated; review
+its target if Homebrew removes that GCC major version. No system compiler or
+reference source is modified. See [checkpoint 08](status/checkpoints/08_macos_setup.md)
+for actual verification results.
+
+## Ubuntu / WSL prerequisites
 
 Use Ubuntu inside WSL and the Linux filesystem (for example `~/CMPT479Project`).
 Required: Git, Python **3.11** with venv support, and g++ for ESCAPE validation.

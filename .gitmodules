@@ -1,0 +1,9 @@
+[submodule "escape"]
+	path = third_party/escape
+	url = https://bitbucket.org/seshadhri/escape.git
+[submodule "kcored"]
+	path = third_party/DistributedLEDPGraphAlgos
+	url = https://github.com/mundrapranay/DistributedLEDPGraphAlgos.git
+[submodule "baseline"]
+	path = third_party/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy
+	url = https://github.com/gcwsilver/Counting-Graphlets-of-Size-k-under-Local-Differential-Privacy.git

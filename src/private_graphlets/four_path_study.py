@@ -248,6 +248,9 @@ def verify_study(output: Path, *, replay=False) -> dict:
         rows.append(summarize_cell(directory, cell, study_graph(next(g for g in config['graphs'] if g['id'] == cell['graph']))))
     expected = pd.DataFrame(rows)
     actual = pd.read_csv(output/'summary.csv', float_precision='round_trip')
+    # CSV represents undefined metrics as NaN; normalize recomputed None values
+    # to that same representation before comparison (no numeric tolerance change).
+    expected = expected.where(expected.notna(), float("nan"))
     pd.testing.assert_frame_equal(actual, expected, check_dtype=False, rtol=1e-12, atol=1e-12)
     pd.testing.assert_frame_equal(pd.read_csv(output/'fixed_controls.csv', float_precision='round_trip'),
                                   controls(config), check_dtype=False, rtol=1e-12, atol=1e-12)

@@ -23,11 +23,14 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. Phase 07
-  authorizes repository portability, pinned reference setup, tests and team
-  documentation only. **Stop when complete; do not change algorithms, privacy
-  formulas/budgets, experiment configurations or results, start new experiments,
-  or commit/push automatically.** Preserve all earlier reports as historical records.
+- Never silently continue past an explicitly requested stopping point. The active
+  4-clique Phases 8–9 request authorizes a code-to-proof privacy audit followed
+  by independent analytical error evaluation, targeted tests, bounded diagnostics
+  and reports. Preserve existing estimators, budgets, configurations and results
+  except for verified defects. **Stop after both requested phases; do not start
+  Phase 10, optimize/tune mechanisms, expand benchmarks, or commit/push.**
+  Existing macOS/P4 checkpoints with overlapping numbers remain historical;
+  use the specifically requested four-clique checkpoint filenames.
 - All three references are pinned submodules under `third_party/`. Keep their
   sources unchanged too. Use `bash scripts/bootstrap_references.sh`, never
   `git submodule update --remote` for reproduction. Preserve exact gitlinks and

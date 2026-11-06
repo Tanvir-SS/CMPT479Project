@@ -1,5 +1,50 @@
 # Project status
 
+Updated: **2026-11-06 (UTC)**.
+
+**Active request: 4-clique Phases 8–9 COMPLETE. Privacy audit: PARTIAL; ideal error analysis and validation complete.**
+The requested checkpoint names coexist with earlier macOS/P4 reports; none is
+renumbered or replaced. Current audited revision is `6fba863e984fda8f55c016655df7ded917cc0576`.
+No estimator redesign, budget tuning, new benchmark grid, P4 work, commit or push
+is authorized.
+
+See [privacy proof](../FOUR_CLIQUE_PRIVACY_PROOF.md),
+[error analysis](../FOUR_CLIQUE_ERROR_ANALYSIS.md),
+[checkpoint 08](checkpoints/08_four_clique_privacy_audit.md) and
+[checkpoint 09](checkpoints/09_four_clique_error_validation.md).
+Ideal full-transcript privacy is established for exact actual stage allocations
+and independent ideal randomizers; finite execution, nominal-budget tolerance,
+seeds and client isolation remain unresolved. The simulator remains
+`experimental_unverified`. The replacement-aware sensitivity is unchanged.
+
+Final full suite: **745 passed in 41.04s**, no failures/errors/skips. All **65**
+new tests pass; explicit ESCAPE selection: **61 passed**, plus **8** standalone
+reference fixtures. Nine diagnostic graphs agree with actual ESCAPE. Exact
+RR/Laplace/clipping formulas and the finite-n bound pass exhaustive checks;
+16,384 conditional trials, 3,072 full trials and 3,072 independent histories
+show no discrepancies beyond the predeclared attention rule. Fifty preserved
+Phase-6 cells were reconciled, with 150 existing estimates replayed exactly.
+Local count noise dominates the selected kcore/noisy cases; no accuracy advantage
+over baseline is established. Results: `build/phase09/validation/` (Git-ignored).
+
+Estimator code, Phase-6 config/results, lock and all three reference pins are
+unchanged. A verified pre-existing non-private P4 verifier None/NaN comparison
+defect was fixed without changing numeric values or tolerances. Prior reports,
+35 result files and 19 plot files retain their hashes. macOS was not retested.
+**STOP: no further phase, optimization, tuning, commit or push. Await explicit instruction.**
+
+## Active request checklist
+
+- [x] Inspect actual source, prior documentation and pinned papers/references.
+- [x] Record external checkout advance; preserve existing P4 work.
+- [x] Complete code-to-proof map, conditional sensitivity and full transcript argument.
+- [x] Run Phase-8 targeted tests and record classification before Phase 9.
+- [x] Implement independent non-private analytical error evaluator and tests.
+- [x] Validate exact RR enumeration, bounded seeded diagnostics and selected old results.
+- [x] Run full regression, ESCAPE, CLI and preservation checks; finish reports and stop.
+
+## Preserved previous status
+
 Updated: **2026-11-05 (America/Vancouver)**.
 
 **Current phase: 12 — P4 MSE verification/infrastructure (Phase 4A) COMPLETE.**

@@ -75,6 +75,15 @@ See [implementation](docs/FOUR_CLIQUE_IMPLEMENTATION.md),
 [k-CoreD audit](docs/KCORED_INTEGRATION.md),
 [preliminary experiments](docs/FOUR_CLIQUE_EXPERIMENTS.md) and
 [review package 06](docs/status/REVIEW_PACKAGE_06.md).
+The requested **4-clique Phases 8–9** add a
+[code-to-proof privacy audit](docs/FOUR_CLIQUE_PRIVACY_PROOF.md) (**PARTIAL**:
+ideal composition established under stated assumptions; executable privacy
+remains unverified) and an [independent ideal MSE analysis](docs/FOUR_CLIQUE_ERROR_ANALYSIS.md)
+with exact RR covariance, Laplace variance, clipping loss and bounded diagnostics.
+See [checkpoint 08](docs/status/checkpoints/08_four_clique_privacy_audit.md) and
+[checkpoint 09](docs/status/checkpoints/09_four_clique_error_validation.md) for
+actual tests, reproducible commands and preserved Phase-6 comparisons. These
+reports are distinct from the historical macOS/P4 phases with overlapping numbers.
 The [phase-05 design](docs/FOUR_CLIQUE_DESIGN.md) remains the mathematical
 specification. Its exact checks still agree with ESCAPE on 1,112 graphs:
 

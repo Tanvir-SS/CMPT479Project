@@ -48,7 +48,10 @@ def load_config(path: Path) -> dict:
 
 
 def experiment_graph(spec: dict) -> SimpleGraph:
-    if spec['family']=='book':
+    if spec['family']=='prepared_edge_list':
+        from private_graphlets.graph_datasets import load_prepared_graph
+        graph=load_prepared_graph(spec)
+    elif spec['family']=='book':
         centers=spec['centers']
         if type(centers) is not int or not 1<=centers<=97:
             raise ValueError('book centers must be in 1..97')
@@ -171,7 +174,10 @@ def run_experiment(config_path: Path, output: Path, adapter: EscapeAdapter) -> d
         provenance=_provenance()
         project=Path(__file__).resolve().parents[2]
         provenance['source_sha256']['scripts/run_four_clique_experiments.py']=sha256(project/'scripts/run_four_clique_experiments.py')
-        manifest={'status':'complete','result_type':'nonprivate_synthetic_evaluation',
+        evaluation_type=('nonprivate_file_dataset_evaluation'
+                         if any(s['family']=='prepared_edge_list' for s in config['graphs'])
+                         else 'nonprivate_synthetic_evaluation')
+        manifest={'status':'complete','result_type':evaluation_type,
             'privacy_status':'experimental_unverified','graphs':len(references),
             'cells':len(config['graphs'])*len(config['epsilons'])*len(config['methods']),
             'trials':len(rows),'pipeline_seconds':time.perf_counter()-start,

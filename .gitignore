@@ -27,6 +27,16 @@ data/raw/*
 !data/raw/README.md
 data/processed/*
 !data/processed/README.md
+# Approved small public benchmark snapshots, mappings and provenance (phase 13).
+!data/processed/real_world/
+!data/processed/baseline_2025/
+data/processed/real_world/*
+data/processed/baseline_2025/*
+!data/processed/real_world/*.edges
+!data/processed/real_world/*.mapping.json
+!data/processed/baseline_2025/*.edges
+!data/processed/baseline_2025/*.mapping.json
+!data/processed/graph_manifest.json
 experiments/results/*
 !experiments/results/README.md
 plots/*

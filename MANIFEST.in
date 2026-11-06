@@ -4,6 +4,9 @@ recursive-include scripts *.py *.sh
 recursive-include docs *.md *.json
 recursive-include data *.md
 recursive-include data/fixtures *.edges *.json
+include data/processed/graph_manifest.json
+recursive-include data/processed/real_world *.edges *.mapping.json
+recursive-include data/processed/baseline_2025 *.edges *.mapping.json
 recursive-include experiments *.md
 recursive-include experiments/configs *.json
 recursive-include plots *.md

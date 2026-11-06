@@ -4,6 +4,13 @@ Harry testing the push
 CMPT 479/982 research project on Local Edge Differential Privacy (LEDP) and
 low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
+**Prepared datasets:** [data/README.md](data/README.md) documents four real-world
+graphs (Karate, Dolphins, Les Misérables and an induced 50-vertex Brightkite sample)
+and twenty BA/SBM realizations following the 2025 paper's graph parameters.
+All 24 agree across exact Python counters and actual ESCAPE. Processed files,
+mappings and the manifest are approved for version control; raw archives remain
+ignored. Future comparison configs are prepared, with no private sweep executed.
+
 **Team installation:** [TEAM_SETUP.md](docs/TEAM_SETUP.md) covers recursive Git
 clones, GitHub ZIP downloads, all three pinned reference repositories, path
 overrides, tests and collaboration. Phase 07 changes portability only; research
@@ -382,7 +389,7 @@ third_party/           Three pinned submodules plus pin/hash manifest
 docs/TEAM_SETUP.md     Clone/ZIP setup, commands, troubleshooting and collaboration
 data/fixtures/         Tiny public synthetic reference inputs and expected counts
 data/raw/              Ignored original datasets
-data/processed/        Ignored processed datasets
+data/processed/        Approved small benchmark snapshots; other output ignored
 experiments/configs/   Versioned experiment configuration, seeds and budgets
 experiments/results/   Ignored generated research output
 plots/                 Ignored generated figures

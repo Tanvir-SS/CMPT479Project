@@ -1,0 +1,1320 @@
+{
+  "schema_version": 1,
+  "dataset_suite": "four_clique_benchmarks_13",
+  "count_semantics": "non-induced unlabeled K4; four distinct vertices with all six edges",
+  "networkx_version": "3.4.2",
+  "python_major_minor": "3.11",
+  "permission": "Project owner reports provider authorization for this academic repository; no new license assigned.",
+  "escape_reference": {
+    "expected_bundled_commit": "7ec2f93c524a0b47cdc8c639602e90d1c1fceff3",
+    "actual_source_sha256": {
+      "Escape/AlmostFiveClique.h": "5e2df3788e3417b493f9d497dd38452453e55ab96de794f9286537d843161956",
+      "Escape/Conversion.h": "0ab3786155d04d038981b6b65a0e1fea83d16023194c289683cf4f9535ed3984",
+      "Escape/Digraph.h": "b2510da195a8fd1c1202c2d82e4db5ea21f7abfb758e82f599a18f42d208139c",
+      "Escape/EdgeHash.h": "0375cd0963c79d5f8ee8c110cf860414db134347246b0a26c43fa41c26c169a1",
+      "Escape/ErrorCode.h": "61da46ca00b9f6dae0a5bc902d806e721d620c13ca0286bf01e2b87613adf07a",
+      "Escape/FiveCycle.h": "6c95cc85a708ba77a43ed7985bcfe93eadc152147e273194c542b848739c60db",
+      "Escape/FiveFromCycleClique.h": "7b764b62d4c73526afbc302a291eacec6c22c3ef3db4b8996e057d659f3fe3da",
+      "Escape/FiveFromTriangles.h": "06c8b0e6f3e0958f6f122bf9cf7213bb8ae3cc222dfd3e167f09ddd81c29e510",
+      "Escape/FiveTrees.h": "95452b34add1950ce33f9fe92f0d471198b7f82f05ea492500fa80382f03f094",
+      "Escape/FourVertex.h": "02ced4d7a04e7a6d7c0950f61f68b0ade630c8293d579b3288b43fd75649a31d",
+      "Escape/GetAllCounts.h": "3d26892d81fbd869b44f7715e6c9c511bb24cf52e2a9e4de476e84079461e126",
+      "Escape/Graph.h": "7d9e4a84204c537b30b51b3ea6335e45effd6df8cf979c5936d4fa0336a22de5",
+      "Escape/GraphIO.h": "9d14abda493e7ac01a8748c50638293c12de4e9788eb48fc05479201973a909d",
+      "Escape/JointSort.h": "027272f5f410b690fb879e91288d361de141265ff306188a3ea52aa83d11b027",
+      "Escape/Triadic.h": "cdf6bf972fc8f6157d4118ae6c8ad7bd621f8ada38b7462228915bf6b1822db0",
+      "Escape/TriangleProgram.h": "ad98baa810b15e6abbdafedb0444ccfaa6b75942f91eeecb2f97ca24d95f3c95",
+      "Escape/Utils.h": "6b6f4ae13e2dabbd61dc76166ba0aabd9386577b64576d7a5392019671b9733c",
+      "Escape/WedgeCollisions.h": "f22cfae2654f8def3e5bb8791377bcdf2bfafcf7bb48630e28563dc7a4e3960a",
+      "Graph.cpp": "9ff0562d44996311f6518eec9e279150c3565549b60e167e37e68de97e4f6e47",
+      "GraphIO.cpp": "ed8568d50414433ed7328aeb745a09f813fdae6aebfec6535be0d8f362943f27",
+      "TriangleProgram.cpp": "8e67ebf3b1a2ffe31937cf22efdd3686471297f5a8bc9dd7741fe09bdac1bc69",
+      "exe/count_four.cpp": "ca8a75dbd0c1d1c4dc08dfd1c940b07cfe0f98075a514619a9f4a9173d96a0e2"
+    }
+  },
+  "graphs": [
+    {
+      "id": "karate",
+      "suite": "real_world",
+      "family": "social_network",
+      "source": {
+        "generator": "networkx.karate_club_graph",
+        "networkx_version": "3.4.2"
+      },
+      "parameters": {},
+      "seed": null,
+      "original_vertices": 34,
+      "original_edges": 78,
+      "processed_vertices": 34,
+      "processed_edges": 78,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "real_world/karate.edges",
+      "sha256": "3403714da814b5efd462eefe5eef4bfe1867f3dae5a95fbc5386f8564d0dc48f",
+      "mapping_path": "real_world/karate.mapping.json",
+      "mapping_sha256": "9e9ef087841f008911c62bef744d7e6ad32945c7b716343635a0d7d17ba42deb",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 11,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 11,
+        "bruteforce_count": 11,
+        "escape_count": 11,
+        "escape_output": "34\n156\n5984.000000\n2496.000000\n528.000000\n45.000000\n46376.000000\n38688.000000\n2475.000000\n16368.000000\n1395.000000\n1764.000000\n2371.000000\n924.000000\n154.000000\n151.000000\n11.000000\n"
+      },
+      "baseline_four_sets_per_trial": 46376
+    },
+    {
+      "id": "les_miserables",
+      "suite": "real_world",
+      "family": "social_network",
+      "source": {
+        "generator": "networkx.les_miserables_graph",
+        "networkx_version": "3.4.2"
+      },
+      "parameters": {},
+      "seed": null,
+      "original_vertices": 77,
+      "original_edges": 254,
+      "processed_vertices": 77,
+      "processed_edges": 254,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "real_world/les_miserables.edges",
+      "sha256": "4628984d81b4c38a349c642ff845b4a63139757cbc50ece473bf2334c4494f99",
+      "mapping_path": "real_world/les_miserables.mapping.json",
+      "mapping_sha256": "1b5914547591fa6d6806c072b00b5cc02a43d7347b28d699a5acf9cbb2cffbb7",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 639,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 639,
+        "bruteforce_count": 639,
+        "escape_count": 639,
+        "escape_output": "77\n508\n73150.000000\n19050.000000\n2808.000000\n467.000000\n1353275.000000\n704850.000000\n29323.000000\n207792.000000\n34558.000000\n15177.000000\n26784.000000\n15347.000000\n2672.000000\n4544.000000\n639.000000\n"
+      },
+      "baseline_four_sets_per_trial": 1353275
+    },
+    {
+      "id": "dolphins",
+      "suite": "real_world",
+      "family": "social_network",
+      "source": {
+        "url": "https://nrvis.com/download/data/misc/dolphins.zip",
+        "page": "https://networkrepository.com/dolphins.php",
+        "sha256": "9d34947ed4ac929e2f38e542f1a59efd364be2d0b1c624fe2de65826fc7ecdc3",
+        "snapshot_date_utc": "2026-11-06",
+        "archive": "dolphins.zip",
+        "member": "dolphins.mtx"
+      },
+      "parameters": {},
+      "seed": null,
+      "raw_parsing": {
+        "declared_vertices": 62,
+        "declared_records": 159,
+        "edge_records": 159,
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_records_removed": 0,
+        "matrix_field": "pattern",
+        "matrix_symmetry": "symmetric"
+      },
+      "original_vertices": 62,
+      "original_edges": 159,
+      "processed_vertices": 62,
+      "processed_edges": 159,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "real_world/dolphins.edges",
+      "sha256": "459a17a147d584572324d87cb35efd36c24b1d467e9fed002ff0cac2c9b0edac",
+      "mapping_path": "real_world/dolphins.mapping.json",
+      "mapping_sha256": "bf24eb5a350006b6093470f65eeed799c62c0427734816dcafe376c660b5016f",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 27,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 27,
+        "bruteforce_count": 27,
+        "escape_count": 27,
+        "escape_output": "62\n318\n37820.000000\n9540.000000\n923.000000\n95.000000\n557845.000000\n281430.000000\n11638.000000\n54457.000000\n5605.000000\n1861.000000\n5023.000000\n1644.000000\n278.000000\n300.000000\n27.000000\n"
+      },
+      "baseline_four_sets_per_trial": 557845
+    },
+    {
+      "id": "brightkite_50",
+      "suite": "real_world",
+      "family": "induced_social_subgraph",
+      "source": {
+        "url": "https://snap.stanford.edu/data/loc-brightkite_edges.txt.gz",
+        "page": "https://snap.stanford.edu/data/loc-Brightkite.html",
+        "sha256": "0714a1ff54225f49fae8bd228d807e6a2a7ee27b8ff3c60989cfd9d20089a229",
+        "snapshot_date_utc": "2026-11-06",
+        "archive": "loc-brightkite_edges.txt.gz"
+      },
+      "parameters": {
+        "sample_vertices": 50
+      },
+      "seed": 130050,
+      "raw_parsing": {
+        "edge_records": 428156,
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_records_removed": 214078,
+        "vertex_set": "all IDs observed in the original friendship file; no header-derived invented IDs"
+      },
+      "selection": {
+        "seed": 130050,
+        "rng": "random.Random (Python 3.11)",
+        "size": 50,
+        "component_rule": "largest connected component; ties by lexicographically sorted original integer IDs",
+        "component_size": 56739,
+        "initial_original_vertex": 2044,
+        "traversal": "FIFO BFS; neighbors ascending original ID; mark on discovery; stop after 50 discoveries",
+        "discovery_order": [
+          2044,
+          35,
+          158,
+          161,
+          174,
+          176,
+          182,
+          191,
+          291,
+          384,
+          412,
+          901,
+          1008,
+          1057,
+          1997,
+          2097,
+          2201,
+          2278,
+          2314,
+          3306,
+          3796,
+          4281,
+          4354,
+          4841,
+          4949,
+          5681,
+          8667,
+          8741,
+          8752,
+          9757,
+          10898,
+          12268,
+          12530,
+          12544,
+          12548,
+          12895,
+          13453,
+          13497,
+          13621,
+          18058,
+          18769,
+          18774,
+          20806,
+          21553,
+          23158,
+          23159,
+          23160,
+          23161,
+          23162,
+          23163
+        ],
+        "selected_original_vertices": [
+          35,
+          158,
+          161,
+          174,
+          176,
+          182,
+          191,
+          291,
+          384,
+          412,
+          901,
+          1008,
+          1057,
+          1997,
+          2044,
+          2097,
+          2201,
+          2278,
+          2314,
+          3306,
+          3796,
+          4281,
+          4354,
+          4841,
+          4949,
+          5681,
+          8667,
+          8741,
+          8752,
+          9757,
+          10898,
+          12268,
+          12530,
+          12544,
+          12548,
+          12895,
+          13453,
+          13497,
+          13621,
+          18058,
+          18769,
+          18774,
+          20806,
+          21553,
+          23158,
+          23159,
+          23160,
+          23161,
+          23162,
+          23163
+        ],
+        "edge_rule": "induced subgraph AFTER vertex selection; keep every original selected-selected edge",
+        "fallback": "fail if largest component too small; no restart, extra components, seed search or invented edges"
+      },
+      "original_vertices": 58228,
+      "original_edges": 214078,
+      "processed_vertices": 50,
+      "processed_edges": 97,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "real_world/brightkite_50.edges",
+      "sha256": "41a65e36f66fd3aabe5487d39804e845bbf7b10604cd2e8457334a21eef81599",
+      "mapping_path": "real_world/brightkite_50.mapping.json",
+      "mapping_sha256": "d2e51e1016794f2313df350afcecf3aad63d55a0b4902d5bcfa66a8151a23b7e",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 18,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 18,
+        "bruteforce_count": 18,
+        "escape_count": 18,
+        "escape_output": "50\n194\n19600.000000\n4656.000000\n1445.000000\n64.000000\n230300.000000\n109416.000000\n3211.000000\n67915.000000\n3008.000000\n18828.000000\n5404.000000\n2812.000000\n198.000000\n245.000000\n18.000000\n"
+      },
+      "baseline_four_sets_per_trial": 230300
+    },
+    {
+      "id": "ba_n010",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 10,
+        "m": 2,
+        "initial_graph": null
+      },
+      "seed": 130110,
+      "original_vertices": 10,
+      "original_edges": 16,
+      "processed_vertices": 10,
+      "processed_edges": 16,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n010.edges",
+      "sha256": "3a83cfde4a9d0270c1260ebbffc03d35047cc671586695d65e3eabe7f531a979",
+      "mapping_path": "baseline_2025/ba_n010.mapping.json",
+      "mapping_sha256": "59662c09cbe09610145edd0e7423c4a93c27179c8b5bed2d218a2e939cdc4455",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 0,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 0,
+        "bruteforce_count": 0,
+        "escape_count": 0,
+        "escape_output": "10\n32\n120.000000\n128.000000\n57.000000\n6.000000\n210.000000\n448.000000\n63.000000\n399.000000\n42.000000\n81.000000\n122.000000\n58.000000\n10.000000\n8.000000\n0.000000\n"
+      },
+      "baseline_four_sets_per_trial": 210
+    },
+    {
+      "id": "ba_n020",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 20,
+        "m": 4,
+        "initial_graph": null
+      },
+      "seed": 130120,
+      "original_vertices": 20,
+      "original_edges": 64,
+      "processed_vertices": 20,
+      "processed_edges": 64,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n020.edges",
+      "sha256": "306ad9900f20c77a0f784724b541a6879f77e7d465ff422b0e3e4183e15c5962",
+      "mapping_path": "baseline_2025/ba_n020.mapping.json",
+      "mapping_sha256": "1fc9d7f77cda6bfdaef82a1e5488f1e97abe6e3556678dd52875b4fed2b4e440",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 10,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 10,
+        "bruteforce_count": 10,
+        "escape_count": 10,
+        "escape_output": "20\n128\n1140.000000\n1152.000000\n403.000000\n50.000000\n4845.000000\n9792.000000\n1613.000000\n6851.000000\n850.000000\n830.000000\n2361.000000\n907.000000\n204.000000\n165.000000\n10.000000\n"
+      },
+      "baseline_four_sets_per_trial": 4845
+    },
+    {
+      "id": "ba_n030",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 30,
+        "m": 6,
+        "initial_graph": null
+      },
+      "seed": 130130,
+      "original_vertices": 30,
+      "original_edges": 144,
+      "processed_vertices": 30,
+      "processed_edges": 144,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n030.edges",
+      "sha256": "02cebd37818cf8a3462c2aef7b7170eafc8840717494dc5f2c66703c76493cf0",
+      "mapping_path": "baseline_2025/ba_n030.mapping.json",
+      "mapping_sha256": "5eff28702b524c694eb1e93ec804d16d323c6be6596e0e1c0844cf311e1b2c84",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 127,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 127,
+        "bruteforce_count": 127,
+        "escape_count": 127,
+        "escape_output": "30\n288\n4060.000000\n4032.000000\n1526.000000\n203.000000\n27405.000000\n54432.000000\n8770.000000\n41202.000000\n5481.000000\n6118.000000\n14933.000000\n7015.000000\n1473.000000\n1551.000000\n127.000000\n"
+      },
+      "baseline_four_sets_per_trial": 27405
+    },
+    {
+      "id": "ba_n040",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 40,
+        "m": 8,
+        "initial_graph": null
+      },
+      "seed": 130140,
+      "original_vertices": 40,
+      "original_edges": 256,
+      "processed_vertices": 40,
+      "processed_edges": 256,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n040.edges",
+      "sha256": "8e06ff1c8b3329f71ec34fc100a7a52665c7000f6c3d2738aa563d62d11d5e2e",
+      "mapping_path": "baseline_2025/ba_n040.mapping.json",
+      "mapping_sha256": "f61d74208a57ed87591471aa4bceb28d043503f168ddd7f66d1288300f256468",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 275,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 275,
+        "bruteforce_count": 275,
+        "escape_count": 275,
+        "escape_output": "40\n512\n9880.000000\n9728.000000\n3456.000000\n432.000000\n91390.000000\n179968.000000\n29184.000000\n127872.000000\n15984.000000\n16889.000000\n44866.000000\n18754.000000\n4257.000000\n3829.000000\n275.000000\n"
+      },
+      "baseline_four_sets_per_trial": 91390
+    },
+    {
+      "id": "ba_n050",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 50,
+        "m": 10,
+        "initial_graph": null
+      },
+      "seed": 130150,
+      "original_vertices": 50,
+      "original_edges": 400,
+      "processed_vertices": 50,
+      "processed_edges": 400,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n050.edges",
+      "sha256": "e21eeb60a1b7ee4390deb6e6b25db5bc5922f4929b0891c841df3597d97ab531",
+      "mapping_path": "baseline_2025/ba_n050.mapping.json",
+      "mapping_sha256": "eaa3e9be4f56c465b473520b83e336371d2df1c261e3310c53bd9be9ebd99c31",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 766,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 766,
+        "bruteforce_count": 766,
+        "escape_count": 766,
+        "escape_output": "50\n800\n19600.000000\n19200.000000\n7011.000000\n902.000000\n230300.000000\n451200.000000\n72789.000000\n329517.000000\n42394.000000\n45672.000000\n117162.000000\n50929.000000\n11364.000000\n10551.000000\n766.000000\n"
+      },
+      "baseline_four_sets_per_trial": 230300
+    },
+    {
+      "id": "ba_n060",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 60,
+        "m": 12,
+        "initial_graph": null
+      },
+      "seed": 130160,
+      "original_vertices": 60,
+      "original_edges": 576,
+      "processed_vertices": 60,
+      "processed_edges": 576,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n060.edges",
+      "sha256": "be080752fe8d55b136ec6de497e08292b82f4ea4870b9ad6e66ca1791a584f5c",
+      "mapping_path": "baseline_2025/ba_n060.mapping.json",
+      "mapping_sha256": "bd29a03fe85e55ee517c50a833603146d3c011f9dd854f04eb71d2bf97e3b393",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 2289,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 2289,
+        "bruteforce_count": 2289,
+        "escape_count": 2289,
+        "escape_output": "60\n1152\n34220.000000\n33408.000000\n12470.000000\n1719.000000\n487635.000000\n952128.000000\n153130.000000\n710790.000000\n97983.000000\n102194.000000\n258357.000000\n122014.000000\n26231.000000\n27539.000000\n2289.000000\n"
+      },
+      "baseline_four_sets_per_trial": 487635
+    },
+    {
+      "id": "ba_n070",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 70,
+        "m": 14,
+        "initial_graph": null
+      },
+      "seed": 130170,
+      "original_vertices": 70,
+      "original_edges": 784,
+      "processed_vertices": 70,
+      "processed_edges": 784,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n070.edges",
+      "sha256": "2e72cdc10f9c92af0c3db2af77927a19263df6697285ea143149c4aaeeb6ac59",
+      "mapping_path": "baseline_2025/ba_n070.mapping.json",
+      "mapping_sha256": "ed99d28c584f4fe42aa8f9e084857ef700cfaaec678e9b4a8e291b7b3ad14c3e",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 3833,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 3833,
+        "bruteforce_count": 3833,
+        "escape_count": 3833,
+        "escape_output": "70\n1568\n54740.000000\n53312.000000\n19503.000000\n2612.000000\n916895.000000\n1785952.000000\n287433.000000\n1306701.000000\n175004.000000\n181866.000000\n469815.000000\n213911.000000\n47032.000000\n47356.000000\n3833.000000\n"
+      },
+      "baseline_four_sets_per_trial": 916895
+    },
+    {
+      "id": "ba_n080",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 80,
+        "m": 16,
+        "initial_graph": null
+      },
+      "seed": 130180,
+      "original_vertices": 80,
+      "original_edges": 1024,
+      "processed_vertices": 80,
+      "processed_edges": 1024,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n080.edges",
+      "sha256": "1b6458056326e674c38092e35e1ce419682e5fef19df25067ec1644852c2d8a1",
+      "mapping_path": "baseline_2025/ba_n080.mapping.json",
+      "mapping_sha256": "79f6f0fabd03660d709b6cf7e3da48dcb058c0e2d11eee995de3aeddf63e7031",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 7046,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 7046,
+        "bruteforce_count": 7046,
+        "escape_count": 7046,
+        "escape_output": "80\n2048\n82160.000000\n79872.000000\n29318.000000\n3953.000000\n1581580.000000\n3075072.000000\n494458.000000\n2257486.000000\n304381.000000\n316167.000000\n813858.000000\n374636.000000\n82094.000000\n84335.000000\n7046.000000\n"
+      },
+      "baseline_four_sets_per_trial": 1581580
+    },
+    {
+      "id": "ba_n090",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 90,
+        "m": 18,
+        "initial_graph": null
+      },
+      "seed": 130190,
+      "original_vertices": 90,
+      "original_edges": 1296,
+      "processed_vertices": 90,
+      "processed_edges": 1296,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n090.edges",
+      "sha256": "aec9276193ca4c43caaff139baf9384340c42be69ffd777c3f32382a124f4787",
+      "mapping_path": "baseline_2025/ba_n090.mapping.json",
+      "mapping_sha256": "543f271ea54ff950b526e0c876f7745974cf09354b481331cf3c31590151f2f4",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 12787,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 12787,
+        "bruteforce_count": 12787,
+        "escape_count": 12787,
+        "escape_output": "90\n2592\n117480.000000\n114048.000000\n42788.000000\n5907.000000\n2555190.000000\n4961088.000000\n796372.000000\n3722556.000000\n513909.000000\n546706.000000\n1363317.000000\n655126.000000\n141586.000000\n151076.000000\n12787.000000\n"
+      },
+      "baseline_four_sets_per_trial": 2555190
+    },
+    {
+      "id": "ba_n100",
+      "suite": "baseline_2025",
+      "family": "barabasi_albert",
+      "source": {
+        "generator": "networkx.barabasi_albert_graph",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "n": 100,
+        "m": 20,
+        "initial_graph": null
+      },
+      "seed": 130200,
+      "original_vertices": 100,
+      "original_edges": 1600,
+      "processed_vertices": 100,
+      "processed_edges": 1600,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/ba_n100.edges",
+      "sha256": "071e36e4eb852fb5a24de4288612cb46a82b9327dc4983b7e6a36a70938d96fc",
+      "mapping_path": "baseline_2025/ba_n100.mapping.json",
+      "mapping_sha256": "e0be62a3e02e461b317ffe8e5a3caedc9f0ac22360401c275db3ac2ef9adcfa7",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 18198,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 18198,
+        "bruteforce_count": 18198,
+        "escape_count": 18198,
+        "escape_output": "100\n3200\n161700.000000\n156800.000000\n58090.000000\n7895.000000\n3921225.000000\n7604800.000000\n1221110.000000\n5634730.000000\n765815.000000\n811350.000000\n2043892.000000\n961713.000000\n207959.000000\n217982.000000\n18198.000000\n"
+      },
+      "baseline_four_sets_per_trial": 3921225
+    },
+    {
+      "id": "sbm_n010",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          5,
+          5
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130210,
+      "original_vertices": 10,
+      "original_edges": 6,
+      "processed_vertices": 10,
+      "processed_edges": 6,
+      "connected_components": 4,
+      "isolated_vertices": 1,
+      "path": "baseline_2025/sbm_n010.edges",
+      "sha256": "9b8959dc73c7f8ee2a0a606d4ddf1ce0b0e4e2f8c73f785dd6939316a9b5ff88",
+      "mapping_path": "baseline_2025/sbm_n010.mapping.json",
+      "mapping_sha256": "59662c09cbe09610145edd0e7423c4a93c27179c8b5bed2d218a2e939cdc4455",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 0,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 0,
+        "bruteforce_count": 0,
+        "escape_count": 0,
+        "escape_output": "10\n12\n120.000000\n48.000000\n3.000000\n0.000000\n210.000000\n168.000000\n12.000000\n21.000000\n0.000000\n0.000000\n1.000000\n0.000000\n0.000000\n0.000000\n0.000000\n"
+      },
+      "baseline_four_sets_per_trial": 210
+    },
+    {
+      "id": "sbm_n020",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          10,
+          10
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130220,
+      "original_vertices": 20,
+      "original_edges": 37,
+      "processed_vertices": 20,
+      "processed_edges": 37,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n020.edges",
+      "sha256": "18bb5bbf2b56618fa5935b19b3eb3f53924a5b1fb3e92a0ea919303b46d53f1a",
+      "mapping_path": "baseline_2025/sbm_n020.mapping.json",
+      "mapping_sha256": "1fc9d7f77cda6bfdaef82a1e5488f1e97abe6e3556678dd52875b4fed2b4e440",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 0,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 0,
+        "bruteforce_count": 0,
+        "escape_count": 0,
+        "escape_output": "20\n74\n1140.000000\n666.000000\n122.000000\n10.000000\n4845.000000\n5661.000000\n544.000000\n2074.000000\n170.000000\n117.000000\n350.000000\n82.000000\n20.000000\n9.000000\n0.000000\n"
+      },
+      "baseline_four_sets_per_trial": 4845
+    },
+    {
+      "id": "sbm_n030",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          15,
+          15
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130230,
+      "original_vertices": 30,
+      "original_edges": 70,
+      "processed_vertices": 30,
+      "processed_edges": 70,
+      "connected_components": 2,
+      "isolated_vertices": 1,
+      "path": "baseline_2025/sbm_n030.edges",
+      "sha256": "227e2cee3a7996221d37b3c7b3db47284f106ecee6a6e2763e731e10345a0220",
+      "mapping_path": "baseline_2025/sbm_n030.mapping.json",
+      "mapping_sha256": "5eff28702b524c694eb1e93ec804d16d323c6be6596e0e1c0844cf311e1b2c84",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 0,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 0,
+        "bruteforce_count": 0,
+        "escape_count": 0,
+        "escape_output": "30\n140\n4060.000000\n1960.000000\n292.000000\n15.000000\n27405.000000\n26460.000000\n2123.000000\n7884.000000\n405.000000\n338.000000\n1160.000000\n154.000000\n43.000000\n8.000000\n0.000000\n"
+      },
+      "baseline_four_sets_per_trial": 27405
+    },
+    {
+      "id": "sbm_n040",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          20,
+          20
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130240,
+      "original_vertices": 40,
+      "original_edges": 113,
+      "processed_vertices": 40,
+      "processed_edges": 113,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n040.edges",
+      "sha256": "1440062e1500cc4b961196bfe792bc2ed64ed0747e30538bc89c6a196cce6347",
+      "mapping_path": "baseline_2025/sbm_n040.mapping.json",
+      "mapping_sha256": "f61d74208a57ed87591471aa4bceb28d043503f168ddd7f66d1288300f256468",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 6,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 6,
+        "bruteforce_count": 6,
+        "escape_count": 6,
+        "escape_output": "40\n226\n9880.000000\n4294.000000\n664.000000\n42.000000\n91390.000000\n79439.000000\n5664.000000\n24568.000000\n1554.000000\n1410.000000\n3756.000000\n822.000000\n164.000000\n99.000000\n6.000000\n"
+      },
+      "baseline_four_sets_per_trial": 91390
+    },
+    {
+      "id": "sbm_n050",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          25,
+          25
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130250,
+      "original_vertices": 50,
+      "original_edges": 190,
+      "processed_vertices": 50,
+      "processed_edges": 190,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n050.edges",
+      "sha256": "b3e7158284012ad3f223d943646825c9d75d53cea0c25bf997a1bf4e3c02273e",
+      "mapping_path": "baseline_2025/sbm_n050.mapping.json",
+      "mapping_sha256": "eaa3e9be4f56c465b473520b83e336371d2df1c261e3310c53bd9be9ebd99c31",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 6,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 6,
+        "bruteforce_count": 6,
+        "escape_count": 6,
+        "escape_output": "50\n380\n19600.000000\n9120.000000\n1382.000000\n83.000000\n230300.000000\n214320.000000\n16573.000000\n64954.000000\n3901.000000\n3208.000000\n9778.000000\n1731.000000\n430.000000\n168.000000\n6.000000\n"
+      },
+      "baseline_four_sets_per_trial": 230300
+    },
+    {
+      "id": "sbm_n060",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          30,
+          30
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130260,
+      "original_vertices": 60,
+      "original_edges": 277,
+      "processed_vertices": 60,
+      "processed_edges": 277,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n060.edges",
+      "sha256": "3313e4a04c7c6d23ff1ca33b52be14e42854db6aaeef2bae220848d60601a990",
+      "mapping_path": "baseline_2025/sbm_n060.mapping.json",
+      "mapping_sha256": "bd29a03fe85e55ee517c50a833603146d3c011f9dd854f04eb71d2bf97e3b393",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 12,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 12,
+        "bruteforce_count": 12,
+        "escape_count": 12,
+        "escape_output": "60\n554\n34220.000000\n16066.000000\n2456.000000\n163.000000\n487635.000000\n457881.000000\n35770.000000\n139992.000000\n9291.000000\n7029.000000\n21173.000000\n4181.000000\n957.000000\n420.000000\n12.000000\n"
+      },
+      "baseline_four_sets_per_trial": 487635
+    },
+    {
+      "id": "sbm_n070",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          35,
+          35
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130270,
+      "original_vertices": 70,
+      "original_edges": 368,
+      "processed_vertices": 70,
+      "processed_edges": 368,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n070.edges",
+      "sha256": "92b1dec34ee4c9621d38c390712b5285ebd436781a7118b42819b148912643fe",
+      "mapping_path": "baseline_2025/sbm_n070.mapping.json",
+      "mapping_sha256": "ed99d28c584f4fe42aa8f9e084857ef700cfaaec678e9b4a8e291b7b3ad14c3e",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 43,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 43,
+        "bruteforce_count": 43,
+        "escape_count": 43,
+        "escape_output": "70\n736\n54740.000000\n25024.000000\n3763.000000\n271.000000\n916895.000000\n838304.000000\n63765.000000\n252121.000000\n18157.000000\n12500.000000\n37582.000000\n8098.000000\n1778.000000\n922.000000\n43.000000\n"
+      },
+      "baseline_four_sets_per_trial": 916895
+    },
+    {
+      "id": "sbm_n080",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          40,
+          40
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130280,
+      "original_vertices": 80,
+      "original_edges": 481,
+      "processed_vertices": 80,
+      "processed_edges": 481,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n080.edges",
+      "sha256": "e0e7c12f07fe700cbfc0109f44d3525b6c9538cdba5e18a86be081b533e4359f",
+      "mapping_path": "baseline_2025/sbm_n080.mapping.json",
+      "mapping_sha256": "79f6f0fabd03660d709b6cf7e3da48dcb058c0e2d11eee995de3aeddf63e7031",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 60,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 60,
+        "bruteforce_count": 60,
+        "escape_count": 60,
+        "escape_output": "80\n962\n82160.000000\n37518.000000\n5673.000000\n387.000000\n1581580.000000\n1444443.000000\n109767.000000\n436821.000000\n29799.000000\n22183.000000\n65484.000000\n13444.000000\n3103.000000\n1483.000000\n60.000000\n"
+      },
+      "baseline_four_sets_per_trial": 1581580
+    },
+    {
+      "id": "sbm_n090",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          45,
+          45
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130290,
+      "original_vertices": 90,
+      "original_edges": 590,
+      "processed_vertices": 90,
+      "processed_edges": 590,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n090.edges",
+      "sha256": "e36f63aaab22fe07603058be2f46ef8acbadecd134f96d55398228aaa125088e",
+      "mapping_path": "baseline_2025/sbm_n090.mapping.json",
+      "mapping_sha256": "543f271ea54ff950b526e0c876f7745974cf09354b481331cf3c31590151f2f4",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 51,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 51,
+        "bruteforce_count": 51,
+        "escape_count": 51,
+        "escape_output": "90\n1180\n117480.000000\n51920.000000\n7522.000000\n450.000000\n2555190.000000\n2258520.000000\n166233.000000\n654414.000000\n39150.000000\n31083.000000\n94368.000000\n16586.000000\n3856.000000\n1503.000000\n51.000000\n"
+      },
+      "baseline_four_sets_per_trial": 2555190
+    },
+    {
+      "id": "sbm_n100",
+      "suite": "baseline_2025",
+      "family": "stochastic_block",
+      "source": {
+        "generator": "networkx.stochastic_block_model",
+        "networkx_version": "3.4.2",
+        "paper": "https://arxiv.org/pdf/2505.12954",
+        "section": "6.1",
+        "reference_commit": "85eff6efa2b1d649ee238620a998ec7f1d305aac"
+      },
+      "parameters": {
+        "sizes": [
+          50,
+          50
+        ],
+        "p": [
+          [
+            0.25,
+            0.05
+          ],
+          [
+            0.05,
+            0.25
+          ]
+        ],
+        "directed": false,
+        "selfloops": false,
+        "sparse": true
+      },
+      "seed": 130300,
+      "original_vertices": 100,
+      "original_edges": 760,
+      "processed_vertices": 100,
+      "processed_edges": 760,
+      "connected_components": 1,
+      "isolated_vertices": 0,
+      "path": "baseline_2025/sbm_n100.edges",
+      "sha256": "92668120947e166a58987ccbae0e327a2df19a1f0a7b03337c1530c07e4d9314",
+      "mapping_path": "baseline_2025/sbm_n100.mapping.json",
+      "mapping_sha256": "e0be62a3e02e461b317ffe8e5a3caedc9f0ac22360401c275db3ac2ef9adcfa7",
+      "preprocessing": {
+        "self_loops_removed": 0,
+        "duplicate_or_reverse_edges_removed": 0,
+        "directions_ignored": false,
+        "edge_attributes_discarded": true
+      },
+      "exact_four_cliques": 99,
+      "validation": {
+        "status": "agreed",
+        "oriented_count": 99,
+        "bruteforce_count": 99,
+        "escape_count": 99,
+        "escape_output": "100\n1520\n161700.000000\n74480.000000\n11328.000000\n730.000000\n3921225.000000\n3612280.000000\n277092.000000\n1098816.000000\n70810.000000\n55227.000000\n166236.000000\n31718.000000\n7302.000000\n3093.000000\n99.000000\n"
+      },
+      "baseline_four_sets_per_trial": 3921225
+    }
+  ]
+}

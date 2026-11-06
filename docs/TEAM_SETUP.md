@@ -195,6 +195,43 @@ includes simulations; use `check_escape.py` for exact-only validation.
 
 ## Reproduce existing experiments later
 
+### Prepared graph benchmarks (dataset phase 13)
+
+After the project owner commits/pushes these additions, `git pull` or a source
+ZIP provides the same 24 small processed graphs and original-ID mappings.
+No dataset download is required for normal use. See [data/README.md](../data/README.md)
+for all sizes, exact counts, seeds, complete hashes, source conventions and
+the Brightkite induced-selection procedure.
+
+```bash
+# Existing locked Python 3.11 environment; no private estimates are generated.
+python scripts/prepare_real_world_graphs.py verify
+python scripts/prepare_real_world_graphs.py verify --escape --brute-force
+python -m pytest -q tests/test_graph_datasets.py
+# Optional reconstruction: downloads only missing hash-pinned raw archives.
+python scripts/prepare_real_world_graphs.py prepare --download
+```
+
+On macOS use the activated environment/GNU compiler setup above. New dataset
+execution was tested on WSL2; macOS regeneration is not claimed as tested.
+Graph/mapping bytes use deterministic ordering and UTF-8/LF. Hash verification
+detects drift. Raw archives and execution evidence remain ignored; the two
+approved processed directories and manifest are small versioned exceptions.
+Preparation always requires actual ESCAPE agreement and independent brute force.
+The same `.edges` files work with both private counting CLI commands.
+
+`experiments/configs/four_clique_real_world.json` and
+`experiments/configs/four_clique_baseline_2025.json` are future-only configs for
+the existing experiment runner. They use the unchanged candidate/baseline budget
+allocation at the same total epsilon, independent simulation coordinates and
+the original exact K4 target. The existing summary's squared RMSE supplies MSE.
+No benchmark was run during dataset preparation; obtain a new instruction before
+running these configs. The baseline visits 3,921,225 four-sets per n=100 trial;
+runtime feasibility remains unmeasured. No graph loader or privacy mechanism
+change was needed.
+
+### Historical experiment commands
+
 These commands reproduce the established grids; **Phase 07 does not run new
 utility experiments**. See [3-star experiments](EXPERIMENTS.md) and
 [4-clique experiments](FOUR_CLIQUE_EXPERIMENTS.md) for the unchanged definitions.

@@ -2,6 +2,59 @@
 
 Updated: **2026-11-06 (UTC)**.
 
+**Current phase: 13 — Dataset preparation and exact validation COMPLETE.**
+See [checkpoint13](checkpoints/13_dataset_preparation.md),
+[data instructions and all24 counts](../../data/README.md), and
+[dataset manifest](../../data/processed/graph_manifest.json).
+Starting revision: `99d542abe4aa81b448b9859561af703605259fd5`.
+
+Prepared four real-world graphs and twenty paper-compatible BA/SBM realizations.
+Every graph agrees across oriented exact counting, independent brute force and
+actual ESCAPE. Brightkite seed130050 selects original start2044 and yields an
+induced **50-vertex,97-edge graph with18 K4s**; no seed/structure search was used.
+All49 graph/mapping/manifest files regenerate byte-identically (174,456 bytes).
+Sources, parameters, seeds, typed ID mappings, full hashes and native count
+output are preserved. The notebook n20,m2 discrepancy is documented; BA follows
+paper m=n//5. Original dataset downloads remain ignored.
+
+New tests: **76 passed in12.90s**. Full regression: **821 passed in51.47s**, no
+failures/errors/skips; includes85 ESCAPE integration cases. Existing standalone
+ESCAPE check: **8 fixtures passed**. All24 datasets passed exact CLI smoke tests.
+Fresh verification and source-package inclusion checks passed. All three pinned
+submodules and all three original references verify unchanged. New macOS execution
+was unavailable; no cross-platform result is invented.
+
+Two future file-based configs share hash-pinned inputs/exact truth and total
+privacy budgets, with distinct simulation coordinates. **No private counting
+trial on these datasets or full comparison was run.** All graphs fit current
+size guards; n100 baseline has3,921,225 four-sets per trial, so repeated-trial
+feasibility needs future measurement. Existing privacy mechanisms, mathematical
+analysis, Phase-6 config, fixtures, results and plots are unchanged. The experiment
+adapter adds file loading only, plus a label for future file-based evaluation.
+The four-clique simulator remains `experimental_unverified`; the earlier audit
+classification remains PARTIAL.
+
+## Current phase checklist
+
+- [x] Inspect current repository, reports, actual paper, source notebooks and providers.
+- [x] Pin/download original archives and normalize the four real-world graphs.
+- [x] Fix Brightkite selection before inspecting counts; retain its induced edges.
+- [x] Generate twenty independent seeded graphs using documented paper conventions.
+- [x] Preserve all vertex mappings, isolates, hashes and stable source provenance.
+- [x] Validate all24 with three independent exact counting methods.
+- [x] Verify identical regeneration, all76 new tests and full821-test regression.
+- [x] Prepare future configs without changing privacy accounting or running them.
+- [x] Check source/archive portability, protected files and all reference fingerprints.
+- [x] Finish docs/reports and stop; no automatic commit/push.
+
+**STOP: dataset phase complete. Await an explicit follow-up before private
+experiments, optimization or another phase.** The processed files are eligible
+for version control; publishing them remains the owner's later action.
+
+## Preserved previous status (four-clique Phases8–9 and earlier)
+
+Updated: **2026-11-06 (UTC)**.
+
 **Active request: 4-clique Phases 8–9 COMPLETE. Privacy audit: PARTIAL; ideal error analysis and validation complete.**
 The requested checkpoint names coexist with earlier macOS/P4 reports; none is
 renumbered or replaced. Current audited revision is `6fba863e984fda8f55c016655df7ded917cc0576`.

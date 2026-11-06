@@ -23,14 +23,15 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. The active
-  4-clique Phases 8–9 request authorizes a code-to-proof privacy audit followed
-  by independent analytical error evaluation, targeted tests, bounded diagnostics
-  and reports. Preserve existing estimators, budgets, configurations and results
-  except for verified defects. **Stop after both requested phases; do not start
-  Phase 10, optimize/tune mechanisms, expand benchmarks, or commit/push.**
-  Existing macOS/P4 checkpoints with overlapping numbers remain historical;
-  use the specifically requested four-clique checkpoint filenames.
+- Never silently continue past an explicitly requested stopping point. The
+  current phase 13 request authorizes dataset preparation/validation only:
+  four public real-world graphs, twenty paper-compatible synthetic graphs,
+  provenance, future configs, exact checks and documentation. Preserve existing
+  privacy mechanisms, proofs, budgets, Phase-6 configuration and saved results.
+  **Stop after dataset validation; no private sweep, optimization, Phase-10
+  optimization work, commit or push.** Earlier phases and checkpoints remain
+  historical; this request supersedes their completed stopping points only
+  within the explicitly authorized dataset scope.
 - All three references are pinned submodules under `third_party/`. Keep their
   sources unchanged too. Use `bash scripts/bootstrap_references.sh`, never
   `git submodule update --remote` for reproduction. Preserve exact gitlinks and
@@ -51,7 +52,10 @@ and its latest checkpoint before changing the project.
   `requirements.lock` deliberately, and document changes. Do not upgrade on
   normal setup. Keep build tools pinned and disable build isolation after the
   locked environment is installed.
-- Keep data, generated plots, caches, build artifacts, and credentials out of Git.
+- Keep raw data, generated plots, caches, build artifacts, and credentials out of Git.
+  The owner explicitly approves the small phase-13 processed benchmark graphs,
+  mappings and manifest under data/processed/ for version control. Keep those
+  bytes deterministic; never replace a source archive whose pinned hash changed.
   Preserve small synthetic fixtures and provenance. Specify seeds explicitly in
   future simulation runs, but do not treat seeded PRNGs as production DP noise.
 - Check graph validation, isolated vertices, ordering consistency, duplicate-edge

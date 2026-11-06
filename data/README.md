@@ -198,8 +198,11 @@ On macOS, activate the existing environment and select GNU g++ as described in
 [TEAM_SETUP](../docs/TEAM_SETUP.md#macos-prerequisites-and-current-verification).
 Calling `.venv/bin/python` alone does not alter compiler PATH. The data format,
 UTF-8/LF mappings, sorted traversal and seeded NetworkX generation are platform
-independent in design. **New execution was verified on WSL2, not on macOS**;
-compare manifest hashes after regeneration on another platform. No new dependency
+independent in design. **The checked-in24 graphs were verified on Apple Silicon macOS on2026-11-06**:
+all hashes and fresh ESCAPE/exact K4/P4 checks passed, along with76 dataset tests
+and821 full tests. See [checkpoint15](../docs/status/checkpoints/15_macos_dataset_verification.md).
+Full raw-data regeneration on macOS was not performed; compare manifest hashes
+after regeneration on another platform. No new dependency
 or submodule update is needed.
 
 Load without running a privacy mechanism:

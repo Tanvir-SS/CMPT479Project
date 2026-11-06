@@ -1,5 +1,59 @@
 # Project status
 
+Updated: **2026-11-06 (America/Vancouver)**.
+
+**Current task: all24 graph datasets verified on macOS — COMPLETE.**
+See [checkpoint15](checkpoints/15_macos_dataset_verification.md). main and fetched
+origin/main are both86f7ed3; existing uncommitted Phase4B work was preserved.
+Apple Silicon arm64, macOS27.0.1, Python3.11.9, GNU g++16.2.0. All24 graphs
+are tracked, canonical, hash-correct and accepted by K4/P4/baseline input paths.
+Fresh brute-force/Python/ESCAPE K4 counts agree with the manifest; all24 P4 counts
+also agree with ESCAPE. All49 processed graph/mapping/manifest files unchanged.
+Dataset tests: **76 passed in6.40s**; full suite: **821 passed in30.92s**, no skips,
+failures or errors. All reference pins verified. No private sweep, algorithm edit,
+dataset regeneration, dependency change, commit or push. **STOP after verification.**
+
+## Current verification checklist
+
+- [x] Fetch/check branch and preserve uncommitted work; no update necessary.
+- [x] Verify environment, pinned dependencies and all three submodules.
+- [x] Check all24 tracked graphs, mappings, canonical structure and hashes.
+- [x] Check actual estimator input boundaries without private sampling.
+- [x] Execute actual ESCAPE and independent exact K4/P4 checks.
+- [x] Run dataset/full tests and confirm all49 dataset artifacts unchanged.
+- [x] Record macOS evidence, limitations and stop.
+
+## Historical P4 Phase4B completion
+
+Updated: **2026-11-06 (America/Vancouver)**.
+
+**Current work: P4 Phase 4B accuracy study COMPLETE (checkpoint 14).**
+See [checkpoint 14](checkpoints/14_four_path_accuracy_study.md) and
+[complete study report](../FOUR_PATH_STUDY.md). The resumed predeclared matrix
+completed **30 cells / 18,000 full trials / 12,000 independent prediction histories**,
+with full deterministic replay and actual ESCAPE truth for15 distinct graphs.
+Targeted suite: **288 passed**; full regression: **821 passed in31.25s**, no skips,
+failures or errors. All references and protected mechanism hashes unchanged.
+
+All MSE discrepancies fall within the predeclared3 combined SE criterion; this
+is limited consistency evidence, not formal proof. Sparse cases have poor relative
+accuracy. Full-protocol truncation remained unobserved; fixed-cap controls show
+the predicted bias. Saved configs still use phase13 names; checkpoint13 below
+is separate dataset work and is preserved. No Phase5, commit or push.
+
+## Current P4 Phase 4B checklist
+
+- [x] Inventory saved changes and preserve intervening dataset/research work.
+- [x] Complete/review framework with unchanged Phase4A limits and private code.
+- [x] Run targeted/full tests; record historical null-representation failure.
+- [x] Save resource/precision plan; run native-validation smoke and replay.
+- [x] Execute unchanged bounded30-cell matrix and fixed-history controls.
+- [x] Verify all artifacts, native truth, metrics and deterministic replay.
+- [x] Generate/inspect figures; report unfavorable and inconclusive findings.
+- [x] Document costs, limitations and next-phase readiness; stop before Phase5.
+
+## Historical dataset preparation status (checkpoint 13)
+
 Updated: **2026-11-06 (UTC)**.
 
 **Current phase: 13 — Dataset preparation and exact validation COMPLETE.**

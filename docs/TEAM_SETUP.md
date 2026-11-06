@@ -212,8 +212,10 @@ python -m pytest -q tests/test_graph_datasets.py
 python scripts/prepare_real_world_graphs.py prepare --download
 ```
 
-On macOS use the activated environment/GNU compiler setup above. New dataset
-execution was tested on WSL2; macOS regeneration is not claimed as tested.
+On macOS use the activated environment/GNU compiler setup above. All24 checked-in datasets were also verified on Apple Silicon macOS on2026-11-06:
+fresh ESCAPE/brute-force K4 and exact P4 agreement, input compatibility,76 dataset
+tests and821 full tests passed. See [checkpoint15](status/checkpoints/15_macos_dataset_verification.md).
+Full raw-data regeneration on macOS is not claimed as tested.
 Graph/mapping bytes use deterministic ordering and UTF-8/LF. Hash verification
 detects drift. Raw archives and execution evidence remain ignored; the two
 approved processed directories and manifest are small versioned exceptions.

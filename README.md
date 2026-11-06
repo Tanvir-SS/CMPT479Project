@@ -67,7 +67,12 @@ study**, including shared-RR covariance and random order/cap effects. See
 [FOUR_PATH_ACCURACY.md](docs/FOUR_PATH_ACCURACY.md) and
 [checkpoint 12](docs/status/checkpoints/12_four_path_accuracy_validation.md).
 The five-graph, 300-trial-per-stream pilot and its deterministic replay are
-complete. No Phase 4B study, plotting or 2025 baseline is implemented.
+complete. **Phase 4B is now complete:** the fixed 30-cell synthetic study,
+plots and full replay are documented in [the study report](docs/FOUR_PATH_STUDY.md)
+and [checkpoint 14](docs/status/checkpoints/14_four_path_accuracy_study.md).
+All 18,000 full trials and 12,000 prediction histories completed; sparse-graph
+accuracy remains poor and no full-protocol truncation was observed.
+The 2025 P4 baseline and Phase 5 have not been implemented.
 
 ```bash
 # NON-PRIVATE synthetic evaluation; refuses an existing output directory.

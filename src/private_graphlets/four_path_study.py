@@ -150,7 +150,7 @@ def summarize_cell(directory, cell, graph):
     row.update(cell=cell['id'], experiment=cell['experiment'], allocation=cell['allocation'],
                epsilon=FourPathBudget(**cell['budget']).total, beta=cell['beta'],
                maximum_degree=max(map(len, graph.adjacency), default=0),
-               relative_rmse=rmse/truth if truth else None,
+               relative_rmse=rmse/truth if truth else float("nan"),
                relative_rmse_defined=bool(truth),
                rmse_se=row['se_mse']/(2*rmse) if rmse else 0.,
                full_mean_squared_missed=float((full.missed_triangles**2).mean()),

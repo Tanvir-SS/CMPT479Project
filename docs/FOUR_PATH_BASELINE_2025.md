@@ -181,3 +181,160 @@ No graph truth can reduce the server's pair work; numerical rejection uses publi
 n and RR bounds before randomization. Negative/fractional estimates are retained.
 No classical control is implemented in this phase: raw noisy-graph counting is
 secondary and the debiased candidate already is Algorithm1's specialization.
+
+## Resumed fidelity audit and implemented APIs
+
+Resume began at clean commit `8849987` on main. That commit already contained
+this source reconstruction, the implementation and all57 new tests. They were
+reviewed in place, not replaced. The saved official PDF hash still matches.
+No algorithm-code correction was required during the resumed review.
+
+The formula can also be described generically as a debiased RR estimator; that
+terminology does not make it a different algorithm. Identification here rests
+on Algorithm1 lines2–4 and the author software, not on a claim that debiased RR
+is unique to this paper. The classical comparator *in this paper* is the
+uncorrected noisy-graph count. No independent two-endpoint variant is reproduced.
+Our lower-ID assignment formalizes the notebook's unordered-pair convention;
+the notebook itself runs centrally rather than implementing client transport.
+
+The principal estimator displays in the paper are **unnumbered**. Cite Algorithm1
+line2 for the affine correction, lines3–4 for the product/normalization; do not
+invent equation numbers. Equation(1) in Lemma3.3 is the tuple-union-size condition,
+not the estimator formula. The proof's epsilon-independent constant is used with
+fixed epsilon; our explicit epsilon-dependent inequality above is an extension.
+
+All APIs are in `src/private_graphlets/four_path_baseline_2025.py`:
+
+```python
+Baseline2025Budget(epsilon: float)
+Baseline2025Result(estimate: float, num_vertices: int, epsilon: float)
+Baseline2025Transcript(rr_upper: tuple[bool, ...])
+Baseline2025Run(result: Baseline2025Result, transcript: Baseline2025Transcript)
+
+four_path_weighted_sum(weights: np.ndarray) -> float
+estimate_from_reports(
+    num_vertices: int, reports: tuple[bool, ...], budget: Baseline2025Budget
+) -> Baseline2025Result
+simulate_four_paths_baseline_2025(
+    graph: SimpleGraph, *, budget: Baseline2025Budget,
+    seed: int | None = None, rng: np.random.Generator | None = None
+) -> Baseline2025Run
+estimate_four_paths_baseline_2025(
+    graph: SimpleGraph, *, budget: Baseline2025Budget,
+    seed: int | None = None, rng: np.random.Generator | None = None
+) -> Baseline2025Result
+```
+
+One randomization stage needs only one generator; no artificial five-stage
+budget or multi-stream wrapper is added. Seed and supplied RNG are mutually
+exclusive. Both seeded and unseeded NumPy modes remain research simulations.
+The reused local_rr_row/sample_rr_upper functions isolate incident-bit access;
+estimate_from_reports accepts no graph. Transcript fields contain only RR bits.
+Result fields contain estimate, public n/epsilon and fixed reconstruction labels,
+not exact counts, degrees, edges, retained targets, seeds or RNG state.
+
+Public guards: n<=100; positive finite epsilon<=30 plus inherited RR numerical
+limits; conservative arithmetic bound rejects unsafe combinations before any
+RR draw. Server matrix checks require square float64, finite, symmetric and
+zero diagonal. Arbitrary caller weights do not certify privacy provenance;
+use estimate_from_reports or the simulator for the modeled RR path. There is no
+clipping, rounding, exact-count fallback, comparison runner or new dependency.
+
+## Mathematical and stochastic verification
+
+All1100 labeled simple graphs for n=0..5 verify the deterministic polynomial,
+independent ordered-quadruple oracle and exact P4 identity. Signed random matrices
+verify the algebraic rearrangement beyond 0/1 graph inputs. All64 labeled n4
+graphs are tested against all64 RR transcripts at epsilon=log(2), checking
+normalization, exact expectation, variance and one-edge likelihood ratios.
+The variance oracle uses independently constructed path edge sets and centered
+noise coefficients; it does not call the implemented weighted-sum formula.
+
+For each of eight fixtures, separate three-coin marginal enumeration verifies
+expectation. Fresh original ESCAPE validates the deterministic target on all8;
+individual noisy values are not required to equal truth. K4 contains12 non-induced
+P4 copies, not one induced vertex set. Isolates preserve truth but add RR noise.
+
+Bounded stochastic validation was fixed before execution:3000 draws per fixture,
+epsilon2, seeds160500+fixture index, tolerance6 **analytic** mean standard errors.
+These24000 small-fixture draws are correctness tests, not comparative experiments.
+The table records the deterministic seeded outcomes; repeated test execution
+replays these seeds, so it is not new independent experimental evidence.
+
+| Fixture | Exact P4 | Sample mean | Ideal variance | Mean SE | Standardized mean error |
+|---|---:|---:|---:|---:|---:|
+| edgeless | 0 | .000712 | .071175 | .004871 | .146121 |
+| star | 0 | -.015086 | 3.226357 | .032794 | -.460023 |
+| path | 1 | 1.029743 | 3.588388 | .034585 | .859991 |
+| tailed_triangle | 2 | 1.991563 | 9.246618 | .055518 | -.151961 |
+| cycle | 4 | 3.970740 | 9.608649 | .056594 | -.517022 |
+| diamond | 6 | 5.845980 | 21.190439 | .084045 | -1.832598 |
+| clique | 12 | 11.921769 | 42.316096 | .118766 | -.658699 |
+| clique_with_isolates | 12 | 12.218715 | 110.779747 | .192163 | 1.138175 |
+
+All pass the predeclared6-SE rule. Negative/fractional output, reproducibility,
+server-only boundaries, invalid graph/epsilon/report/matrix inputs and public
+pre-sampling overflow rejection are tested. Runtime/state validation tests are
+not a proof of floating-point privacy.
+
+## Remaining limitations and Phase5B prerequisites
+
+- Classification remains **faithful independent reconstruction**, not copied P4
+  reference code or a reproduction of the authors' C4 experimental results.
+- The paper's all-i,j notation is underspecified about endpoint duplication;
+  the selected one-owner interpretation is supported by its linked notebook.
+  Other interpretations must be separately labeled and re-accounted.
+- Cubic server arithmetic is our exact specialization, not the literal published
+  implementation. Real-arithmetic equivalence does not promise bitwise equality
+  to a differently ordered floating-point sum.
+- The paper gives fixed-epsilon asymptotics. Our explicit epsilon bound is loose;
+  neither comparable n-exponents nor the bound selects a superior method.
+- No protocol deployment, cryptographic sampler, communication benchmark,
+  candidate privacy proof, optimal allocation or utility comparison was added.
+- A later Phase5B must use identical graph targets, undirected-edge accounting,
+  equal total epsilon and independent trial coordinates, report runtime and
+  uncertainty, and retain zero/negative estimates. It must distinguish our
+  standard RMSE from the printed Section6.1 ten-draw error expression.
+
+Ready for separately authorized Phase5B research comparison subject to these
+qualifications. **Stop here: no comparative sweep, plot, commit or push.**
+
+## Executed verification and preservation
+
+Commands run from the repository root using Python 3.11 in `.venv`:
+
+```sh
+PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pytest -q tests/test_four_path_baseline_2025.py
+PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pytest -q tests/test_four_path_baseline_2025.py tests/test_four_path_exact.py tests/test_escape.py tests/test_escape_integration.py tests/test_four_clique_core.py
+MPLCONFIGDIR="$PWD/build/phase13/matplotlib" PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pytest -q
+MPLCONFIGDIR="$PWD/build/phase13/matplotlib" PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pytest -q --junitxml=build/phase16/resumed-full.xml
+.venv/bin/python scripts/reference_fingerprints.py --verify > build/phase16/resumed-references.json
+git diff --check
+git status --short
+```
+
+| Execution | Observed outcome |
+|---|---|
+| Pre-addition full regression | 821 passed in 31.76s |
+| Initial new baseline tests | 57 passed in 2.94s |
+| Initial targeted baseline/exact/ESCAPE/RR suite | 236 passed in 4.79s |
+| Initial post-addition full regression | 878 passed in 30.92s |
+| Resumed baseline tests | 57 passed in 3.50s |
+| Resumed full regression with JUnit evidence | 878 passed in 32.15s |
+| Resumed reference verification | Exit 0; all three verified, clean reference trees |
+
+All listed pytest runs had zero failures, errors or skips. The targeted command
+includes RR checks in `test_four_clique_core.py`. No comparative study or plot
+was run. Earlier source-access failures were resolved as described above; they
+were not failed tests. Optional classical control and deployment certification
+are deferred, not passed checks.
+
+The pre-addition snapshot compared 55 existing source/test/dependency files:
+zero changed hashes (`build/phase16/preservation.json`). The resumed tree began
+clean at `8849987`; only documentation changed during resumption. Reference
+pins, dependencies, earlier private estimators and earlier results are preserved.
+Evidence in ignored `build/phase16/` includes the source PDF/text, native ESCAPE
+outputs, moment records, fingerprints and resumed JUnit report. These local
+artifacts are not packaged or committed; rerun the commands to regenerate checks.
+See [checkpoint 16](status/checkpoints/16_four_path_baseline_2025.md) for the
+before/after-interruption inventory and final change review.

@@ -1,5 +1,40 @@
 # Project status
 
+**Current task: P4 Phase 5B — IN PROGRESS (2026-11-06).**
+Phase 5A saved work is preserved. The 26-cell equal-nominal-budget design is
+predeclared in `experiments/configs/four_path_phase17_comparison.json`. New
+comparison tests: 35 passed; n100 smoke and complete smoke replay passed.
+Full execution completed (26 candidate / 20 baseline conditions); final regression
+913 passed. Complete replay and final handoff remain pending.
+See [comparison report](../FOUR_PATH_COMPARISON_2025.md).
+
+## Historical Phase 5A completion
+
+Updated: **2026-11-06 (America/Vancouver)**.
+
+**Current phase: P4 Phase 5A — COMPLETE.** See
+[checkpoint 16](checkpoints/16_four_path_baseline_2025.md) and
+[technical reconstruction](../FOUR_PATH_BASELINE_2025.md).
+Resumed from clean revision `8849987`, preserving its saved baseline module,
+57 tests and source specification. Verified fidelity to Algorithm 1 under the
+author notebook's one-report-per-unordered-pair convention; completed handoff
+documentation without modifying code. Fresh baseline: **57 passed in 3.50s**;
+full regression: **878 passed in 32.15s**, zero failures/errors/skips.
+All three reference fingerprints verified; 55 protected pre-baseline source,
+test and dependency files retain their recorded hashes.
+
+## Current Phase 5A checklist
+
+- [x] Inspect saved work and verify paper, supplement and author-code provenance.
+- [x] Distinguish proposed debiased product estimator from classical RR counting.
+- [x] Verify non-induced P4 normalization and exact cubic server identity.
+- [x] Document ideal edge privacy, unbiasedness and theoretical RMSE qualifications.
+- [x] Run baseline, exact/ESCAPE/RR and full regression checks.
+- [x] Verify references, preservation and whitespace; complete checkpoint/handoff.
+- [x] Stop before Phase 5B; no comparative experiments, commit or push.
+
+## Historical macOS dataset verification
+
 Updated: **2026-11-06 (America/Vancouver)**.
 
 **Current task: all24 graph datasets verified on macOS — COMPLETE.**

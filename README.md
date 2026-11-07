@@ -72,7 +72,11 @@ plots and full replay are documented in [the study report](docs/FOUR_PATH_STUDY.
 and [checkpoint 14](docs/status/checkpoints/14_four_path_accuracy_study.md).
 All 18,000 full trials and 12,000 prediction histories completed; sparse-graph
 accuracy remains poor and no full-protocol truncation was observed.
-The 2025 P4 baseline and Phase 5 have not been implemented.
+Phase 5A reconstructs and validates the AISTATS 2025 Algorithm 1 P4 baseline;
+see [source, privacy and accuracy analysis](docs/FOUR_PATH_BASELINE_2025.md) and
+[checkpoint 16](docs/status/checkpoints/16_four_path_baseline_2025.md).
+It follows the author notebook's one-report-per-unordered-pair convention and
+remains an experimental research simulation. Phase 5B comparisons are deferred.
 
 ```bash
 # NON-PRIVATE synthetic evaluation; refuses an existing output directory.

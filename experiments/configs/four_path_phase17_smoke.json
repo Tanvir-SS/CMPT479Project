@@ -1,0 +1,176 @@
+{
+  "kcore": {
+    "psi": 0.5,
+    "threshold_fraction": 0.5,
+    "bias_factor": 1
+  },
+  "trials": 3,
+  "prediction_trials": 3,
+  "uncertainty_multiplier": 3.0,
+  "max_relative_se": 0.15,
+  "schema_version": 17,
+  "experiment_id": "four_path_phase17_smoke",
+  "master_seed": 202611061700,
+  "alpha": 0.05,
+  "historical_output": "experiments/results/four_path_phase13_accuracy",
+  "historical_manifest_sha256": "a71cf77f046a3ee883a378fa65da3c0f51e7e80b540f604dae601d6e28bb0952",
+  "cells": [
+    {
+      "id": "A_er05_n20_pilot",
+      "experiment": "A",
+      "graph": "er05_n20",
+      "allocation": "pilot",
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 6.5
+    },
+    {
+      "id": "A_er05_n50_pilot",
+      "experiment": "A",
+      "graph": "er05_n50",
+      "allocation": "pilot",
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 6.5
+    },
+    {
+      "id": "A_er05_n100_pilot",
+      "experiment": "A",
+      "graph": "er05_n100",
+      "allocation": "pilot",
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 6.5
+    },
+    {
+      "id": "A_er30_n100_pilot",
+      "experiment": "A",
+      "graph": "er30_n100",
+      "allocation": "pilot",
+      "budget": {
+        "degree": 2,
+        "ordering": 0.5,
+        "rr": 1,
+        "cap": 1,
+        "count": 2
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 6.5
+    },
+    {
+      "id": "B_er30_n50_e4",
+      "experiment": "B",
+      "graph": "er30_n50",
+      "allocation": "e4",
+      "budget": {
+        "degree": 1.2,
+        "ordering": 0.4,
+        "rr": 1.0,
+        "cap": 0.6,
+        "count": 0.8
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 4.0
+    },
+    {
+      "id": "C_er30_n50_balanced",
+      "experiment": "C",
+      "graph": "er30_n50",
+      "allocation": "balanced",
+      "budget": {
+        "degree": 0.8,
+        "ordering": 0.8,
+        "rr": 0.8,
+        "cap": 0.8,
+        "count": 0.8
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 4.0
+    },
+    {
+      "id": "C_er30_n50_degree",
+      "experiment": "C",
+      "graph": "er30_n50",
+      "allocation": "degree",
+      "budget": {
+        "degree": 1.4,
+        "ordering": 0.5,
+        "rr": 0.7,
+        "cap": 0.6,
+        "count": 0.8
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 4.0
+    },
+    {
+      "id": "C_er30_n50_rr",
+      "experiment": "C",
+      "graph": "er30_n50",
+      "allocation": "rr",
+      "budget": {
+        "degree": 0.5,
+        "ordering": 0.5,
+        "rr": 1.5,
+        "cap": 0.5,
+        "count": 1.0
+      },
+      "beta": 0.05,
+      "baseline_epsilon": 4.0
+    }
+  ],
+  "graphs": [
+    {
+      "id": "er05_n20",
+      "family": "erdos_renyi",
+      "n": 20,
+      "p": 0.05,
+      "seed": 130020
+    },
+    {
+      "id": "er05_n50",
+      "family": "erdos_renyi",
+      "n": 50,
+      "p": 0.05,
+      "seed": 130050
+    },
+    {
+      "id": "er30_n50",
+      "family": "erdos_renyi",
+      "n": 50,
+      "p": 0.3,
+      "seed": 131050
+    },
+    {
+      "id": "er05_n100",
+      "family": "erdos_renyi",
+      "n": 100,
+      "p": 0.05,
+      "seed": 130100
+    },
+    {
+      "id": "er30_n100",
+      "family": "erdos_renyi",
+      "n": 100,
+      "p": 0.3,
+      "seed": 131100
+    }
+  ]
+}

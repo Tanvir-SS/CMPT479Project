@@ -1,5 +1,18 @@
 # Privacy notes — 3-star research simulation
 
+**P4 Phase 5A, 2026-11-06:** the separate
+[2025 baseline analysis](FOUR_PATH_BASELINE_2025.md) explicitly assigns each
+unordered pair to its lower public-ID endpoint. Under fixed public vertices
+and add/remove-one-edge adjacency, one changed edge affects one epsilon-RR
+coordinate; other likelihood factors cancel, and the server is postprocessing.
+This is ideal-model mathematical accounting, not executable privacy certification.
+Two independent endpoint reports would instead cost 2*epsilon for the full
+edge transcript. The paper's endpoint notation is underspecified; the selected
+ownership follows its linked undirected notebook. NumPy/floating-point sampling
+remains experimental_unverified. Future equal-budget comparisons require this
+same neighboring relation and independent review of the candidate's composition.
+No existing privacy mechanism or budget was modified.
+
 **P4 Phase 4A, 2026-11-05:** [FOUR_PATH_ACCURACY.md](FOUR_PATH_ACCURACY.md)
 derives ideal unconditional MSE by averaging fixed-order/cap conditional error,
 including shared RR and `9*E[missed_triangles^2]`. Its calculator and all saved

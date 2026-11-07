@@ -1,5 +1,14 @@
 # Implemented algorithms
 
+P4 Phase 5A adds a separate [AISTATS 2025 baseline](FOUR_PATH_BASELINE_2025.md):
+a faithful independent reconstruction of Algorithm 1 specialized to non-induced
+P4, under the author notebook's one-report-per-unordered-pair convention.
+The server sums products of three debiased RR weights, dividing ordered paths
+by two for reversal. An independently derived middle-edge identity evaluates
+the same real polynomial in O(n^3) time and O(n^2) memory. It preserves negative
+and fractional estimates and supports at most 100 vertices. This does not
+change the five-stage estimator; comparative evaluation remains Phase 5B.
+
 The original sections below document **non-induced 3-star counting**. Phase 02
 implemented its counters and simulator; phase 03 added the ESCAPE adapter.
 Phase 06's experimental clique/order implementation is documented separately in

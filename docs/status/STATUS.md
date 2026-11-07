@@ -1,12 +1,36 @@
 # Project status
 
-**Current task: P4 Phase 5B — IN PROGRESS (2026-11-06).**
-Phase 5A saved work is preserved. The 26-cell equal-nominal-budget design is
-predeclared in `experiments/configs/four_path_phase17_comparison.json`. New
-comparison tests: 35 passed; n100 smoke and complete smoke replay passed.
-Full execution completed (26 candidate / 20 baseline conditions); final regression
-913 passed. Complete replay and final handoff remain pending.
-See [comparison report](../FOUR_PATH_COMPARISON_2025.md).
+**Current phase: P4 Phase 5B — COMPLETE (2026-11-07, America/Vancouver).**
+See [full technical report](../FOUR_PATH_COMPARISON_2025.md) and
+[checkpoint 17](checkpoints/17_four_path_comparison_2025.md).
+Resumed from clean `acf3442`; the study, plots, profiling and earlier verification
+were already saved. Completed documentation and fresh checks without changing
+code, configurations or experiment artifacts.
+
+The fixed comparison completed26 candidate cells/20 unique baseline conditions:
+15,600 candidate trials,12,000 baseline trials,10,400 prediction histories.
+Both methods use identical saved graphs and equal nominal total epsilon.
+**Baseline lower MSE in all26 cells**, including approximate Bonferroni-adjusted
+intervals; candidate/baseline MSE ratios5.56–19023.35. Candidate centralized
+simulation is faster in all cells. These are conditional research results, not
+universal superiority or certified executable privacy.
+
+## Current Phase 5B checklist
+
+- [x] Preserve Phase5A, earlier mechanisms, graph instances, budgets and references.
+- [x] Predeclare26 comparisons,20 shared baseline conditions and independent seeds.
+- [x] Validate framework and exact ideal baseline variance;35 focused tests passed.
+- [x] Pass n100 smoke and execute the bounded study without dropped trials.
+- [x] Verify exact/native targets,312 artifact hashes and full deterministic replay.
+- [x] Generate/inspect seven PNG/PDF figure pairs; record stage/memory diagnostics.
+- [x] Fresh resumed regression:913 passed in40.56s, no failures/errors/skips.
+- [x] Fresh reference verification;57 protected files and271 Phase4B artifacts unchanged.
+- [x] Complete report/checkpoint, whitespace check and change review; stop.
+
+Full resumed replay verifies38,000 distinct coordinates, including every saved
+estimate/transcript and independent prediction history. Study artifacts remain
+ignored at experiments/results/four_path_phase17_comparison/ (446,650,529 bytes
+excluding root manifest). No estimator changes, new phase, commit or push.
 
 ## Historical Phase 5A completion
 

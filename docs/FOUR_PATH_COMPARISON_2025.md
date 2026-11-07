@@ -1,5 +1,10 @@
 # Phase 5B — Equal-nominal-budget private P4 comparison
 
+**Complete,2026-11-07 (America/Vancouver).** The baseline has lower MSE in all26
+predeclared comparisons; the candidate simulator is faster. Full resumed replay
+and913-test regression pass. See the interruption audit and final verification
+below; earlier plan text is preserved as the pre-execution record.
+
 ## Predeclared protocol (before full execution)
 
 This is NON-PRIVATE synthetic research evaluation. Both private implementations
@@ -471,3 +476,104 @@ graph realizations/real-world studies and stronger uncertainty analysis; formal
 privacy and communication claims require separate review/design. Those are
 future work, not silently completed here. Neither estimator was adjusted in
 response to unfavorable results. Stop after the technical handoff.
+
+
+## Saved stage and memory diagnostic
+
+The separately instrumented diagnostic was completed before the interruption;
+resumption reads its saved `build/phase17/profile.json` without rerunning it.
+Three profile calls per method/size and one separate traced-memory call use
+explicit diagnostic seeds (18 profile calls +6 memory calls), never primary
+accuracy samples. Graphs are the saved ER(.30) instances at total epsilon6.5.
+Inclusive cProfile times include instrumentation overhead and are not primary
+runtime estimates; concurrent machine load was uncontrolled. They must not be
+summed with primary timings or interpreted as distributed execution costs.
+
+| n | method | incremental traced peak bytes | serialized transcript bytes |
+|---|---|---|---|
+| 20 | candidate | 27152 | 3648 |
+| 20 | baseline | 16176 | 1288 |
+| 50 | candidate | 81424 | 14367 |
+| 50 | baseline | 74753 | 8247 |
+| 100 | candidate | 279962 | 46700 |
+| 100 | baseline | 270089 | 33192 |
+
+Tracemalloc measures Python-tracked allocations during a call with the graph
+already loaded; it is neither total process RSS nor comprehensive native-library
+allocation. JSON transcript bytes are an encoding diagnostic, not theoretical
+bit communication. The candidate uses more traced storage here, but these six
+bounded observations do not establish general memory superiority.
+
+For n100, inclusive instrumented seconds per call are:
+
+| method | stage | seconds |
+|---|---|---|
+| candidate | local_cap_report | 0.000382285 |
+| candidate | sample_rr_upper | 0.00236872 |
+| candidate | kcore_order | 0.007931 |
+| candidate | local_degree_report | 0.000377175 |
+| candidate | cap_from_reports | 1.70833e-05 |
+| candidate | rr_matrix | 0.000505917 |
+| candidate | estimate_triangles_from_rr | 0.00306114 |
+| candidate | degree_product_estimate | 0.00113725 |
+| baseline | sample_rr_upper | 0.0023995 |
+| baseline | rr_matrix | 0.000500208 |
+| baseline | four_path_weighted_sum | 0.0972961 |
+
+Candidate triangle timing includes score validation, selection and local count
+noise; ordering includes its internal queries and bookkeeping. Baseline weighted
+sum dominates its measured profile, consistent with its cubic loops. These are
+implementation observations, not evidence that low out-degree utility or secure
+transport has been achieved.
+
+## Interruption audit and resumed completion
+
+Resumed on2026-11-07 from clean Git revision `acf3442` (previous `8849987`).
+That commit already contained all comparison code,35 tests, full/smoke configs,
+three utility scripts, this report and an interim checkpoint17. The ignored
+artifacts additionally contained the complete26/20 study, seven PNG/PDF pairs,
+full38,000-coordinate replay receipt, plot-only caption correction, profiling,
+analysis, reference verification and913 passing final tests (38.23s). STATUS
+and checkpoint17 were stale about replay/profiling/test completion.
+
+Resumption preserves all experiment bytes and completes documentation, current
+status and handoff. It also reruns full deterministic replay and the regression
+suite from the saved commit, using new receipt names. No experiment, graph,
+allocation, trial count, plot or private mechanism is overwritten or restarted.
+Final saved artifact bytes are446,650,529 (excluding root manifest),312 hashed
+files; the earlier446,652,856 figure predates the recorded caption correction.
+Root manifest SHA256:
+`3d5882281574e0cd43db0ef12ee169e5d15533cda6c9d92d252e4e2f0e9f4d80`.
+All57 pre-existing source/test/dependency hashes and271 Phase4B artifact hashes
+match their pre-Phase5B records. All three references verify unchanged.
+
+Additional executed commands (the first three completed before interruption):
+
+```bash
+.venv/bin/python scripts/profile_four_path_comparison.py
+MPLCONFIGDIR="$PWD/build/phase13/matplotlib" .venv/bin/python scripts/run_four_path_comparison.py plot > build/phase17/plot-revision.json
+.venv/bin/python scripts/run_four_path_comparison.py verify > build/phase17/final-verification.json
+# Resumed verification; preserves prior receipts and all experiment artifacts.
+.venv/bin/python scripts/run_four_path_comparison.py verify --replay > build/phase17/resumed-replay.json
+MPLCONFIGDIR="$PWD/build/phase13/matplotlib" PATH="$PWD/.venv/bin:$PATH" .venv/bin/python -m pytest -q --junitxml=build/phase17/resumed-tests.xml > build/phase17/resumed-tests.log
+.venv/bin/python scripts/reference_fingerprints.py --verify > build/phase17/resumed-references.json
+git diff --check
+git status --short
+```
+
+No failed test, dropped cell or numerical execution failure was observed in this
+phase. The corrected figure caption was a presentation defect, not a mechanism
+or statistical defect. Broader privacy certification and optional future studies
+are unresolved limitations, not checks counted as passed.
+
+
+Final resumed outcomes: **913 passed in40.56s**, zero failures/errors/skips.
+Complete deterministic replay: **verified**,15,600 candidate trials,12,000
+baseline trials,10,400 prediction histories,38,000 distinct coordinates. Every
+modeled result/transcript and prediction history reproduces; timings are not
+replayed observations. All three reference fingerprints verified. Final
+`git diff --check` passes. Resumption changed only five documentation files;
+no source/config/test changes and no study artifact rewrites.
+
+The final handoff is complete within Phase5B scope. The saved full tables include
+all unfavorable results. No new phase, private-estimator edit, commit or push.

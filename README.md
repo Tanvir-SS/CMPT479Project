@@ -76,7 +76,13 @@ Phase 5A reconstructs and validates the AISTATS 2025 Algorithm 1 P4 baseline;
 see [source, privacy and accuracy analysis](docs/FOUR_PATH_BASELINE_2025.md) and
 [checkpoint 16](docs/status/checkpoints/16_four_path_baseline_2025.md).
 It follows the author notebook's one-report-per-unordered-pair convention and
-remains an experimental research simulation. Phase 5B comparisons are deferred.
+remains an experimental research simulation. **Phase 5B completed the predeclared
+equal-nominal-budget comparison:** 26 candidate cells, 20 unique baseline
+conditions, 600 trials per series and 400 candidate prediction histories per cell.
+The 2025 baseline has lower MSE in all 26 tested comparisons; our centralized
+simulator is faster. See [complete results and limitations](docs/FOUR_PATH_COMPARISON_2025.md)
+and [checkpoint 17](docs/status/checkpoints/17_four_path_comparison_2025.md).
+Both implementations remain privacy-unverified research simulations.
 
 ```bash
 # NON-PRIVATE synthetic evaluation; refuses an existing output directory.

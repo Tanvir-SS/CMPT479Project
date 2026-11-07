@@ -7,7 +7,15 @@ The server sums products of three debiased RR weights, dividing ordered paths
 by two for reversal. An independently derived middle-edge identity evaluates
 the same real polynomial in O(n^3) time and O(n^2) memory. It preserves negative
 and fractional estimates and supports at most 100 vertices. This does not
-change the five-stage estimator; comparative evaluation remains Phase 5B.
+change the five-stage estimator.
+
+Phase 5B adds separate [equal-nominal-budget comparison infrastructure](FOUR_PATH_COMPARISON_2025.md)
+and an evaluation-only exact ideal baseline variance calculator. The latter
+expands centered independent RR errors and includes all shared-coordinate
+covariances, with O(n^4) evaluation time and O(n^2) working memory for n<=100.
+It never enters either private implementation. The completed fixed study finds
+lower baseline MSE in all 26 comparisons and faster candidate simulation;
+neither the tests nor these empirical results establish formal privacy.
 
 The original sections below document **non-induced 3-star counting**. Phase 02
 implemented its counters and simulator; phase 03 added the ESCAPE adapter.

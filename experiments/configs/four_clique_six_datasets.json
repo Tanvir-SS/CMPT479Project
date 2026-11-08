@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "experiment_id": "four_clique_six_datasets",
+  "trials": 200,
+  "master_seed": 202611081901,
+  "epsilons": [
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "beta": 0.05,
+  "kcore": {
+    "psi": 0.5,
+    "threshold_fraction": 0.5,
+    "bias_factor": 1
+  },
+  "representative_graph": "karate",
+  "methods": [
+    {
+      "id": "kcore_noisy_cap",
+      "kind": "oriented",
+      "ordering": "kcore",
+      "cap_mode": "noisy"
+    }
+  ],
+  "stage_fractions": {
+    "ordering": 0.25,
+    "cap": 0.25,
+    "rr": 0.25,
+    "count": 0.25
+  },
+  "evaluation": {
+    "ground_truth": "previously verified native ESCAPE output in dataset manifest",
+    "variance_ddof": 0,
+    "metrics": [
+      "mse",
+      "rmse",
+      "bias",
+      "variance",
+      "mae",
+      "relative_rmse",
+      "runtime_seconds"
+    ],
+    "seed_rule": "(master<<64)|(graph_index<<48)|(epsilon_index<<32)|trial"
+  },
+  "graphs": [
+    {
+      "id": "karate",
+      "family": "prepared_edge_list",
+      "source_family": "social_network",
+      "path": "data/processed/real_world/karate.edges",
+      "sha256": "3403714da814b5efd462eefe5eef4bfe1867f3dae5a95fbc5386f8564d0dc48f",
+      "n": 34,
+      "m": 78,
+      "expected_four_cliques": 11
+    },
+    {
+      "id": "les_miserables",
+      "family": "prepared_edge_list",
+      "source_family": "social_network",
+      "path": "data/processed/real_world/les_miserables.edges",
+      "sha256": "4628984d81b4c38a349c642ff845b4a63139757cbc50ece473bf2334c4494f99",
+      "n": 77,
+      "m": 254,
+      "expected_four_cliques": 639
+    },
+    {
+      "id": "dolphins",
+      "family": "prepared_edge_list",
+      "source_family": "social_network",
+      "path": "data/processed/real_world/dolphins.edges",
+      "sha256": "459a17a147d584572324d87cb35efd36c24b1d467e9fed002ff0cac2c9b0edac",
+      "n": 62,
+      "m": 159,
+      "expected_four_cliques": 27
+    },
+    {
+      "id": "brightkite_50",
+      "family": "prepared_edge_list",
+      "source_family": "induced_social_subgraph",
+      "path": "data/processed/real_world/brightkite_50.edges",
+      "sha256": "41a65e36f66fd3aabe5487d39804e845bbf7b10604cd2e8457334a21eef81599",
+      "n": 50,
+      "m": 97,
+      "expected_four_cliques": 18
+    },
+    {
+      "id": "ba_n100",
+      "family": "prepared_edge_list",
+      "source_family": "barabasi_albert",
+      "path": "data/processed/baseline_2025/ba_n100.edges",
+      "sha256": "071e36e4eb852fb5a24de4288612cb46a82b9327dc4983b7e6a36a70938d96fc",
+      "n": 100,
+      "m": 1600,
+      "expected_four_cliques": 18198
+    },
+    {
+      "id": "sbm_n100",
+      "family": "prepared_edge_list",
+      "source_family": "stochastic_block",
+      "path": "data/processed/baseline_2025/sbm_n100.edges",
+      "sha256": "92668120947e166a58987ccbae0e327a2df19a1f0a7b03337c1530c07e4d9314",
+      "n": 100,
+      "m": 760,
+      "expected_four_cliques": 99
+    }
+  ]
+}

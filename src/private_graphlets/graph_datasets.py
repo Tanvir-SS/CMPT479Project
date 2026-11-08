@@ -195,7 +195,7 @@ def sample_connected_induced(graph: nx.Graph, size=50, seed=BRIGHTKITE_SEED):
 
 def synthetic_specs():
     for family in ('ba','sbm'):
-        for n in range(10,101,10):
+        for n in (100,):
             if family=='ba':
                 yield {'id':f'ba_n{n:03d}','family':'barabasi_albert','generator':'networkx.barabasi_albert_graph',
                        'parameters':{'n':n,'m':n//5,'initial_graph':None},'seed':130100+n}
@@ -293,7 +293,7 @@ def verify_datasets(output: Path, adapter=None, *, brute_force=False):
     manifest = json.loads((output/'graph_manifest.json').read_text())
     expected_ids = {'karate','dolphins','les_miserables','brightkite_50'}|{s['id'] for s in synthetic_specs()}
     ids = [r['id'] for r in manifest['graphs']]
-    if len(ids)!=24 or set(ids)!=expected_ids: raise ValueError('incomplete or duplicate dataset manifest')
+    if len(ids)!=6 or set(ids)!=expected_ids: raise ValueError('incomplete or duplicate dataset manifest')
     counts = []
     for record in manifest['graphs']:
         path, mapping_path = output/record['path'], output/record['mapping_path']
@@ -332,20 +332,19 @@ def load_prepared_graph(spec: dict, *, project_root: Path | None=None) -> Simple
 
 
 def future_configs(manifest: dict):
-    for suite,master in [('real_world',202611061301),('baseline_2025',202611061302)]:
-        records = [r for r in manifest['graphs'] if r['suite']==suite]
-        yield f'four_clique_{suite}.json', {
-            'schema_version':1,'experiment_id':f'four_clique_{suite}','trials':100,'master_seed':master,
-            'epsilons':[.5,1.,2.,4.],'beta':.05,
-            'kcore':{'psi':.5,'threshold_fraction':.5,'bias_factor':1},
-            'representative_graph':records[0]['id'],
-            'methods':[{'id':'baseline','kind':'baseline'},
-                       {'id':'kcore_noisy_cap','kind':'oriented','ordering':'kcore','cap_mode':'noisy'}],
-            'evaluation':{'target':'original exact K4 count','ground_truth':'ESCAPE + independent brute force',
-                'metrics':{'mse':'summary.rmse ** 2','rmse':'summary.rmse','bias':'summary.bias'},
-                'seed_rule':'existing trial_seed(master, graph_index, epsilon_index, method_index, trial)',
-                'status':'prepared_only; no private benchmark executed during dataset preparation'},
-            'graphs':[{'id':r['id'],'family':'prepared_edge_list','source_family':r['family'],
-                       'path':f"data/processed/{r['path']}",'sha256':r['sha256'],
-                       'n':r['processed_vertices'],'m':r['processed_edges'],
-                       'expected_four_cliques':r['exact_four_cliques']} for r in records]}
+    """The active, candidate-only K4 study; historical Phase-13 configs are archived."""
+    records=manifest['graphs']
+    yield 'four_clique_six_datasets.json', {
+        'schema_version':1,'experiment_id':'four_clique_six_datasets','trials':200,
+        'master_seed':202611081901,'epsilons':[.5,1.,2.,4.],'beta':.05,
+        'kcore':{'psi':.5,'threshold_fraction':.5,'bias_factor':1},
+        'representative_graph':'karate',
+        'methods':[{'id':'kcore_noisy_cap','kind':'oriented','ordering':'kcore','cap_mode':'noisy'}],
+        'stage_fractions':{'ordering':.25,'cap':.25,'rr':.25,'count':.25},
+        'evaluation':{'ground_truth':'previously verified native ESCAPE output in dataset manifest',
+            'variance_ddof':0,'metrics':['mse','rmse','bias','variance','mae','relative_rmse','runtime_seconds'],
+            'seed_rule':'(master<<64)|(graph_index<<48)|(epsilon_index<<32)|trial'},
+        'graphs':[{'id':r['id'],'family':'prepared_edge_list','source_family':r['family'],
+            'path':f"data/processed/{r['path']}",'sha256':r['sha256'],
+            'n':r['processed_vertices'],'m':r['processed_edges'],
+            'expected_four_cliques':r['exact_four_cliques']} for r in records]}

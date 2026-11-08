@@ -117,7 +117,7 @@ def test_bfs_induced_selection_is_insertion_order_independent_and_has_no_retry()
 
 
 def test_manifest_verification_and_hash_corruption(tmp_path):
-    assert verify_datasets(PROCESSED)['graphs']==24
+    assert verify_datasets(PROCESSED)['graphs']==6
     target=tmp_path/'copy';shutil.copytree(PROCESSED,target)
     path=target/RECORDS[0]['path']
     path.write_bytes(path.read_bytes()+b'\n')
@@ -144,7 +144,7 @@ def test_future_config_compatibility_same_budget_and_disjoint_random_seeds():
     all_seeds=set()
     for filename,expected in future_configs(MANIFEST):
         config=experiments.load_config(PROJECT/'experiments/configs'/filename)
-        assert config==expected and config['trials']==100
+        assert config==expected and config['trials']==200
         assert config['epsilons']==[.5,1,2,4]
         for gi,spec in enumerate(config['graphs']):
             graph=experiments.experiment_graph(spec)
@@ -152,14 +152,14 @@ def test_future_config_compatibility_same_budget_and_disjoint_random_seeds():
             for ei,epsilon in enumerate(config['epsilons']):
                 budget=allocate_budget(epsilon,'kcore','noisy')
                 assert (budget.ordering,budget.cap,budget.rr,budget.count)==(epsilon/4,)*4
-                assert config['methods'][0]=={'id':'baseline','kind':'baseline'}
-                for mi in range(2):
+                assert config['methods']==[{'id':'kcore_noisy_cap','kind':'oriented','ordering':'kcore','cap_mode':'noisy'}]
+                for mi in range(1):
                     for trial in range(config['trials']):
                         seed=experiments.trial_seed(config['master_seed'],gi,ei,mi,trial)
                         assert seed not in all_seeds
                         all_seeds.add(seed)
-    assert len(all_seeds)==24*4*2*100  # Coordinates only; no estimates generated.
-    assert len({s['seed'] for s in synthetic_specs()})==20
+    assert len(all_seeds)==6*4*200  # Coordinates only; no estimates generated.
+    assert len({s['seed'] for s in synthetic_specs()})==2
     assert BRIGHTKITE_SEED not in {s['seed'] for s in synthetic_specs()}
 
 

@@ -195,10 +195,10 @@ includes simulations; use `check_escape.py` for exact-only validation.
 
 ## Reproduce existing experiments later
 
-### Prepared graph benchmarks (dataset phase 13)
+### Prepared graph benchmarks (Phase-13 provenance, six active datasets)
 
 After the project owner commits/pushes these additions, `git pull` or a source
-ZIP provides the same 24 small processed graphs and original-ID mappings.
+ZIP provides the six selected processed graphs and original-ID mappings.
 No dataset download is required for normal use. See [data/README.md](../data/README.md)
 for all sizes, exact counts, seeds, complete hashes, source conventions and
 the Brightkite induced-selection procedure.
@@ -212,7 +212,7 @@ python -m pytest -q tests/test_graph_datasets.py
 python scripts/prepare_real_world_graphs.py prepare --download
 ```
 
-On macOS use the activated environment/GNU compiler setup above. All24 checked-in datasets were also verified on Apple Silicon macOS on2026-11-06:
+On macOS use the activated environment/GNU compiler setup above. The original 24-dataset collection was also verified on Apple Silicon macOS on2026-11-06:
 fresh ESCAPE/brute-force K4 and exact P4 agreement, input compatibility,76 dataset
 tests and821 full tests passed. See [checkpoint15](status/checkpoints/15_macos_dataset_verification.md).
 Full raw-data regeneration on macOS is not claimed as tested.
@@ -222,15 +222,15 @@ approved processed directories and manifest are small versioned exceptions.
 Preparation always requires actual ESCAPE agreement and independent brute force.
 The same `.edges` files work with both private counting CLI commands.
 
-`experiments/configs/four_clique_real_world.json` and
-`experiments/configs/four_clique_baseline_2025.json` are future-only configs for
-the existing experiment runner. They use the unchanged candidate/baseline budget
-allocation at the same total epsilon, independent simulation coordinates and
-the original exact K4 target. The existing summary's squared RMSE supplies MSE.
-No benchmark was run during dataset preparation; obtain a new instruction before
-running these configs. The baseline visits 3,921,225 four-sets per n=100 trial;
-runtime feasibility remains unmeasured. No graph loader or privacy mechanism
-change was needed.
+The active collection now contains six selected graphs. The original Phase-13
+manifest and then-future configurations are preserved under
+`docs/status/phase13_dataset_provenance/`; the other 18 processed synthetic graphs
+are no longer active. Use `experiments/configs/four_clique_six_datasets.json` and
+`scripts/evaluate_four_clique.py` for the candidate-only K4 study. It uses 200
+fresh trials at epsilon .5/1/2/4 with equal quarters, population variance and
+incremental SQLite recovery. See [the study instructions](FOUR_CLIQUE_SIX_DATASETS.md)
+and [future evaluation conventions](EVALUATION_STANDARDS.md). The privacy
+mechanism is unchanged and remains an unverified research simulator.
 
 ### Historical experiment commands
 

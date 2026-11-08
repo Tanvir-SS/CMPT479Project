@@ -4,12 +4,13 @@ Harry testing the push
 CMPT 479/982 research project on Local Edge Differential Privacy (LEDP) and
 low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
-**Prepared datasets:** [data/README.md](data/README.md) documents four real-world
-graphs (Karate, Dolphins, Les Misérables and an induced 50-vertex Brightkite sample)
-and twenty BA/SBM realizations following the 2025 paper's graph parameters.
-All 24 agree across exact Python counters and actual ESCAPE. Processed files,
-mappings and the manifest are approved for version control; raw archives remain
-ignored. Future comparison configs are prepared, with no private sweep executed.
+**Active evaluation datasets:** [data/README.md](data/README.md) documents the six
+selected unchanged graphs: Karate, Dolphins, Les Misérables, Brightkite-50,
+BA-100 and SBM-100. Other processed BA/SBM sizes were removed from the active
+collection; their provenance and completed historical reports are preserved.
+See [evaluation conventions](docs/EVALUATION_STANDARDS.md) and the independent
+[candidate-only K4 study](docs/FOUR_CLIQUE_SIX_DATASETS.md). Correctness fixtures
+remain separate from the main experiment.
 
 **Team installation:** [TEAM_SETUP.md](docs/TEAM_SETUP.md) covers recursive Git
 clones, GitHub ZIP downloads, all three pinned reference repositories, path
@@ -423,6 +424,7 @@ build/                 Ignored local builds and verification logs
 Read [AGENTS.md](AGENTS.md) before working. Keep documentation and status current,
 add a numbered checkpoint for each phase, and distinguish observations from
 mathematical claims. Empirical tests cannot establish a formal DP guarantee.
-**Phase 07 stops after repository portability and regression validation. Do not
-change privacy mechanisms, optimize algorithms, run new utility experiments or
-start another phase without explicit follow-up. No automatic commit/push.**
+**Phase 19 stops after dataset cleanup and the 4,800-trial candidate-only K4
+study.** No baseline or unrelated pattern run, budget tuning, algorithm redesign,
+large audits, unnecessary plots, automatic commit or push. Phase 18 is abandoned;
+its outputs are not reused.

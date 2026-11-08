@@ -144,3 +144,13 @@ non-timing trial diagnostic exactly**, checks saved hashes and recalculates
 aggregate metrics. Figures also regenerate with matching file hashes. A full
 test of the small pipeline checks corruption detection and output overwrite
 rejection. No further grid expansion or new pattern is authorized by this report.
+
+## Active six-dataset evaluation (phase 19)
+
+The preceding Phase-6 report and results are preserved history. Phase 18 was
+abandoned at the owner's request. The replacement evaluates only kcore_noisy_cap
+on six unchanged graphs, at epsilon .5/1/2/4 with 200 fresh trials per cell and
+fixed equal quarters. It uses population variance (`ddof=0`) and direct MSE;
+this does not rewrite historical metric schemas. See
+[results and commands](FOUR_CLIQUE_SIX_DATASETS.md) and
+[future conventions](EVALUATION_STANDARDS.md). No old estimates are reused.

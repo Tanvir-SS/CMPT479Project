@@ -1,5 +1,35 @@
 # Project status
 
+Updated: **2026-11-08 UTC**.
+
+**Current phase: 19 — six-dataset candidate-only 4-clique evaluation COMPLETE.**
+Phase 18 is explicitly abandoned; its estimates and unfinished tooling are removed.
+
+- [x] Inspect and discard only abandoned evaluation work.
+- [x] Retain six selected graphs unchanged; remove 18 inactive graphs/mappings.
+- [x] Document future evaluation conventions without implementing other patterns.
+- [x] Add a lightweight resumable K4 script and brief smoke test.
+- [x] Run 4,800 fresh trials: six graphs × four budgets × 200.
+- [x] Save metrics/results, verify preservation, complete checkpoint and stop.
+
+**4,800/4,800 fresh trials completed**, 24 cells at 200 trials each. Brief 48-trial
+smoke/recovery and full saved-output verification pass. Equal O/D/R/C quarters;
+population variance and direct MSE. No observations are reused from Phase 18.
+RMSE falls with epsilon on all six graphs but remains large relative to truth.
+All 2,436 negative estimates are retained; no outgoing-edge truncation observed.
+
+See [results and commands](../FOUR_CLIQUE_SIX_DATASETS.md),
+[future evaluation conventions](../EVALUATION_STANDARDS.md), and
+[checkpoint 19](checkpoints/19_six_dataset_four_clique_evaluation.md).
+Full CSVs/SQLite: `experiments/results/four_clique_six_datasets/` (ignored).
+The six graph/mapping snapshots, all fixtures, private algorithms, proofs,
+dependencies, reference pins and 54 historical result/plot files are preserved.
+No full regression was rerun; verification was intentionally limited as requested.
+
+**STOP.** No baseline, other-pattern run, tuning, extensive audit, commit or push.
+
+## Preserved earlier completed status
+
 **Current phase: P4 Phase 5B — COMPLETE (2026-11-07, America/Vancouver).**
 See [full technical report](../FOUR_PATH_COMPARISON_2025.md) and
 [checkpoint 17](checkpoints/17_four_path_comparison_2025.md).
@@ -61,12 +91,12 @@ test and dependency files retain their recorded hashes.
 
 Updated: **2026-11-06 (America/Vancouver)**.
 
-**Current task: all24 graph datasets verified on macOS — COMPLETE.**
+**Current task: all 24 graph datasets verified on macOS — COMPLETE.**
 See [checkpoint15](checkpoints/15_macos_dataset_verification.md). main and fetched
 origin/main are both86f7ed3; existing uncommitted Phase4B work was preserved.
 Apple Silicon arm64, macOS27.0.1, Python3.11.9, GNU g++16.2.0. All24 graphs
 are tracked, canonical, hash-correct and accepted by K4/P4/baseline input paths.
-Fresh brute-force/Python/ESCAPE K4 counts agree with the manifest; all24 P4 counts
+Fresh brute-force/Python/ESCAPE K4 counts agree with the manifest; all 24 P4 counts
 also agree with ESCAPE. All49 processed graph/mapping/manifest files unchanged.
 Dataset tests: **76 passed in6.40s**; full suite: **821 passed in30.92s**, no skips,
 failures or errors. All reference pins verified. No private sweep, algorithm edit,
@@ -76,7 +106,7 @@ dataset regeneration, dependency change, commit or push. **STOP after verificati
 
 - [x] Fetch/check branch and preserve uncommitted work; no update necessary.
 - [x] Verify environment, pinned dependencies and all three submodules.
-- [x] Check all24 tracked graphs, mappings, canonical structure and hashes.
+- [x] Check all 24 tracked graphs, mappings, canonical structure and hashes.
 - [x] Check actual estimator input boundaries without private sampling.
 - [x] Execute actual ESCAPE and independent exact K4/P4 checks.
 - [x] Run dataset/full tests and confirm all49 dataset artifacts unchanged.
@@ -117,7 +147,7 @@ Updated: **2026-11-06 (UTC)**.
 
 **Current phase: 13 — Dataset preparation and exact validation COMPLETE.**
 See [checkpoint13](checkpoints/13_dataset_preparation.md),
-[data instructions and all24 counts](../../data/README.md), and
+[data instructions and all 24 counts](../../data/README.md), and
 [dataset manifest](../../data/processed/graph_manifest.json).
 Starting revision: `99d542abe4aa81b448b9859561af703605259fd5`.
 
@@ -154,7 +184,7 @@ classification remains PARTIAL.
 - [x] Fix Brightkite selection before inspecting counts; retain its induced edges.
 - [x] Generate twenty independent seeded graphs using documented paper conventions.
 - [x] Preserve all vertex mappings, isolates, hashes and stable source provenance.
-- [x] Validate all24 with three independent exact counting methods.
+- [x] Validate all 24 with three independent exact counting methods.
 - [x] Verify identical regeneration, all76 new tests and full821-test regression.
 - [x] Prepare future configs without changing privacy accounting or running them.
 - [x] Check source/archive portability, protected files and all reference fingerprints.

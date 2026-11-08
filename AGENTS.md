@@ -23,15 +23,15 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. The
-  current phase 13 request authorizes dataset preparation/validation only:
-  four public real-world graphs, twenty paper-compatible synthetic graphs,
-  provenance, future configs, exact checks and documentation. Preserve existing
-  privacy mechanisms, proofs, budgets, Phase-6 configuration and saved results.
-  **Stop after dataset validation; no private sweep, optimization, Phase-10
-  optimization work, commit or push.** Earlier phases and checkpoints remain
-  historical; this request supersedes their completed stopping points only
-  within the explicitly authorized dataset scope.
+- Never silently continue past an explicitly requested stopping point. Phase 19
+  replaces the abandoned Phase-18 evaluation. Keep exactly six active benchmark
+  graphs, document future evaluation conventions, and run only kcore_noisy_cap:
+  epsilon .5/1/2/4, 200 trials per graph/budget, equal O/D/R/C quarters. Use fresh
+  simulation seeds and population variance. Reuse verified ESCAPE truth, save
+  incremental results, and keep verification brief. Preserve completed research,
+  fixtures, mechanisms, dependencies and reference pins. **No baseline or other
+  pattern experiments, budget tuning, optimization, extensive audits, repeated
+  regression suites, unnecessary plots, commit or push. Stop after this task.**
 - All three references are pinned submodules under `third_party/`. Keep their
   sources unchanged too. Use `bash scripts/bootstrap_references.sh`, never
   `git submodule update --remote` for reproduction. Preserve exact gitlinks and

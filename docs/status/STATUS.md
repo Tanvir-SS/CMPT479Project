@@ -1,5 +1,44 @@
 # Project status
 
+Updated: **2026-11-08 (America/Vancouver)**.
+
+**Current task: 21 — standardized six-dataset P4 evaluation COMPLETE.**
+
+- [x] Inspect completed research, standards and Checkpoint 20 ground truth.
+- [x] Validate six dataset hashes and fixed five-stage allocations.
+- [x] Adapt independent resumable runner; 48-trial smoke/resume verified.
+- [x] Focused protocol tests: 13 passed, 73 deselected.
+- [x] Complete 4,800 fresh trials and verify saved metrics.
+- [x] Finish technical report/checkpoint and stop.
+
+Main seed 202611082101; smoke seed 202611082100. Uses unchanged P4 simulator,
+D/O/R/M/C fractions .30/.10/.25/.15/.20 and Phase 4B defaults.
+All 24 cells have 200 finite unique trials; saved-output and independent metric
+verification pass. All 1,098 negative estimates retained. RMSE decreases with
+epsilon on every graph, but relative errors remain large on low-count inputs.
+See [technical report](../FOUR_PATH_SIX_DATASETS.md) and
+[checkpoint 21](checkpoints/21_p4_six_dataset_evaluation.md). **STOP.**
+
+## Preserved Checkpoint 20 completion
+
+Updated: **2026-11-08 (America/Vancouver)**.
+
+**Current task: 20 — Milestone 3 standardized P4 dataset preparation COMPLETE.**
+
+- [x] Read project standards, status/checkpoint and existing exact/native counters.
+- [x] Verify all six existing graphs, manifest hashes, sizes and valid parsing.
+- [x] Obtain fresh Python/native ESCAPE non-induced P4 counts; all six agree.
+- [x] Cache ground truth and separate native evidence; preserve all inputs.
+- [x] Run focused correctness checks: 9 passed, 29 deselected, no skips.
+- [x] Document completion and stop without private trials or another phase.
+
+See [checkpoint 20](checkpoints/20_p4_standardized_ground_truth.md) for counts,
+commands and limitations. Cache: `experiments/results/p4_standardized_ground_truth/`
+(ignored). No missing inputs or provenance mismatches. Estimators, datasets,
+manifest, dependencies and reference sources are unchanged. **STOP.**
+
+## Preserved Phase 19 completion
+
 Updated: **2026-11-08 UTC**.
 
 **Current phase: 19 — six-dataset candidate-only 4-clique evaluation COMPLETE.**

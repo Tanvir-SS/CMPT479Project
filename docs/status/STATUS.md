@@ -1,5 +1,46 @@
 # Project status
 
+Updated: **2026-11-09 (America/Vancouver)**.
+
+**Current task: 23 — full balanced wedge-Laplace C4 evaluation COMPLETE.**
+
+- [x] Validate Python 3.11, six pinned datasets, C4 truth and fixed configuration.
+- [x] Confirm focused test history and verify saved 24-trial smoke results.
+- [x] Complete all 4,800 fresh trials using unchanged estimator and seed scheme.
+- [x] Verify 24 cells × 200, unique seeds/IDs, saved artifacts and all metrics.
+- [x] Complete report/checkpoint and stop without further experiments.
+
+Main seed 202611092201; epsilon .5/1/2/4, endpoint epsilon/2 and scale 24/epsilon.
+All 2,376 negative estimates retained. RMSE decreases with epsilon on every graph,
+but even the best relative RMSE is 41.3282 times truth. Variance dominates MSE.
+Main and independent saved-output verification pass; no execution failure.
+See [full report](../FOUR_CYCLE_SIX_DATASETS.md) and
+[checkpoint 23](checkpoints/23_four_cycle_six_dataset_evaluation.md).
+No estimator/config/data/reference/dependency changes, tuning, baseline, plots,
+commit or push. **STOP.**
+
+## Preserved Checkpoint 22 completion
+
+Updated: **2026-11-09 (America/Vancouver)**.
+
+**Current task: 22 — balanced wedge-Laplace C4 implementation COMPLETE.**
+
+- [x] Review supplied mathematics independently; no blocking inconsistency found.
+- [x] Implement faithful AP sampling, local wedge-Laplace reports and aggregation.
+- [x] Pass all 20 new focused cases; eight native ESCAPE fixture checks pass.
+- [x] Verify all three reference fingerprints and preserve existing project files.
+- [x] Prepare fixed six-dataset C4 runner; save/resume/verify 24 smoke trials.
+- [x] Document ideal-protocol assumptions, simulation limits and stop.
+
+See [implementation/review](../FOUR_CYCLE_IMPLEMENTATION.md) and
+[checkpoint 22](checkpoints/22_balanced_wedge_four_cycle.md). Initial native build
+failed with Apple Clang; the documented GNU compiler rerun passed, with no skips.
+Sampling/noise sensitivity and variance proofs reviewed separately from tests.
+No production DP certification is claimed. Full evaluation **0/4,800 trials**;
+no main results directory, baseline, plots, tuning, commit or push. **STOP.**
+
+## Preserved Checkpoint 21 completion
+
 Updated: **2026-11-08 (America/Vancouver)**.
 
 **Current task: 21 — standardized six-dataset P4 evaluation COMPLETE.**

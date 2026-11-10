@@ -1,5 +1,33 @@
 # Project status
 
+Updated: **2026-11-10 UTC**.
+
+**Current task: 24 — hybrid diamond implementation and targeted verification COMPLETE.**
+
+- [x] Read the supplied algorithm and Diamond Sections B–E; review shared code.
+- [x] Implement the exact three-stage hybrid and separate non-private oracle.
+- [x] Verify exact/noise-free counts against actual ESCAPE on 14 small graphs.
+- [x] Pass 49 diamond tests and 25 existing k-CoreD tests, with no skips.
+- [x] Review sensitivity, transcript composition, fractional clipping and MSE assumptions.
+- [x] Preserve earlier mechanisms/data/results/pins; finish documentation and stop.
+
+All eight fixtures and six seeded graphs agree across exact formula, independent
+enumeration, native ESCAPE and test-only noiseless reconstruction. The fixed-cap
+audit passes 79,872 neighboring-vector checks. Small statistical checks are
+consistent with ideal no-clipping expectations; signed/fractional outputs remain
+unchanged. This is **experimental_unverified**, not certified executable LEDP.
+No structural contradiction was found under the stated ideal assumptions;
+k-CoreD source/implementation qualifications and numerical limits remain.
+
+See [implementation and single-estimate command](../DIAMOND_IMPLEMENTATION.md),
+[privacy/accuracy review](../DIAMOND_PRIVACY_AUDIT.md), and
+[checkpoint 24](checkpoints/24_diamond_implementation.md). Full six-dataset
+diamond experiments, a new experimental runner, baselines and optimization are
+deferred. No other-pattern mechanism change, dependency change, commit or push.
+**STOP pending an explicit next instruction.**
+
+## Preserved Checkpoint 23 completion
+
 Updated: **2026-11-09 (America/Vancouver)**.
 
 **Current task: 23 — full balanced wedge-Laplace C4 evaluation COMPLETE.**

@@ -23,15 +23,16 @@ and its latest checkpoint before changing the project.
   preserve earlier checkpoints. Record completed work, files, commands,
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
-- Never silently continue past an explicitly requested stopping point. Phase 19
-  replaces the abandoned Phase-18 evaluation. Keep exactly six active benchmark
-  graphs, document future evaluation conventions, and run only kcore_noisy_cap:
-  epsilon .5/1/2/4, 200 trials per graph/budget, equal O/D/R/C quarters. Use fresh
-  simulation seeds and population variance. Reuse verified ESCAPE truth, save
-  incremental results, and keep verification brief. Preserve completed research,
-  fixtures, mechanisms, dependencies and reference pins. **No baseline or other
-  pattern experiments, budget tuning, optimization, extensive audits, repeated
-  regression suites, unnecessary plots, commit or push. Stop after this task.**
+- Never silently continue past an explicitly requested stopping point. Current
+  task 24 authorizes only the specified hybrid diamond implementation and targeted
+  correctness/privacy checks; it supersedes the earlier phase-specific stops.
+  Follow `docs/Diamond_Research_Reference.md`: genuine private k-CoreD, one RR
+  report per public unordered pair, public fixed B>=2, full noisy wedge vectors
+  with scale 2(B-1)/epsilon_W, public hybrid weight and report-only reconstruction.
+  Preserve earlier mechanisms, six active datasets, fixtures, experiments,
+  dependencies and reference pins. **No full six-dataset diamond evaluation,
+  baseline, private cap, sketches, final-count noise, tuning, optimization,
+  other-pattern changes, commit or push. Stop after targeted verification.**
 - All three references are pinned submodules under `third_party/`. Keep their
   sources unchanged too. Use `bash scripts/bootstrap_references.sh`, never
   `git submodule update --remote` for reproduction. Preserve exact gitlinks and

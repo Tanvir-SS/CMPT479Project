@@ -4,6 +4,18 @@ Harry testing the push
 CMPT 479/982 research project on Local Edge Differential Privacy (LEDP) and
 low-out-degree orientations, drawing on ESCAPE and k-CoreD / EdgeOrientΔ.
 
+**Diamond implementation (task 24):** the specified three-stage hybrid simulator
+and separate exact counter are implemented with targeted native/count/privacy
+checks. See [implementation and command](docs/DIAMOND_IMPLEMENTATION.md),
+[conditional privacy and accuracy review](docs/DIAMOND_PRIVACY_AUDIT.md), and
+[checkpoint 24](docs/status/checkpoints/24_diamond_implementation.md).
+The simulator remains `experimental_unverified`; full diamond evaluation is
+deferred. Run one small research simulation with an explicitly public cap:
+
+```bash
+.venv/bin/python scripts/estimate_diamonds.py data/fixtures/diamond.edges --epsilon 3 --cap 3 --seed 2460
+```
+
 **Active evaluation datasets:** [data/README.md](data/README.md) documents the six
 selected unchanged graphs: Karate, Dolphins, Les Misérables, Brightkite-50,
 BA-100 and SBM-100. Other processed BA/SBM sizes were removed from the active

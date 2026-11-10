@@ -9,12 +9,19 @@ and separate exact counter are implemented with targeted native/count/privacy
 checks. See [implementation and command](docs/DIAMOND_IMPLEMENTATION.md),
 [conditional privacy and accuracy review](docs/DIAMOND_PRIVACY_AUDIT.md), and
 [checkpoint 24](docs/status/checkpoints/24_diamond_implementation.md).
-The simulator remains `experimental_unverified`; full diamond evaluation is
-deferred. Run one small research simulation with an explicitly public cap:
+The simulator remains `experimental_unverified`.
+Run one small research simulation with an explicitly public cap:
 
 ```bash
 .venv/bin/python scripts/estimate_diamonds.py data/fixtures/diamond.edges --epsilon 3 --cap 3 --seed 2460
 ```
+
+**Diamond six-dataset evaluation (task 25):** the fixed no-clipping study uses
+explicit O/R/W fractions 1/4,3/8,3/8 and public B=n−1. See
+[results and reproduction commands](docs/DIAMOND_SIX_DATASETS.md) and
+[checkpoint 25](docs/status/checkpoints/25_diamond_six_dataset_evaluation.md).
+Its independent runner is `scripts/evaluate_diamond.py`; it preserves the
+implemented estimator and supports incremental saves/resume.
 
 **Active evaluation datasets:** [data/README.md](data/README.md) documents the six
 selected unchanged graphs: Karate, Dolphins, Les Misérables, Brightkite-50,

@@ -24,15 +24,15 @@ and its latest checkpoint before changing the project.
   dependencies, actual tests, findings, issues, and next steps.
 - Update documentation whenever algorithm assumptions or implementations change.
 - Never silently continue past an explicitly requested stopping point. Current
-  task 24 authorizes only the specified hybrid diamond implementation and targeted
-  correctness/privacy checks; it supersedes the earlier phase-specific stops.
-  Follow `docs/Diamond_Research_Reference.md`: genuine private k-CoreD, one RR
-  report per public unordered pair, public fixed B>=2, full noisy wedge vectors
-  with scale 2(B-1)/epsilon_W, public hybrid weight and report-only reconstruction.
-  Preserve earlier mechanisms, six active datasets, fixtures, experiments,
-  dependencies and reference pins. **No full six-dataset diamond evaluation,
-  baseline, private cap, sketches, final-count noise, tuning, optimization,
-  other-pattern changes, commit or push. Stop after targeted verification.**
+  task 25 authorizes exactly 4,800 diamond evaluation trials: the six pinned
+  graphs, epsilon .5/1/2/4, 200 per cell, explicit O/R/W fractions 1/4,3/8,3/8,
+  and public B=n-1 with unchanged scale 2(B-1)/epsilon_W. Use the existing
+  estimator unchanged and cached ESCAPE diamond truth. Save/resume incremental
+  results, verify only saved configurations/metrics/artifacts, and generate one
+  four-real-world-graph MRE plot. Preserve previous research, datasets and pins.
+  **No extra simulations, algorithm tests or exhaustive audits, baseline,
+  different caps, private cap, tuning, optimization, estimator/proof changes,
+  commit or push. Stop after the evaluation and brief report.**
 - All three references are pinned submodules under `third_party/`. Keep their
   sources unchanged too. Use `bash scripts/bootstrap_references.sh`, never
   `git submodule update --remote` for reproduction. Preserve exact gitlinks and

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "experiment_id": "diamond_six_datasets",
+  "method": "kcore_rr_full_wedge_hybrid_diamond",
+  "trials": 200,
+  "master_seed": 202611102501,
+  "seed_rule": "(master<<64)|(graph_index<<48)|(epsilon_index<<32)|trial",
+  "graph_ids": ["karate", "dolphins", "les_miserables", "brightkite_50", "ba_n100", "sbm_n100"],
+  "dataset_manifest": "data/processed/graph_manifest.json",
+  "budgets": [
+    {"total": 0.5, "ordering": 0.125, "rr": 0.1875, "wedge": 0.1875},
+    {"total": 1.0, "ordering": 0.25, "rr": 0.375, "wedge": 0.375},
+    {"total": 2.0, "ordering": 0.5, "rr": 0.75, "wedge": 0.75},
+    {"total": 4.0, "ordering": 1.0, "rr": 1.5, "wedge": 1.5}
+  ],
+  "cap_rule": "public_n_minus_1",
+  "wedge_scale_rule": "2*(B-1)/epsilon_wedge",
+  "kcore_config": {"psi": 0.5, "threshold_fraction": 0.5, "bias_factor": 1},
+  "variance_ddof": 0,
+  "ground_truth": "Cached native ESCAPE non-induced diamond (chordalcycles) column in the pinned dataset manifest",
+  "metrics": ["mean_estimate", "bias", "variance", "mse", "rmse", "mae", "mean_relative_error", "relative_rmse", "mean_runtime_seconds"]
+}

@@ -2,6 +2,33 @@
 
 Updated: **2026-11-10 UTC**.
 
+**Current task: 25 — six-dataset no-clipping diamond evaluation COMPLETE.**
+
+- [x] Read task/implementation/standards and verify six pinned input hashes.
+- [x] Resolve cached native diamond counts and freeze explicit budgets/B=n-1.
+- [x] Create independent incremental/resumable runner and configuration.
+- [x] Complete exactly 4,800 main trials; no extra simulation checks.
+- [x] Verify saved counts, budgets, caps and metrics; generate the single MRE plot.
+- [x] Finish brief report/checkpoint, verify preservation and stop.
+
+All 24 cells contain 200 unique trials; no failures or incomplete trials.
+O/R/W fractions 1/4,3/8,3/8 and B=n-1 are unchanged throughout. MRE decreases
+with epsilon on all six graphs; at epsilon 4 it ranges from .10867 (BA-100) to
+1.03289 (Dolphins). All 1,822 negative and 4,800 noninteger estimates remain.
+Summed estimator runtime is 744.832675 seconds. Saved-output verification passes;
+the single four-real-world MRE plot was generated from summary.csv and inspected.
+
+See [report/results/commands](../DIAMOND_SIX_DATASETS.md) and
+[checkpoint 25](checkpoints/25_diamond_six_dataset_evaluation.md).
+CSV/SQLite and metadata: `experiments/results/diamond_six_datasets/`;
+plot: `plots/diamond_six_datasets/mean_relative_error.png` (both ignored).
+Master seed 202611102501. No extra trials, test/audit reruns, algorithm/proof/data
+changes, baseline, tuning, commit or push. **STOP pending explicit follow-up.**
+
+## Preserved Checkpoint 24 completion
+
+Updated: **2026-11-10 UTC**.
+
 **Current task: 24 — hybrid diamond implementation and targeted verification COMPLETE.**
 
 - [x] Read the supplied algorithm and Diamond Sections B–E; review shared code.

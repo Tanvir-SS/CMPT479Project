@@ -1,5 +1,65 @@
 # Project status
 
+Updated: **2026-11-11 (America/Vancouver)**.
+
+**Current phase: 27 — uniform-sampling RR C4 Stage 5 evaluation COMPLETE.**
+
+- [x] Inspect implementation, checkpoint and evaluation conventions.
+- [x] Verify six pinned graph hashes/sizes and independent exact C4 truth.
+- [x] Create separate runner/config; verify four-call smoke and safe resume.
+- [x] Complete exactly 4,800 main trials, preserving all signed estimates.
+- [x] Verify saved metrics/artifacts and complete report/checkpoint.
+- [x] Stop before Stage 6; no baseline, tuning, plot, commit or push.
+
+All 24 cells contain 200 distinct trials (4,800 total), with zero failures or
+missing observations. Four separate smoke calls passed serialization, schedule,
+metrics and resume checks. All six independent exact C4 counts agree with cached
+ESCAPE truth; input/mapping hashes and all three reference fingerprints verify.
+
+MSE decreases with epsilon on every graph. Variance contributes 97.844–99.993%
+of empirical MSE. All 2,319 negative estimates (48.3125%) and all 4,800 noninteger
+estimates remain unchanged. Summed estimator runtime: 11.499573741 seconds.
+No practical relative-accuracy or executable privacy guarantee is inferred.
+
+See [report](../FOUR_CYCLE_UNIFORM_RR_SIX_DATASETS.md) and
+[checkpoint 27](checkpoints/27_four_cycle_uniform_rr_evaluation.md).
+Results: `experiments/results/four_cycle_uniform_rr_six_datasets/` (ignored).
+**STOP: Stage 6 is not started.** No comparison, baseline, tuning, plot, commit
+or push. Existing Stage 3–4 work and all prior research artifacts are preserved.
+
+The explicit Stage 5 request supersedes the previous stopping point for this
+fixed evaluation only. The estimator and previous artifacts remain unchanged.
+
+## Preserved Checkpoint 26 completion
+
+
+Updated: **2026-11-11 (America/Vancouver)**.
+
+**Current phase: 26 — uniform-sampling + RR C4 Stages 3–4 COMPLETE.**
+
+- [x] Inspect current status/checkpoint, graph/counting APIs and prior C4 design.
+- [x] Implement a separate uniform candidate estimator with q=ceil(.05 n²).
+- [x] Preserve public scheduling, per-edge allocation and local/server boundary.
+- [x] Pass 26 focused checks and eight native ESCAPE fixture comparisons.
+- [x] Verify all three reference fingerprints and preserve earlier artifacts.
+- [x] Document assumptions, numeric limits, commands and checkpoint; stop.
+
+The new module uses epsilon/max(K_e1,K_e2), exactly two fresh RR reports per
+candidate, stable debiasing and signed floating-point aggregation. No endpoint
+split, global participation maximum, Laplace noise or clipping. For n<4 it
+returns zero without reports. All new tests pass; no failed or skipped tests.
+The native fixture check was repeated only to retain raw ESCAPE evidence.
+Mathematical guarantees apply to the ideal protocol, not certified NumPy/float
+execution. Formal privacy and accuracy remain subject to independent review.
+
+See [implementation](../FOUR_CYCLE_UNIFORM_RR_IMPLEMENTATION.md) and
+[checkpoint 26](checkpoints/26_four_cycle_uniform_rr_implementation.md).
+This explicit follow-up supersedes task 25's stopping point only for Stages 3–4.
+**STOP before Stage 5: no standardized evaluation, baseline, tuning, plot,
+commit or push.** Previous estimators, tests, results, datasets and pins preserved.
+
+## Preserved Checkpoint 25 completion
+
 Updated: **2026-11-10 UTC**.
 
 **Current task: 25 — six-dataset no-clipping diamond evaluation COMPLETE.**

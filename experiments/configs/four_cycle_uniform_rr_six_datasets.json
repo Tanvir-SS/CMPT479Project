@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "experiment_id": "four_cycle_uniform_rr_six_datasets",
+  "trials": 200,
+  "master_seed": 202611112701,
+  "epsilons": [
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "evaluation": {
+    "ground_truth": "Verified native ESCAPE 4-cycle column from pinned dataset manifest; copied into run cache",
+    "variance_ddof": 0,
+    "metrics": [
+      "mse",
+      "rmse",
+      "bias",
+      "variance",
+      "mae",
+      "relative_rmse",
+      "runtime_seconds",
+      "mse_se",
+      "mean_estimate"
+    ],
+    "seed_rule": "(master<<64)|(graph_index<<48)|(epsilon_index<<32)|trial"
+  },
+  "graphs": [
+    {
+      "id": "karate",
+      "family": "prepared_edge_list",
+      "source_family": "social_network",
+      "path": "data/processed/real_world/karate.edges",
+      "sha256": "3403714da814b5efd462eefe5eef4bfe1867f3dae5a95fbc5386f8564d0dc48f",
+      "n": 34,
+      "m": 78,
+      "expected_c4": 154
+    },
+    {
+      "id": "dolphins",
+      "family": "prepared_edge_list",
+      "source_family": "social_network",
+      "path": "data/processed/real_world/dolphins.edges",
+      "sha256": "459a17a147d584572324d87cb35efd36c24b1d467e9fed002ff0cac2c9b0edac",
+      "n": 62,
+      "m": 159,
+      "expected_c4": 278
+    },
+    {
+      "id": "les_miserables",
+      "family": "prepared_edge_list",
+      "source_family": "social_network",
+      "path": "data/processed/real_world/les_miserables.edges",
+      "sha256": "4628984d81b4c38a349c642ff845b4a63139757cbc50ece473bf2334c4494f99",
+      "n": 77,
+      "m": 254,
+      "expected_c4": 2672
+    },
+    {
+      "id": "brightkite_50",
+      "family": "prepared_edge_list",
+      "source_family": "induced_social_subgraph",
+      "path": "data/processed/real_world/brightkite_50.edges",
+      "sha256": "41a65e36f66fd3aabe5487d39804e845bbf7b10604cd2e8457334a21eef81599",
+      "n": 50,
+      "m": 97,
+      "expected_c4": 198
+    },
+    {
+      "id": "ba_n100",
+      "family": "prepared_edge_list",
+      "source_family": "barabasi_albert",
+      "path": "data/processed/baseline_2025/ba_n100.edges",
+      "sha256": "071e36e4eb852fb5a24de4288612cb46a82b9327dc4983b7e6a36a70938d96fc",
+      "n": 100,
+      "m": 1600,
+      "expected_c4": 207959
+    },
+    {
+      "id": "sbm_n100",
+      "family": "prepared_edge_list",
+      "source_family": "stochastic_block",
+      "path": "data/processed/baseline_2025/sbm_n100.edges",
+      "sha256": "92668120947e166a58987ccbae0e327a2df19a1f0a7b03337c1530c07e4d9314",
+      "n": 100,
+      "m": 760,
+      "expected_c4": 7302
+    }
+  ],
+  "method": "uniform_sampling_rr_c4",
+  "sampling_multiplier": 0.05,
+  "sample_count_rule": "(n*n+19)//20 for n>=4; else 0",
+  "rr_allocation": "epsilon/max(K_e1,K_e2)",
+  "smoke_master_seed": 202611112700,
+  "smoke_coordinates": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      3
+    ]
+  ],
+  "environment": {
+    "python": "3.11.9 (v3.11.9:de54cf5be3, Apr  2 2024, 07:12:50) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "dependencies": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "networkx": "3.4.2"
+    },
+    "rng": "NumPy default_rng PCG64; seeds are non-private evaluation metadata"
+  },
+  "seed_identifiers": {
+    "graphs": {
+      "karate": 0,
+      "dolphins": 1,
+      "les_miserables": 2,
+      "brightkite_50": 3,
+      "ba_n100": 4,
+      "sbm_n100": 5
+    },
+    "epsilons": {
+      "0.5": 0,
+      "1.0": 1,
+      "2.0": 2,
+      "4.0": 3
+    }
+  }
+}

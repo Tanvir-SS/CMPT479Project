@@ -1,0 +1,29 @@
+--- original/SubgraphShuffle.cpp
++++ build/SubgraphShuffle.cpp
+@@ -779,7 +779,7 @@
+ 
+ 	// For each pair of two nodes
+ 	pair = 0;
+-	for(i=0;i<NodeNum;i+=2){
++	for(i=0;i+1<NodeNum;i+=2){
+ 		// Initialization
+ 		wedge_num = 0;
+ 
+--- original/MemoryOperation.h
++++ build/MemoryOperation.h
+@@ -1,13 +1,13 @@
+ #ifndef MEMOPE
+ #define MEMOPE
+ #include <stdlib.h>
+-#include <malloc.h>
++// stdlib.h already declares calloc/free (portable to macOS)
+ 
+ template < typename Type >
+ void malloc1D(Type **source, int i)
+ {
+ 	*source = (Type*)calloc(i, sizeof(Type));
+-	if (source == NULL)
++	if (*source == NULL)
+ 	{
+ 		printf("malloc error.");
+ 		exit(-1);

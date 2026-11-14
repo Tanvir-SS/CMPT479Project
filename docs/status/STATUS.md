@@ -1,5 +1,32 @@
 # Project status
 
+Updated: **2026-11-14 (America/Vancouver)**.
+
+**Current phase: 28 — WLocal C4 baseline COMPLETE.**
+
+- [x] Inspect original source, prior C4 study and privacy definitions.
+- [x] Build isolated author implementation with documented odd-n/platform fixes.
+- [x] Convert six pinned datasets and verify cached native ESCAPE C4 agreement.
+- [x] Pass separate statistical validation and six-graph sanitizer/seeded replay.
+- [x] Complete/resume exactly 4,800 main trials (24 cells × 200).
+- [x] Verify saved metrics/comparison/artifacts; finish report and checkpoint.
+- [x] Preserve existing estimator/results/data/pins; stop without commit or push.
+
+All 4,800 estimates are finite; 1,478 negatives retained. WLocal has lower empirical
+RMSE in all 24 nominal-epsilon cells (Our/WLocal ratio 6.2772–74.3009). **This is
+not equal undirected-edge privacy:** WLocal's ideal full-transcript bound is
+2epsilon at nominal epsilon; our estimator accounts for both endpoints within
+epsilon. No equal-privacy additional trials or formal executable privacy claim.
+
+[Report, reproduction and full results](../../experiments/baselines/wlocal/REPORT.md)
+· [Checkpoint 28](checkpoints/28_wlocal_baseline.md).
+Outputs: `experiments/baselines/wlocal/outputs/` (ignored).
+Executable: `build/wlocal/wlocal` (ignored). Original supplied WLocal files remain
+unchanged; builds use a patched copy. The explicit user request superseded the
+historical stopping points for this baseline only. **STOP after the report.**
+
+## Preserved checkpoint 27 completion
+
 Updated: **2026-11-11 (America/Vancouver)**.
 
 **Current phase: 27 — uniform-sampling RR C4 Stage 5 evaluation COMPLETE.**

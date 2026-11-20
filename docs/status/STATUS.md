@@ -1,5 +1,35 @@
 # Project status
 
+Updated: **2026-11-19 (America/Vancouver)**.
+
+**Current phase: 29 — supplied RR-only diamond integration COMPLETE.**
+
+- [x] Read latest status/checkpoint and confirm existing graph/RR interfaces.
+- [x] Integrate the supplied polynomial using the existing RR functions unchanged.
+- [x] Add separate six-dataset evaluation entry point with isolated outputs.
+- [x] Pass 26 focused integration tests; check six inputs without sampling.
+- [x] Apply owner clarification: epsilon .5/1/2, all budget to RR; four targeted checks pass.
+- [x] Preserve existing algorithms/results/data and unrelated untracked work.
+- [x] Record compatibility changes/checkpoint and stop before benchmark execution.
+
+The full epsilon goes to the existing one-owner RR stage. No duplicated or
+modified RR code, hybrid budget/cap, Laplace noise or changed counting equation.
+The clarified evaluation grid has 18 cells / 3,600 planned trials at the existing
+200-trial default; **zero benchmark trials executed**. Configuration records
+epsilon_RR=total, epsilon_Laplace=0 and epsilon_Ordering=0. The latest targeted
+check passed 4 cases (24 deselected); the estimator itself required no change.
+Only the new module/runner/tests/docs were added; existing pattern implementations
+and their evaluation scripts are unchanged. NumPy/float execution remains
+`experimental_unverified`; tests are not a privacy proof.
+
+[Integration/API and commands](../DIAMOND_RR_ONLY.md) ·
+[Checkpoint 29](checkpoints/29_diamond_rr_only_integration.md).
+No six-dataset RR-only trials, statistical re-audit, plot, dependency change,
+commit or push. The new explicit integration request supersedes historical
+phase-specific stops for this scope only. **STOP pending follow-up.**
+
+## Preserved checkpoint 28 completion
+
 Updated: **2026-11-14 (America/Vancouver)**.
 
 **Current phase: 28 — WLocal C4 baseline COMPLETE.**

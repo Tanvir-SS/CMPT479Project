@@ -2,6 +2,27 @@
 
 Updated: **2026-11-19 (America/Vancouver)**.
 
+**Current phase: 30 — RR-only diamond 20-trial evaluation COMPLETE.**
+
+- [x] Read current status/checkpoint and existing command interface.
+- [x] Run the unchanged evaluator with --trials 20 --seed 42 (360 total).
+- [x] Save trial/summary CSVs and display all 18 requested summary rows.
+- [x] Record the ground-truth filename discrepancy and stop.
+
+The runner reported 360 completed, zero remaining, exit 0. Six pinned datasets,
+epsilon .5/1/2, all epsilon to RR; no ordering/Laplace stage or output clipping.
+Results: `experiments/results/diamond_rr_only_six_datasets_20_seed42/`.
+The requested `expected_counts.json` contains only eight small fixtures, so the
+unchanged script used its existing cached ESCAPE diamond counts in the dataset
+manifest; this discrepancy was disclosed before execution and is recorded in
+[checkpoint 30](checkpoints/30_diamond_rr_only_20_trial_evaluation.md).
+No code/default/data/count changes, tests, separate verification, plots, commit
+or push. Only these status/checkpoint documents were updated. **STOP.**
+
+## Preserved checkpoint 29 completion
+
+Updated: **2026-11-19 (America/Vancouver)**.
+
 **Current phase: 29 — supplied RR-only diamond integration COMPLETE.**
 
 - [x] Read latest status/checkpoint and confirm existing graph/RR interfaces.

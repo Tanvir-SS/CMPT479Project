@@ -1,5 +1,94 @@
 # Project status
 
+Updated: **2026-11-22 (America/Vancouver)**.
+
+**Current phase: 33 — SC-ESCAPE Stage 5 evaluation COMPLETE.**
+
+- [x] Validate six pinned inputs, cached ESCAPE P4 truth and public bounds n−1.
+- [x] Freeze epsilon .5/1/2/4 and D/R/S/T fractions .10/.20/.30/.30.
+- [x] Complete exactly 24 separate smoke estimates; verify stop/resume/no-op.
+- [x] Complete exactly 4,800 main estimates, 200 per cell.
+- [x] Verify saved metrics, coordinate/seed integrity and preservation.
+- [x] Finish report/checkpoint and stop before Stage 6.
+
+Main seed 202611223301; smoke seed 202611223300. Public bounds in fixed graph
+order: 33, 61, 76, 49, 99, 99. Estimator unchanged; executable classification
+remains experimental_unverified. The explicit Stage 5 request authorizes only
+this fixed evaluation and preliminary discussion, not comparison or tuning.
+
+All 4,800 main trials are finite; zero failures/uncertain attempts, missing or
+duplicate coordinates. All 1,193 negatives and 4,800 fractional estimates remain.
+MSE/RMSE/MRE decrease with epsilon on all six graphs; variance accounts for
+96.6386%–99.9992% of empirical MSE. Relative accuracy is poor for several sparse
+graphs. Summed estimator runtime: 5.62586372718215 seconds. No theoretical bound
+or executable privacy certification is inferred from these observations.
+
+[Full 24-row report](../SC_ESCAPE_SIX_DATASETS.md) ·
+[Stage 5 checkpoint](checkpoints/33_sc_escape_stage5_evaluation.md).
+Results: `experiments/results/four_path_sc_escape_six_datasets/` (ignored).
+Saved-only independent verification passes; 1,067 pre-existing files and all
+three reference pins/sources are preserved. No native recount, estimator change,
+extra trials, historical regression, baseline, tuning, plot, commit or push.
+**STOP after Stage 5. Stage 6 has not begun.**
+
+## Preserved checkpoint 32 completion
+
+Updated: **2026-11-22 (America/Vancouver)**.
+
+**Current phase: 32 — SC-ESCAPE Stage 4 verification COMPLETE; result PARTIAL.**
+
+- [x] Review Stage 3 code/tests, cached fixture truth and protocol boundaries.
+- [x] Derive ideal full-transcript privacy, sensitivities and unbiasedness.
+- [x] Account for shared-degree/RR covariance and adaptive noise variance.
+- [x] Correct the D_max=0 MSE bound and qualify the O(n^5) corollary.
+- [x] Add 11 focused deterministic cases; 57 total pass with no skips/failures.
+- [x] Record tiny-RR-epsilon numerical limitation; preserve estimator unchanged.
+- [x] Verify protected files/references; finish report/checkpoint and stop.
+
+Ideal privacy accounting is 2epsilon_D+epsilon_R+epsilon_S+epsilon_T on graphs
+sharing a valid public D_max. Ideal unbiasedness holds with independent exact
+randomizers. Uniform MSE analysis needs max(1,D_max) in the adaptive product-noise
+term; O(n^5) requires the supplied D_max=O(n). At accepted epsilon_R=1e-20,
+floating p=0.5 loses the triangle signal. This concrete numerical limitation and
+deployment qualifications keep the overall result **PARTIAL** and the simulator
+**experimental_unverified**. No estimator/shared-helper correction was made.
+
+[Verification report](../SC_ESCAPE_VERIFICATION.md) ·
+[Stage 4 checkpoint](checkpoints/32_sc_escape_stage4_verification.md).
+Final targeted run: **57 passed in 0.05s**. No native truth recomputation,
+Monte Carlo study, standardized evaluation, historical regression suite,
+baseline, tuning, dependency change, commit or push. This explicit request
+authorizes Stage 4 only. **STOP: Stage 5 has not begun.**
+
+## Preserved checkpoint 31 completion
+
+Updated: **2026-11-22 (America/Vancouver)**.
+
+**Current phase: 31 — SC-ESCAPE Stage 3 implementation COMPLETE.**
+
+- [x] Read supplied task, status/checkpoint and reusable graph/noise/RR interfaces.
+- [x] Add a separate two-round P4 simulator with mandatory public D_max.
+- [x] Preserve exact supplied scales, four budget parameters and independent streams.
+- [x] Pass 46 focused checks; verify all three pinned reference fingerprints.
+- [x] Document equations, report boundaries, assumptions and numerical limitations.
+- [x] Preserve original five-stage estimator/data/results; stop before Stage 4/5.
+
+Final targeted command: **46 passed in 0.06s**, no failures or skips. Eight small
+fixtures satisfy the supplied exact identity, independent enumeration and cached
+fixture P4 truth. No native ESCAPE counts were recomputed. Seeds are simulation
+inputs only; result/transcript schemas exclude raw neighbors, exact counts and
+seeds. This remains **experimental_unverified**, not software privacy certification.
+
+[Implementation/API](../SC_ESCAPE_IMPLEMENTATION.md) ·
+[Stage 3 checkpoint](checkpoints/31_sc_escape_stage3_implementation.md).
+The explicit SC-ESCAPE request supersedes earlier phase-specific stops only for
+this separate Stage 3 implementation and lightweight checks. No standardized
+evaluation, 200-trial experiments, baseline, tuning, historical regression suite,
+dependency change, commit or push. **STOP: Stage 4 verification and Stage 5
+evaluation require separate follow-up.**
+
+## Preserved checkpoint 30 completion
+
 Updated: **2026-11-19 (America/Vancouver)**.
 
 **Current phase: 30 — RR-only diamond 20-trial evaluation COMPLETE.**

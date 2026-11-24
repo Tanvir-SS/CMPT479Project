@@ -1,4 +1,6 @@
-# Active evaluation datasets  
+# Evaluation datasets
+
+## Default six graphs
 
 Phase 19 keeps exactly six existing graphs. Their edge lists and mappings were
 not regenerated or modified. The other 18 processed BA/SBM graphs and mappings
@@ -76,3 +78,56 @@ archived, not active. Generated estimates, SQLite checkpoints and CSVs are ignor
 | brightkite_50 | `41a65e36f66fd3aabe5487d39804e845bbf7b10604cd2e8457334a21eef81599` |
 | ba_n100 | `071e36e4eb852fb5a24de4288612cb46a82b9327dc4983b7e6a36a70938d96fc` |
 | sbm_n100 | `92668120947e166a58987ccbae0e327a2df19a1f0a7b03337c1530c07e4d9314` |
+
+## Larger SNAP graphs
+
+Select the default six using their existing experiment configs. To select the three
+larger graphs for future work, read the `graphs` array from the separate
+[SNAP manifest](processed/snap_large/graph_manifest.json). Each record supplies the
+project-relative path, hash and dimensions expected by the existing loader. For example:
+
+```python
+import json
+from private_graphlets.graph_datasets import PROJECT, load_prepared_graph
+
+suite = json.loads((PROJECT / "data/processed/snap_large/graph_manifest.json").read_text())
+email = load_prepared_graph(next(g for g in suite["graphs"] if g["id"] == "email_eu_core"))
+```
+
+| Dataset (source) | Original n | Original edges | Processed n | Unique undirected edges | Loops removed | Duplicate or reverse records removed after loops | Isolates | Density | Max degree |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| [Email-Eu-core](https://snap.stanford.edu/data/email-Eu-core.html) | 1,005 | 25,571 | 1,005 | 16,064 | 642 | 8,865 | 19 | 0.03184080 | 345 |
+| [Facebook combined](https://snap.stanford.edu/data/ego-Facebook.html) | 4,039 | 88,234 | 4,039 | 88,234 | 0 | 0 | 0 | 0.01081996 | 1,045 |
+| [Wikispeedia hyperlinks](https://snap.stanford.edu/data/wikispeedia.html) | 4,604 | 119,882 | 4,604 | 106,537 | 110 | 13,235 | 12 | 0.01005435 | 1,621 |
+
+Density is `2m/(n(n−1))` on the processed graph. Email and Wikispeedia use the union
+of directed arcs. Facebook's combined friendship file already lists unique undirected
+edges. Numeric IDs in the email and Facebook archives span the complete published
+vertex range. Wikispeedia uses the complete article roster from `articles.tsv`,
+lexicographically sorted by original encoded title, and only the arcs in `links.tsv`.
+All components and isolates are retained. Each `<id>.mapping.json` maps processed IDs
+back to original IDs or titles. Canonical `<id>.edges` files share the default suite's
+`n m` header and sorted unweighted edge format.
+
+The [ground-truth index](fixtures/expected_counts.json) contains the six exact
+non-induced counts for each dataset under `snap_large` in the index's declared
+`order`. The manifest also preserves each native ESCAPE output verbatim alongside
+the named counts, archive and processed-file hashes, and ESCAPE source fingerprints.
+
+**Reproduction on Ubuntu/WSL.** With the project environment and pinned ESCAPE
+submodule available, run from the project root. The downloads below are for a
+fresh archive directory. If archives already exist, the Python command checks
+their pinned hashes before reading them.
+
+```bash
+mkdir -p data/raw/snap_large
+(cd data/raw/snap_large && curl -fLO https://snap.stanford.edu/data/email-Eu-core.txt.gz && curl -fLO https://snap.stanford.edu/data/facebook_combined.txt.gz && curl -fLO https://snap.stanford.edu/data/wikispeedia/wikispeedia_paths-and-graph.tar.gz)
+.venv/bin/python scripts/prepare_snap_large.py
+```
+
+The preparation script compiles native ESCAPE under `build/phase34/escape/` and reads
+each canonical edge list directly. The general Python ESCAPE adapter supports at
+most 1,000 vertices. This dedicated preparation path checks the larger input size,
+requires `n⁴ < 2⁵³` for the four-vertex counting arithmetic, and uses the existing
+parser to validate the native output header `n, 2m` and integer counts.
+Each native invocation has a 120-second timeout and a 1 GiB address-space limit.

@@ -31,6 +31,10 @@ See [evaluation conventions](docs/EVALUATION_STANDARDS.md) and the independent
 [candidate-only K4 study](docs/FOUR_CLIQUE_SIX_DATASETS.md). Correctness fixtures
 remain separate from the main experiment.
 
+Larger evaluations can explicitly select the separate three-graph SNAP manifest.
+It includes full Email-Eu-core, Facebook combined and Wikispeedia hyperlink graphs,
+with native ESCAPE counts for all six patterns. See the [dataset guide](data/README.md#larger-snap-graphs).
+
 **Team installation:** [TEAM_SETUP.md](docs/TEAM_SETUP.md) covers recursive Git
 clones, GitHub ZIP downloads, all three pinned reference repositories, path
 overrides, tests and collaboration. Phase 07 changes portability only; research

@@ -1,5 +1,19 @@
 # Project status
 
+Updated **2026-11-23 (America/Vancouver)**.
+
+**Phase 34 complete — larger SNAP datasets and exact ground truth**
+
+- [x] Pin three source archives and normalize their complete vertex sets.
+- [x] Round-trip all three canonical files through the existing prepared-graph loader.
+- [x] Run native ESCAPE on each file and record all 18 connected non-induced counts.
+- [x] Publish a separate opt-in manifest, add the counts to the ground-truth index and document reproduction.
+
+The default evaluation grid still selects the six smaller graphs. Phase 34 produced
+dataset artifacts and exact counts only. [Checkpoint 34](checkpoints/34_snap_large_datasets.md)
+
+## Preserved checkpoint 33 completion
+
 Updated: **2026-11-22 (America/Vancouver)**.
 
 **Current phase: 33 — SC-ESCAPE Stage 5 evaluation COMPLETE.**

@@ -37,6 +37,11 @@ data/processed/baseline_2025/*
 !data/processed/baseline_2025/*.edges
 !data/processed/baseline_2025/*.mapping.json
 !data/processed/graph_manifest.json
+!data/processed/snap_large/
+data/processed/snap_large/*
+!data/processed/snap_large/*.edges
+!data/processed/snap_large/*.mapping.json
+!data/processed/snap_large/graph_manifest.json
 experiments/results/*
 !experiments/results/README.md
 plots/*
